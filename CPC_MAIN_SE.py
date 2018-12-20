@@ -8,10 +8,20 @@
 from socket import *
 from CPC_RR import *
 from CPC_RC import *
+from CPC_NAVIO2.leds import *
 
-Main_Loop = True
+main_loop = True
 
-while Main_Loop:
+led_time = 0
+
+while main_loop:
+    if led_time = 1000:
+        led().setColor('Green')
+    if led_time = 2000:
+        led().setColor('Black')
+        led_time = 0
+
+    led_time += 1
 
     left_x_signal = RC(RR(0), 0, 1)
     left_y_signal = RC(RR(3), -1, 1)
