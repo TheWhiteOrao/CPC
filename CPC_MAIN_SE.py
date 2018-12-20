@@ -18,7 +18,7 @@ while Main_Loop:
     right_x_signal = RC(RR(2), -1, 1)
     right_y_signal = RC(RR(3), -1, 1)
 
-    print("left_x: %  " % left_x_signal,
-          "left_y: %  " % left_y_signal,
-          "right_x: %  " % right_x_signal,
-          "right_y: %  " % right_y_signal)
+    print("left_x: %f  " % left_x_signal,
+          "left_y: %f  " % left_y_signal,
+          "right_x: %f  " % right_x_signal,
+          "right_y: %f  " % right_y_signal)
