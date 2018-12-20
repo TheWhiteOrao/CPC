@@ -16,9 +16,9 @@ led_time = 0
 
 
 while main_loop:
-    if led_time = 1000:
+    if led_time == 1000:
         Led().setColor('Green')
-    if led_time = 2000:
+    if led_time == 2000:
         Led().setColor('Black')
         led_time = 0
 
