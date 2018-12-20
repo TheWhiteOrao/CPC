@@ -14,11 +14,12 @@ main_loop = True
 
 led_time = 0
 
+
 while main_loop:
     if led_time = 1000:
-        led().setColor('Green')
+        Led().setColor('Green')
     if led_time = 2000:
-        led().setColor('Black')
+        Led().setColor('Black')
         led_time = 0
 
     led_time += 1
