@@ -39,7 +39,7 @@ while main_loop:
 
     if sim == True:
 
-        main_cl.send(bytearray(bin("hi")))
+        main_cl.send(bytearray("hi".encode()))
 
     print("left_x: %f  " % left_x_signal,
           "left_y: %f  " % left_y_signal,
