@@ -5,7 +5,7 @@
 # ██  ██  ██ ██   ██ ██ ██  ██ ██
 # ██      ██ ██   ██ ██ ██   ████
 
-from CPC_RV import *
+from CPC_RR import *
 from CPC_RC import *
 from CPC_NAVIO2.leds import *
 
