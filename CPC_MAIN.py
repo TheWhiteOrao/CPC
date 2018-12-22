@@ -8,10 +8,14 @@
 from CPC_RR import *
 from CPC_RC import *
 from CPC_NAVIO2.leds import *
+from CPC_NAVIO2.pwm import *
 
 main_loop = True
 led_time = 0
-
+pwm_out = 0
+pwm = PWM(pwm_out)
+pwm.set_period(500)
+pwm.enable()
 
 while main_loop:
 
@@ -27,6 +31,8 @@ while main_loop:
     left_x_signal = RC(RR(3), -1, 1)
     right_x_signal = RC(RR(1), -1, 1)
     right_y_signal = RC(RR(2), -1, 1)
+
+    pwm.set_duty_cycle(left_y_signal)
 
     print("left_x: %f  " % left_x_signal,
           "left_y: %f  " % left_y_signal,
