@@ -17,11 +17,10 @@ while True:
     all = main_cl.recv(4096)
     try:
         all = loads(all)
+        print("left_x: %f  " % all[0],
+              "left_y: %f  " % all[1],
+              "right_x: %f  " % all[2],
+              "right_y: %f  " % all[3])
 
     except:
         pass
-
-    print("left_x: %f  " % all[0],
-          "left_y: %f  " % all[1],
-          "right_x: %f  " % all[2],
-          "right_y: %f  " % all[3])
