@@ -6,6 +6,7 @@
 # ██      ██ ██   ██ ██ ██   ████     ███████ ███████ ██   ██   ████   ███████ ██   ██
 
 from socket import *
+from pickle import *
 from CPC_RR import *
 from CPC_RC import *
 from CPC_NAVIO2.leds import *
@@ -37,11 +38,12 @@ while main_loop:
     right_y_signal = RC(RR(2), -1, 1)
 
     if sim == True:
+        msg = dumps(left_y_signal,
+                    left_x_signal,
+                    right_x_signal,
+                    right_y_signal)
 
-        main_cl.send((str(left_y_signal)).encode())
-        main_cl.send((str(left_x_signal)).encode())
-        main_cl.send((str(right_x_signal)).encode())
-        main_cl.send((str(right_y_signal)).encode())
+        main_cl.send(msg)
 
     print("left_x: %f  " % left_x_signal,
           "left_y: %f  " % left_y_signal,
