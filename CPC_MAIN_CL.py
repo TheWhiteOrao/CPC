@@ -14,5 +14,3 @@ main_cl.connect(main_cl_addr)
 
 while True:
     print(main_cl.recv(1024).decode())
-
-    break
