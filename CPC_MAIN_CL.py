@@ -16,4 +16,4 @@ main_cl.connect(main_cl_addr)
 while True:
     all = bytearray(main_cl.recv(512))
 
-    print(all[1])
+    print(all)
