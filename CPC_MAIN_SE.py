@@ -39,6 +39,7 @@ while main_loop:
 
     if sim == True:
         msg = dumps([left_y_signal, left_x_signal, right_x_signal, right_y_signal])
+        print(msg)
         main_cl.send(msg)
 
     print("left_x: %f  " % left_x_signal,
