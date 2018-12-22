@@ -38,10 +38,10 @@ while main_loop:
     right_y_signal = RC(RR(2), -1, 1)
 
     if sim == True:
-        msg = dumps(left_y_signal,
-                    left_x_signal,
-                    right_x_signal,
-                    right_y_signal)
+        msg = dumps((left_y_signal,
+                     left_x_signal,
+                     right_x_signal,
+                     right_y_signal))
 
         main_cl.send(msg)
 
