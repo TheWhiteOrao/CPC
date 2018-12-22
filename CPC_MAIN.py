@@ -15,6 +15,7 @@ led_time = 0
 
 pwm_out = 0
 pwm_t = PWM(pwm_out)
+print(pwm_t)
 pwm_t.set_period(500)
 pwm_t.enable()
 
