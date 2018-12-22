@@ -14,7 +14,7 @@ main_loop = True
 led_time = 0
 
 pwm_out = 0
-f = PWM(pwm_out)
+f = PWM(pwm_out).initialize()
 with PWM(pwm_out) as pwm_t:
     print(pwm_t == f)
     pwm_t.set_period(500)
