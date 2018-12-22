@@ -39,7 +39,7 @@ while main_loop:
 
     if sim == True:
 
-        main_cl.send(dumps({1: left_y_signal, 2: left_x_signal, 3: right_x_signal, 4: right_y_signal}))
+        main_cl.send(bytearray(left_y_signal, left_x_signal, right_x_signal,  right_y_signal))
 
     print("left_x: %f  " % left_x_signal,
           "left_y: %f  " % left_y_signal,
