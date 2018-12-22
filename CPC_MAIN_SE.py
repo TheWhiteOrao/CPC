@@ -16,7 +16,7 @@ sim = True
 
 if sim == True:
     main_se = socket(AF_INET, SOCK_STREAM)
-    main_se.bind(("192.168.43.243", 35467))
+    main_se.bind(("192.168.43.34", 35467))
     main_se.listen(0)
     (main_cl, addr) = main_se.accept()
 
