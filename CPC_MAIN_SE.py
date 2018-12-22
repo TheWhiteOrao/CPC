@@ -37,10 +37,10 @@ while main_loop:
     right_y_signal = RC(RR(2), -1, 1)
 
     if sim == True:
-        main_cl.send(str(left_y_signal).encode())
-        main_cl.send(str(left_x_signal).encode())
-        main_cl.send(str(right_x_signal).encode())
-        main_cl.send(str(right_y_signal).encode())
+        main_cl.send((str(left_y_signal) + "\n").encode())
+        main_cl.send((str(left_x_signal) + "\n").encode())
+        main_cl.send((str(right_x_signal) + "\n").encode())
+        main_cl.send((str(right_y_signal) + "\n").encode())
 
     print("left_x: %f  " % left_x_signal,
           "left_y: %f  " % left_y_signal,
