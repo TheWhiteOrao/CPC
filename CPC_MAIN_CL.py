@@ -14,8 +14,7 @@ main_cl_addr = ("192.168.43.34", 35467)
 main_cl.connect(main_cl_addr)
 
 while True:
-    all = main_cl.recv(512)
-    print(all)
+    all = main_cl.recv(4096)
     all = loads(all)
 
-    print(all)
+    print(all[1])
