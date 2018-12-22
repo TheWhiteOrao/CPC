@@ -38,7 +38,7 @@ while main_loop:
 
     if sim == True:
         msg = "left_x: %f  " % left_x_signal, "left_y: %f  " % left_y_signal, "right_x: %f  " % right_x_signal, "right_y: %f  " % right_y_signal
-        main_cl.send(str(msg) + "\n").encode())
+        main_cl.send((str(msg) + "\n").encode())
 
     print("left_x: %f  " % left_x_signal,
           "left_y: %f  " % left_y_signal,
