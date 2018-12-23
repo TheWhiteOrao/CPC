@@ -10,7 +10,6 @@
 
 from CPC_RR import *
 from CPC_RC import *
-from CPC_CI import *
 from CPC_NAVIO2.leds import *
 from CPC_NAVIO2.pwm import *
 
