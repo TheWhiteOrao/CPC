@@ -192,9 +192,9 @@ while main_loop:
     engine_six_memory = left_y_signal
 
     if left_x_signal < 0:
-        engine_six_memory += engine_range * (abs(left_x_signal))
+        engine_six_memory += engine_range * (abs(left_x_signal) * engine_e)  # optional **** engine_e
     elif left_x_signal > 0:
-        engine_six_memory -= engine_range * (abs(left_x_signal))
+        engine_six_memory -= engine_range * (abs(left_x_signal) * engine_e)  # optional **** engine_e
 
     if right_x_signal < 0:  # - to_the_left engine_r inC engine_l deC
         engine_two_memory += engine_range * (abs(right_x_signal) * (engine_two_r * engine_e))

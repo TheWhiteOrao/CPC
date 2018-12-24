@@ -72,15 +72,15 @@ engine_fou_l = engine_fou_lever_x / 2
 engine_fiv_l = engine_fiv_lever_x / 2
 
 
-print(0.25 * (engine_one_f * 0.4), "f")
-print(0.25 * (engine_two_f * 0.45), "f")
-print(0.25 * (engine_fiv_f * 0.4), "f \n")
+print(0.84 * 0.25 * (engine_one_f * 0.25), "f")
+print(0.84 * 0.25 * (engine_two_f * 0.25), "f")
+print(0.84 * 0.25 * (engine_fiv_f * 0.25), "f \n")
 
-print(0.25 * (engine_two_r * 0.4), "r")
-print(0.25 * (engine_thr_r * 0.4), "r \n")
+print(0.84 * 0.25 * (engine_two_r * 0.25), "r")
+print(0.84 * 0.25 * (engine_thr_r * 0.25), "r \n")
 
-print(0.25 * (engine_thr_b * 0.5), "b")
-print(0.25 * (engine_fou_b * 0.4), "b \n")
+print(0.84 * 0.25 * (engine_thr_b * 0.25), "b")
+print(0.84 * 0.25 * (engine_fou_b * 0.25), "b \n")
 
-print(0.25 * (engine_fou_l * 0.4), "l")
-print(0.25 * (engine_fiv_l * 0.4), "l \n")
+print(0.84 * 0.25 * (engine_fou_l * 0.25), "l")
+print(0.84 * 0.25 * (engine_fiv_l * 0.25), "l \n")
