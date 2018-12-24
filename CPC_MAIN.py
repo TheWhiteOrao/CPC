@@ -13,6 +13,7 @@ from CPC_RC import *
 from CPC_CO import *
 from CPC_NAVIO2.leds import *
 from CPC_NAVIO2.pwm import *
+from CPC_NAVIO2.adc import *
 
 main_loop = True
 led_time = 0
@@ -22,7 +23,7 @@ engine_cp = 0.25
 engine_e = 0.45
 engine_range = engine_max - engine_min
 engine_cs = engine_range * (1 - engine_cp) + engine_min
-
+adc = ADC()
 
 # ███████ ███████ ███████ ███████ ███████ ███████ ███████ ███████ ███████ ███████ ███████ ███████ ███████ ███████ ███████
 #
@@ -170,6 +171,10 @@ engine_six_pwm.enable()
 
 while main_loop:
 
+    #
+    # LED
+    #
+
     if led_time == 1000:
         Led().setColor('Green')
     if led_time == 2000:
@@ -177,6 +182,22 @@ while main_loop:
         led_time = 0
 
     led_time += 1
+
+    #
+    # ACD
+    #
+
+    print("A0: %f  " % adc.read(0),
+          "A1: %f  " % adc.read(1),
+          "A2: %f  " % adc.read(2),
+          "A3: %f  " % adc.read(3),
+          "A4: %f  " % adc.read(4),
+          "A5: %f  " % adc.read(5)
+          )
+
+    #
+    #
+    #
 
     left_y_signal = RC(RR(0), engine_min, engine_cs)
     left_x_signal = RC(RR(3), -engine_cp, engine_cp)
@@ -234,7 +255,7 @@ while main_loop:
     engine_fiv_pwm.set_duty_cycle(engine_fiv_memory)
     engine_six_pwm.set_duty_cycle(engine_six_memory)
 
-    print("left_x: %f  " % left_x_signal,
-          "left_y: %f  " % left_y_signal,
-          "right_x: %f  " % right_x_signal,
-          "right_y: %f  " % right_y_signal)
+    # print("left_x: %f  " % left_x_signal,
+    #       "left_y: %f  " % left_y_signal,
+    #       "right_x: %f  " % right_x_signal,
+    #       "right_y: %f  " % right_y_signal)
