@@ -75,10 +75,10 @@ while True:
     imu.read_temp()
     imu.read_mag()
 
-    print("Accelerometer: %f " % imu.accelerometer_data[0], " %f " % imu.accelerometer_data[1], " %f " % imu.accelerometer_data[2],
-          "Gyroscope:     %f " % imu.gyroscope_data[0], " %f " % imu.gyroscope_data[1], " %f " % imu.gyroscope_data[2],
-          "Temperature:   %f " % imu.temperature,
-          "Magnetometer:  %f " % imu.magnetometer_data[0], " %f " % imu.magnetometer_data[1], " %f " % imu.magnetometer_data[2])
+    print("Accelerometer: %f " % imu.accelerometer_data[0], " %f " % imu.accelerometer_data[1], " %f   " % imu.accelerometer_data[2],
+          "Gyroscope: %f " % imu.gyroscope_data[0], " %f " % imu.gyroscope_data[1], " %f   " % imu.gyroscope_data[2],
+          "Temperature: %f " % imu.temperature,
+          "Magnetometer: %f " % imu.magnetometer_data[0], " %f " % imu.magnetometer_data[1], " %f   " % imu.magnetometer_data[2])
 
     time.sleep(0.1)
 
