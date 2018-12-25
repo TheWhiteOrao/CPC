@@ -80,7 +80,7 @@ while True:
           "Temperature: %-16s" % round(imu.temperature, 8),
           "Magnetometer: %-12s" % round(imu.magnetometer_data[0], 8), "%-12s" % round(imu.magnetometer_data[1], 8), "%-16s" % round(imu.magnetometer_data[2], 8))
 
-    time.sleep(0.1)
+    time.sleep(0.01)
 
     # m9a, m9g, m9m = imu.getMotion9()
     #
