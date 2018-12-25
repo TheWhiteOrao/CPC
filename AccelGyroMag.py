@@ -76,7 +76,7 @@ while True:
     imu.read_mag()
 
     print("Accelerometer: %-12s" % round(imu.accelerometer_data[0], 8), "%-12s" % round(imu.accelerometer_data[1], 8), "%-16s" % round(imu.accelerometer_data[2], 8),
-          "Gyroscope: %-12s" % round(imu.gyroscope_data[0], 8), "%-12s" % round(imu.gyroscope_data[1], 12), "%-16s" % round(imu.gyroscope_data[2], 8),
+          "Gyroscope: %-12s" % round(imu.gyroscope_data[0], 8), "%-12s" % round(imu.gyroscope_data[1], 8), "%-16s" % round(imu.gyroscope_data[2], 8),
           "Temperature: %-16s" % round(imu.temperature, 8),
           "Magnetometer: %-12s" % round(imu.magnetometer_data[0], 8), "%-12s" % round(imu.magnetometer_data[1], 8), "%-16s" % round(imu.magnetometer_data[2], 8))
 
