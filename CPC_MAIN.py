@@ -187,13 +187,13 @@ while main_loop:
     # ACD
     #
 
-    print("A0: %f  " % adc.read(0),
-          "A1: %f  " % adc.read(1),
-          "A2: %f  " % adc.read(2),
-          "A3: %f  " % adc.read(3),
-          "A4: %f  " % adc.read(4),
-          "A5: %f  " % adc.read(5)
-          )
+    # print("A0: %f  " % adc.read(0),
+    #       "A1: %f  " % adc.read(1),
+    #       "A2: %f  " % adc.read(2),
+    #       "A3: %f  " % adc.read(3),
+    #       "A4: %f  " % adc.read(4),
+    #       "A5: %f  " % adc.read(5)
+    #       )
 
     #
     #
