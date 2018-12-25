@@ -107,20 +107,6 @@ engine_fou_l = engine_fou_lever_x / 2
 engine_fiv_l = engine_fiv_lever_x / 2
 
 
-print(0.25 * (engine_one_f * 0.9), "f")
-print(0.25 * (engine_two_f * 0.9), "f")
-print(0.25 * (engine_fiv_f * 0.9), "f \n")
-
-print(0.25 * (engine_two_r * 0.9), "r")
-print(0.25 * (engine_thr_r * 0.9), "r \n")
-
-print(0.25 * (engine_thr_b * 0.9), "b")
-print(0.25 * (engine_fou_b * 0.9), "b \n")
-
-print(0.25 * (engine_fou_l * 0.9), "l")
-print(0.25 * (engine_fiv_l * 0.9), "l \n")
-
-
 # ███████ ███████ ███████ ███████ ███████ ███████ ███████ ███████ ███████ ███████ ███████ ███████ ███████ ███████ ███████
 #
 # ███████ ███    ██  ██████  ██ ███    ██ ███████     ██ ███    ██ ██ ████████ ██  █████  ██      ██ ███████ ███████
@@ -175,9 +161,9 @@ while main_loop:
     # LED
     #
 
-    if led_time == 1000:
+    if led_time == 100:
         Led().setColor('Green')
-    if led_time == 2000:
+    if led_time == 200:
         Led().setColor('Black')
         led_time = 0
 
