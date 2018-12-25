@@ -30,10 +30,10 @@ import spidev
 import time
 import argparse
 import sys
-import navio.mpu9250
-import navio.util
+import CPC_NAVIO2.mpu9250
+import CPC_NAVIO2.util
 
-navio.util.check_apm()
+CPC_NAVIO2.util.check_apm()
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-i", help="Sensor selection: -i [sensor name]. Sensors names: mpu is MPU9250, lsm is LSM9DS1")
@@ -49,10 +49,10 @@ args = parser.parse_args()
 
 if args.i == 'mpu':
     print("Selected: MPU9250")
-    imu = navio.mpu9250.MPU9250()
+    imu = CPC_NAVIO2.mpu9250.MPU9250()
 elif args.i == 'lsm':
     print("Selected: LSM9DS1")
-    imu = navio.lsm9ds1.LSM9DS1()
+    imu = CPC_NAVIO2.lsm9ds1.LSM9DS1()
 else:
     print("Wrong sensor name. Select: mpu or lsm")
     sys.exit(1)
