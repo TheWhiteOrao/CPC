@@ -174,11 +174,8 @@ while main_loop:
     #
 
     print("A0: %f V " % (adc.read(0) / 1000),
-          "A1: %f V " % (adc.read(1) / 1000),
           "A2: %f V " % (adc.read(2) / 1000),
           "A3: %f A " % (adc.read(3) / 1000),
-          "A4: %f V " % (adc.read(4) / 1000),
-          "A5: %f V " % (adc.read(6) / 1000)
           )
 
     #
