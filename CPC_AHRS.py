@@ -137,14 +137,14 @@ def imuLoop():
     dtsumm += dt
     if dtsumm > 0.05:
 
-        if j > 100:
+        if j > 25:
             a = yaw * -1
             a, t = t, a
-            if j < 200:
+            if j > 100 and j <= 200:
                 k += a - t
 
         j += 1
-        print(k / 2)
+        print(k / 100)
         # Console output
         print("ROLL: %-26s" % roll,
               "PITCH: %-26s" % pitch,

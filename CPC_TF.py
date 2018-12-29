@@ -1,37 +1,39 @@
-from time import *
-
-# while True:
-
-
-def usleep(x):
-    return sleep(x / 1000000.0)
-
-
-currenttime = 0
-
-
-def imuLoop():
-    global currenttime
-    previoustime = currenttime
-    currenttime = time_ns()
-    dt = (currenttime - previoustime) / 1000000000
-
-    if dt < (1 / 1300):
-        usleep((1 / 1300 - dt) * 1000000)
-        currenttime = time_ns()
-
-    dt = (currenttime - previoustime) / 1000000000
-
-    print(dt, currenttime, previoustime)
-
-
-
+# from time import *
+#
+# # while True:
+#
+#
 # def usleep(x):
 #     return sleep(x / 1000000.0)
-i = 0
-while i < 100:
-    imuLoop()
-    i += 1
+#
+#
+# currenttime = 0
+#
+#
+# def imuLoop():
+#     global currenttime
+#     previoustime = currenttime
+#     currenttime = time_ns()
+#     dt = (currenttime - previoustime) / 1000000000
+#
+#     if dt < (1 / 1300):
+#         usleep((1 / 1300 - dt) * 1000000)
+#         currenttime = time_ns()
+#
+#     dt = (currenttime - previoustime) / 1000000000
+#
+#     print(dt, currenttime, previoustime)
+#
+#
+#
+# # def usleep(x):
+# #     return sleep(x / 1000000.0)
+# i = 0
+# while i < 100:
+#     imuLoop()
+#     i += 1
+j = 200
+print(j > 100 and j <= 200)
 
 # from CPC_CO import *
 # rotor_radius = 500
