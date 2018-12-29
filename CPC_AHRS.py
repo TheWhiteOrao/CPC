@@ -64,6 +64,8 @@ def imuSetup():
 
 
 def imuLoop():
+    global dtsumm
+    global isFirst
     global currenttime
     # ----------------------- Calculate delta time - ---------------------------
     previoustime = currenttime
