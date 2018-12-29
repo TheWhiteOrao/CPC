@@ -16,7 +16,6 @@ PI = 3.14159
 
 
 imu = MPU9250()
-ahrs = AHRS()
 
 
 # Timing data
@@ -24,6 +23,7 @@ offset = [0, 0, 0]
 mindt = 0.01
 dtsumm = 0
 isFirst = 1
+currenttime = 0
 
 
 def usleep(x):
@@ -103,7 +103,7 @@ def imuLoop():
     gy *= 180 / PI
     gz *= 180 / PI
 
-    ahrs.updateIMU(ax, ay, az, gx * 0.0175, gy * 0.0175, gz * 0.0175, dt)
+    updateIMU(ax, ay, az, gx * 0.0175, gy * 0.0175, gz * 0.0175, dt)
 
     # Accel + gyro + mag.
     # Soft and hard iron calibration required for proper function.
