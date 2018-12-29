@@ -19,6 +19,7 @@ q3 = 0
 twoKi = 0
 twoKp = 2
 gyroOffset = [0, 0, 0]
+tr = 0
 
 
 def update(ax, ay, az, gx,  gy,  gz,  mx,  my,  mz,  dt):
@@ -190,6 +191,7 @@ def setGyroOffset(offsetX, offsetY, offsetZ):
 
 
 def getEuler():
+    global tr
 
     roll = atan2(2 * (q0 * q1 + q2 * q3), 1 - 2 * (q1 * q1 + q2 * q2)) * 180 / pi
     pitch = asin(2 * (q0 * q2 - q3 * q1)) * 180 / pi
@@ -197,7 +199,8 @@ def getEuler():
     # roll = atan2(2.0 * (q0 * q1 + q2 * q3), q0 * q0 - q1 * q1 - q2 * q2 + q3 * q3) * 180 / pi
     # pitch = -asin(2.0 * (q1 * q3 - q0 * q2)) * 180 / pi
     # yaw = 0 + atan2(2.0 * (q0 * q3 + q1 * q2), q0 * q0 + q1 * q1 - q2 * q2 - q3 * q3) * 180 / pi
-    print(yaw + q0)
+    tr += q0
+    print(yaw + tr)
     return roll, pitch, yaw
 
 
