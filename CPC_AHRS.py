@@ -137,7 +137,7 @@ def imuLoop():
     dtsumm += dt
     if dtsumm > 0.05:
 
-        if j > 100:
+        if j > 200:
             a = yaw * -1
             a, t = t, a
             k += a - t
