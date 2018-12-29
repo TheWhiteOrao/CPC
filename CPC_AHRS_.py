@@ -12,17 +12,14 @@
 # include <stdio.h>
 
 
-class AHRS():
+class AHRS:
 
-    def __init__(self):
-        self.gyroOffset = [0, 0, 0]
-
-        self.q0 = 1
-        self.q1 = 0
-        self.q2 = 0
-        self.q3 = 0
-        self.twoKi = 0
-        self.twoKp = 2
+    q0 = 1
+    q1 = 0
+    q2 = 0
+    q3 = 0
+    twoKi = 0
+    twoKp = 2
 
     def update(self, ax, ay, az, gx,  gy,  gz,  mx,  my,  mz,  dt):
 
@@ -177,6 +174,7 @@ class AHRS():
         q3 *= recipNorm
 
     def setGyroOffset(self, offsetX, offsetY, offsetZ):
+        gyroOffset = [0, 0, 0]
         gyroOffset[0] = offsetX
         gyroOffset[1] = offsetY
         gyroOffset[2] = offsetZ
