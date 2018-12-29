@@ -12,7 +12,7 @@ imu = MPU9250()
 
 # Timing data
 offset = [0, 0, 0]
-maxdt = 0.01
+maxdt = 1
 mindt = 0.01
 dtsumm = 0
 isFirst = 1
@@ -78,8 +78,8 @@ def imuLoop():
 
     if dt < (1 / 1300):
         usleep((1 / 1300 - dt) * 1000000)
+        currenttime = time_ns()
 
-    currenttime = time_ns()
     dt = (currenttime - previoustime) / 1000000
 
     # -------- Read raw measurements from the MPU and update AHRS - -------------
