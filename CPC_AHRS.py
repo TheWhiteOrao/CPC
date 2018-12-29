@@ -12,7 +12,7 @@ imu = MPU9250()
 
 # Timing data
 offset = [0, 0, 0]
-maxdt = 1
+maxdt = 0.01
 mindt = 0.01
 dtsumm = 0
 isFirst = 1
@@ -135,8 +135,8 @@ def imuLoop():
         print("ROLL: %-26s" % roll,
               "PITCH: %-26s" % pitch,
               "YAW: %-26s" % (yaw * -1),
-              "PERIOD %-26s s" % dt,
-              "RATE %-26s Hz \n" % int(1 / dt))
+              "PERIOD %-26s" % dt,
+              "RATE %-26s \n" % int(1 / dt))
 
         # Network output
         # sprintf(sendline, "%10f %10f %10f %10f %dHz\n", getW(), getX(), getY(), getZ(), int(1 / dt));
