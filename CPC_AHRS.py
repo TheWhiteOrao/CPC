@@ -122,8 +122,10 @@ def imuLoop():
     # ------------------- Discard the time of the first cycle - ----------------
 
     if isFirst == 1:
-        if (dt > maxdt) maxdt = dt
-        if (dt < mindt) mindt = dt
+        if dt > maxdt:
+            maxdt = dt
+        if dt < mindt:
+            mindt = dt
     isFirst = 0
 
     # ------------- Console and network output with a lowered rate - -----------
