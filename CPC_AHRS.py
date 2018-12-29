@@ -142,7 +142,7 @@ def imuLoop():
             a, t = t, a
             if j > 102:
                 k += a - t
-
+                print(a - t)
         j += 1
         print(k)
         # Console output
