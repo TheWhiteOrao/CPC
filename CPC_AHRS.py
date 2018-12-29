@@ -132,7 +132,7 @@ def imuLoop():
     if dtsumm > 0.05:
 
         # Console output
-        print("ROLL: %-26s" % roll, "PITCH: %-26s" % pitch,  "YAW: %-26s" % yaw * -1, "PERIOD % -26ss" % dt "RATE %-26sHz \n" % int(1 / dt))
+        print("ROLL: %-26s" % roll, "PITCH: %-26s" % pitch,  "YAW: %-26s" % yaw * -1, "PERIOD % -26ss" % dt, "RATE %-26sHz \n" % int(1 / dt))
 
         # Network output
         # sprintf(sendline, "%10f %10f %10f %10f %dHz\n", getW(), getX(), getY(), getZ(), int(1 / dt));
