@@ -1,14 +1,15 @@
 import time
 
 # while True:
-g = 1
+currenttime = 0
 
 
 def imuLoop():
 
     # ----------------------- Calculate delta time - ---------------------------
-    currenttime = time.time_ns()
     previoustime = currenttime
+    currenttime = time.time_ns()
+
     print(previoustime)
 
 
