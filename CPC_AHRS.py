@@ -77,7 +77,7 @@ def imuLoop():
     dt = (currenttime - previoustime) / 1000000000
 
     if dt < (1 / 1300):
-        usleep((1 / 1300 - dt) * 10000000)
+        usleep((1 / 1300 - dt) * 1000000)
         currenttime = time_ns()
 
     dt = (currenttime - previoustime) / 1000000000
