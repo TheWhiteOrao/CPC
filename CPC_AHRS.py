@@ -145,11 +145,11 @@ def imuLoop():
             if j > 200 and j <= (1200):
                 k += a - t
 
-        print(j, k / 1200)
+        print(j, k / 1000)
 
         j += 1
-        if j > 300:
-            h += k / 1200
+        if j > 1200:
+            h += k / 1000
 
         print(h, "h")
         # Console output
