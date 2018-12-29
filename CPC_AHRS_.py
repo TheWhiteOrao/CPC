@@ -175,7 +175,7 @@ class AHRS():
         q2 *= recipNorm
         q3 *= recipNorm
 
-    def setGyroOffset(offsetX, offsetY, offsetZ):
+    def setGyroOffset(self, offsetX, offsetY, offsetZ):
         gyroOffset[0] = offsetX
         gyroOffset[1] = offsetY
         gyroOffset[2] = offsetZ
