@@ -142,6 +142,7 @@ def imuLoop():
             a, t = t, a
             k += a - t
 
+        j += 1
         print(k)
         # Console output
         print("ROLL: %-26s" % roll,
