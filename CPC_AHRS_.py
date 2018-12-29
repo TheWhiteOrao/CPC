@@ -199,8 +199,7 @@ def getEuler():
     # roll = atan2(2.0 * (q0 * q1 + q2 * q3), q0 * q0 - q1 * q1 - q2 * q2 + q3 * q3) * 180 / pi
     # pitch = -asin(2.0 * (q1 * q3 - q0 * q2)) * 180 / pi
     # yaw = 0 + atan2(2.0 * (q0 * q3 + q1 * q2), q0 * q0 + q1 * q1 - q2 * q2 - q3 * q3) * 180 / pi
-    tr += q0
-    print(yaw - tr)
+    print(q0, q1, q2, q3)
     return roll, pitch, yaw
 
 
