@@ -141,7 +141,7 @@ def imuLoop():
               "RATE %-26s \n" % int(1 / dt))
 
         a = yaw * -1
-        a, b = b, a
+        a, t = t, a
         print(a, b)
 
         # Network output
