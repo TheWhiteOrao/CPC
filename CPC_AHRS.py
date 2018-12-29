@@ -74,15 +74,13 @@ def imuLoop():
     previoustime = currenttime
     currenttime = time_ns()
 
-    dt = (currenttime - previoustime) / 1000000
+    dt = (currenttime - previoustime) / 1000000000
 
     if dt < (1 / 1300):
         usleep((1 / 1300 - dt) * 1000000)
         currenttime = time_ns()
 
-    dt = (currenttime - previoustime) / 1000000
-
-    print(dt)
+    dt = (currenttime - previoustime) / 1000000000
 
     # -------- Read raw measurements from the MPU and update AHRS - -------------
 
@@ -134,11 +132,11 @@ def imuLoop():
     if dtsumm > 0.05:
 
         # Console output
-        # print("ROLL: %-26s" % roll,
-        #       "PITCH: %-26s" % pitch,
-        #       "YAW: %-26s" % (yaw * -1),
-        #       "PERIOD %-26s" % dt,
-        #       "RATE %-26s \n" % int(1 / dt))
+        print("ROLL: %-26s" % roll,
+              "PITCH: %-26s" % pitch,
+              "YAW: %-26s" % (yaw * -1),
+              "PERIOD %-26s" % dt,
+              "RATE %-26s \n" % int(1 / dt))
 
         # Network output
         # sprintf(sendline, "%10f %10f %10f %10f %dHz\n", getW(), getX(), getY(), getZ(), int(1 / dt));
