@@ -74,13 +74,13 @@ def imuLoop():
     previoustime = currenttime
     currenttime = time_ns()
 
-    dt = (currenttime - previoustime) / 1000000000
+    dt = (currenttime - previoustime) / 100000000
 
     if dt < (1 / 1300):
         usleep((1 / 1300 - dt) * 1000000)
         currenttime = time_ns()
 
-    dt = (currenttime - previoustime) / 1000000000
+    dt = (currenttime - previoustime) / 100000000
 
     # -------- Read raw measurements from the MPU and update AHRS - -------------
 
