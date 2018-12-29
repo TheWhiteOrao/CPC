@@ -15,6 +15,7 @@ offset = [0, 0, 0]
 mindt = 0.01
 dtsumm = 0
 isFirst = 1
+currenttime = 0
 
 
 def usleep(x):
@@ -64,8 +65,8 @@ def imuSetup():
 def imuLoop():
 
     # ----------------------- Calculate delta time - ---------------------------
-    currenttime = time_ns()
     previoustime = currenttime
+    currenttime = time_ns()
 
     dt = (currenttime - previoustime) / 1000000
 
