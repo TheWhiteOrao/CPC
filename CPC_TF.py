@@ -6,7 +6,7 @@ currenttime = 0
 
 
 def imuLoop():
-    global currenttime
+    global
     # ----------------------- Calculate delta time - ---------------------------
     previoustime = currenttime
     currenttime = time.time_ns()
