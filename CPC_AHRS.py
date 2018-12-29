@@ -139,14 +139,14 @@ def imuLoop():
     dtsumm += dt
     if dtsumm > 0.05:
 
-        if j > 25:
+        if j > 100:
             a = yaw * -1
             a, t = t, a
-            if j > 50 and j <= (50 + 100):
+            if j > 100 and j <= (200):
                 k += a - t
         print(j, k)
         j += 1
-        if j > 200:
+        if j > 300:
             h += k / 100
 
         print(h, "h")
