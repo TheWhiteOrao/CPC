@@ -10,7 +10,7 @@
 
 # include <cmath>
 # include <stdio.h>
-
+from math import *
 
 q0 = 1
 q1 = 0
