@@ -186,9 +186,10 @@ def setGyroOffset(offsetX, offsetY, offsetZ):
 
 
 def getEuler():
-    roll = atan2(2 * (q0 * q1 + q2 * q3), 1 - 2 * (q1 * q1 + q2 * q2)) * 180 / M_PI
-    pitch = asin(2 * (q0 * q2 - q3 * q1)) * 180 / M_PI
-    yaw = atan2(2 * (q0 * q3 + q1 * q2), 1 - 2 * (q2 * q2 + q3 * q3)) * 180 / M_PI
+
+    roll = atan2(2 * (q0 * q1 + q2 * q3), 1 - 2 * (q1 * q1 + q2 * q2)) * 180 / pi
+    pitch = asin(2 * (q0 * q2 - q3 * q1)) * 180 / pi
+    yaw = atan2(2 * (q0 * q3 + q1 * q2), 1 - 2 * (q2 * q2 + q3 * q3)) * 180 / pi
     return roll, pitch, yaw
 
 
