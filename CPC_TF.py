@@ -1,3 +1,12 @@
+from time import *
+
+while True:
+    print(time_ns())
+
+# def usleep(x):
+#     return sleep(x / 1000000.0)
+
+
 # from CPC_CO import *
 # rotor_radius = 500
 # engine_force = 10000
@@ -85,5 +94,27 @@
 # print(0.84 * 0.25 * (engine_fou_l * 0.25), "l")
 # print(0.84 * 0.25 * (engine_fiv_l * 0.25), "l \n")
 
-print("%-2s" % 1, "hii")
-print("%-2s" % -1, "hii")
+# print("%-2s" % 1, "hii")
+# print("%-2s" % -1, "hii")
+
+#
+# def im():
+#     g = [1, 2, 3]
+#     l = [4, 3, 5]
+#
+#     return g, l
+#
+#
+# h[0], t[1], g[2], l = im()
+#
+# print(t, l)
+
+# offset = [0, 0, 0]
+#
+# offset[0] += 1
+# offset[1] += 2
+# offset[2] += 3
+#
+# print(offset[0], offset[1], offset[2])
+# print("Offsets are: {0} {1} {2}\n".format(offset[0], offset[1], offset[2]))
+# usleep(10000)

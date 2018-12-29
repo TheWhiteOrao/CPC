@@ -76,9 +76,9 @@ public:
 			halfvx = q1q3 - q0q2;
 			halfvy = q0q1 + q2q3;
 			halfvz = q0q0 - 0.5f + q3q3;
-	        halfwx = bx * (0.5f - q2q2 - q3q3) + bz * (q1q3 - q0q2);
-	        halfwy = bx * (q1q2 - q0q3) + bz * (q0q1 + q2q3);
-	        halfwz = bx * (q0q2 + q1q3) + bz * (0.5f - q1q1 - q2q2);
+      halfwx = bx * (0.5f - q2q2 - q3q3) + bz * (q1q3 - q0q2);
+      halfwy = bx * (q1q2 - q0q3) + bz * (q0q1 + q2q3);
+      halfwz = bx * (q0q2 + q1q3) + bz * (0.5f - q1q1 - q2q2);
 
 			// Error is sum of cross product between estimated direction and measured direction of field vectors
 			halfex = (ay * halfvz - az * halfvy) + (my * halfwz - mz * halfwy);
