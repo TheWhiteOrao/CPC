@@ -20,6 +20,7 @@ currenttime = 0
 t = 0
 k = 0
 j = 0
+h = 0
 
 
 def usleep(x):
@@ -76,6 +77,7 @@ def imuLoop():
     global t
     global k
     global j
+    global h
     # ----------------------- Calculate delta time - ---------------------------
     previoustime = currenttime
     currenttime = time_ns()
@@ -140,15 +142,16 @@ def imuLoop():
         if j > 25:
             a = yaw * -1
             a, t = t, a
-            if j > 100 and j <= 300:
+            if j > 27 and j <= (27 + 100):
                 k += a - t
 
         j += 1
-        print(k / 200)
+        if j > 200:
+            h += k / 100
         # Console output
         print("ROLL: %-26s" % roll,
               "PITCH: %-26s" % pitch,
-              "YAW: %-26s" % (yaw * -1 + k),
+              "YAW: %-26s" % (yaw * -1 + h),
               "PERIOD %-26s" % dt,
               "RATE %-26s \n" % int(1 / dt))
 
