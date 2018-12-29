@@ -1,11 +1,12 @@
 import time
 
 # while True:
+
 currenttime = 0
 
 
 def imuLoop():
-
+    global currenttime
     # ----------------------- Calculate delta time - ---------------------------
     previoustime = currenttime
     currenttime = time.time_ns()

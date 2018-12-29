@@ -25,6 +25,7 @@ def usleep(x):
 
 
 def imuSetup():
+    global offset
     # ----------------------- MPU initialization - -----------------------------
     imu.initialize()
     # -------------------------------------------------------------------------
@@ -63,7 +64,7 @@ def imuSetup():
 
 
 def imuLoop():
-
+    global currenttime
     # ----------------------- Calculate delta time - ---------------------------
     previoustime = currenttime
     currenttime = time_ns()
