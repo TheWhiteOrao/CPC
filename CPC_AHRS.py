@@ -132,13 +132,13 @@ def imuLoop():
     if dtsumm > 0.05:
 
         # Console output
-        print("ROLL: %+05.2f PITCH: %+05.2f YAW: %+05.2f PERIOD %.4fs RATE %dHz \n", roll, pitch, yaw * -1, dt, int(1 / dt));
+        print("ROLL: {+05.2f} PITCH: {+05.2f} YAW: {+05.2f} PERIOD {.4f}s RATE {d}Hz \n".format(roll, pitch, yaw * -1, dt, int(1 / dt))
 
         # Network output
         # sprintf(sendline, "%10f %10f %10f %10f %dHz\n", getW(), getX(), getY(), getZ(), int(1 / dt));
         # sendto(sockfd, sendline, strlen(sendline), 0, (struct sockaddr *)&servaddr, sizeof(servaddr));
 
-        dtsumm = 0
+        dtsumm=0
 
 
 #= == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
