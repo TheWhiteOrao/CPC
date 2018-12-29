@@ -155,7 +155,7 @@ def imuLoop():
         # Console output
         print("ROLL: %-26s" % roll,
               "PITCH: %-26s" % pitch,
-              "YAW: %-26s" % (yaw * -1 - h),
+              "YAW: %-26s" % (yaw * -1 + h),
               "PERIOD %-26s" % dt,
               "RATE %-26s \n" % int(1 / dt))
 
