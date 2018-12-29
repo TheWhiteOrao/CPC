@@ -142,14 +142,14 @@ def imuLoop():
         if j > 100:
             a = yaw * -1
             a, t = t, a
-            if j > 105 and j <= (205):
+            if j > 200 and j <= (1200):
                 k += a - t
 
-        print(j, k / 100)
+        print(j, k / 1200)
 
         j += 1
         if j > 300:
-            h += k / 100
+            h += k / 1200
 
         print(h, "h")
         # Console output
