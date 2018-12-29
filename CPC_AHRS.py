@@ -65,7 +65,7 @@ def imuSetup():
 
     print("Offsets are: {0} {1} {2}\n".format(offset[0], offset[1], offset[2]))
 
-    ahrs.setGyroOffset(offset[0], offset[1], offset[2])
+    setGyroOffset(offset[0], offset[1], offset[2])
 
 #= == == == == == == == == == == == == == == = Main loop == == == == == == == == == == == == == == == == == ==
 
@@ -109,12 +109,12 @@ def imuLoop():
     # Soft and hard iron calibration required for proper function.
     #
     # imu.getMotion9(& ax, & ay, & az, & gx, & gy, & gz, & mx, & my, & mz);
-    # ahrs.update(ax, ay, az, gx * 0.0175, gy * 0.0175, gz * 0.0175, my, mx, -mz, dt);
+    # update(ax, ay, az, gx * 0.0175, gy * 0.0175, gz * 0.0175, my, mx, -mz, dt);
     #
 
     #------------------------ Read Euler angles - -----------------------------
 
-    rpy = ahrs.getEuler()
+    rpy = getEuler()
     roll = rpy[0]
     pitch = rpy[1]
     yaw = rpy[2]
@@ -137,7 +137,7 @@ def imuLoop():
         print("ROLL: %+05.2f PITCH: %+05.2f YAW: %+05.2f PERIOD %.4fs RATE %dHz \n", roll, pitch, yaw * -1, dt, int(1 / dt));
 
         # Network output
-        # sprintf(sendline, "%10f %10f %10f %10f %dHz\n", ahrs.getW(), ahrs.getX(), ahrs.getY(), ahrs.getZ(), int(1 / dt));
+        # sprintf(sendline, "%10f %10f %10f %10f %dHz\n", getW(), getX(), getY(), getZ(), int(1 / dt));
         # sendto(sockfd, sendline, strlen(sendline), 0, (struct sockaddr *)&servaddr, sizeof(servaddr));
 
         dtsumm = 0
