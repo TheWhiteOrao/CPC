@@ -27,6 +27,7 @@ def update(ax, ay, az, gx,  gy,  gz,  mx,  my,  mz,  dt):
     global q1
     global q2
     global q3
+    print(ax, ay, az, gx,  gy,  gz,  mx,  my,  mz,  dt)
 
     # Use IMU algorithm if magnetometer measurement invalid(avoids NaN in magnetometer normalisation)
     if mx == 0 and my == 0 and mz == 0:
