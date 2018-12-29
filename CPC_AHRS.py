@@ -17,6 +17,7 @@ mindt = 0.01
 dtsumm = 0
 isFirst = 1
 currenttime = 0
+t = 0
 
 
 def usleep(x):
@@ -70,6 +71,7 @@ def imuLoop():
     global dtsumm
     global isFirst
     global currenttime
+    global t
     # ----------------------- Calculate delta time - ---------------------------
     previoustime = currenttime
     currenttime = time_ns()
@@ -132,11 +134,15 @@ def imuLoop():
     if dtsumm > 0.05:
 
         # Console output
-        # print("ROLL:
-        #       "PITCH: %-26s" % pitch,
-        #       "YAW: %-26s" % (yaw * -1),
-        #       "PERIOD %-26s" % dt,
-        #       "RATE %-26s \n" % int(1 / dt))
+        print("ROLL: %-26s" % roll,
+              "PITCH: %-26s" % pitch,
+              "YAW: %-26s" % (yaw * -1),
+              "PERIOD %-26s" % dt,
+              "RATE %-26s \n" % int(1 / dt))
+
+        a = yaw * -1
+        a, b = b, a
+        print(a, b)
 
         # Network output
         # sprintf(sendline, "%10f %10f %10f %10f %dHz\n", getW(), getX(), getY(), getZ(), int(1 / dt));
