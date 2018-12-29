@@ -1,14 +1,14 @@
 from time import *
 from CPC_AHRS_ import *
 from CPC_NAVIO2.mpu9250 import *
-
+from CPC_NAVIO2.lsm9ds1 import *
 
 G_SI = 9.80665
 PI = 3.14159
 
 
-imu = MPU9250()
-
+# imu = MPU9250()
+imu = LSM9DS1()
 
 # Timing data
 offset = [0, 0, 0]
