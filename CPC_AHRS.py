@@ -132,7 +132,7 @@ def imuLoop():
     if dtsumm > 0.05:
 
         # Console output
-        # print("ROLL: %-26s" % roll,
+        # print("ROLL:
         #       "PITCH: %-26s" % pitch,
         #       "YAW: %-26s" % (yaw * -1),
         #       "PERIOD %-26s" % dt,
