@@ -107,8 +107,21 @@ def imuLoop():
     # Accel + gyro + mag.
     # Soft and hard iron calibration required for proper function.
     #
-    # imu.getMotion9(& ax, & ay, & az, & gx, & gy, & gz, & mx, & my, & mz);
-    # update(ax, ay, az, gx * 0.0175, gy * 0.0175, gz * 0.0175, my, mx, -mz, dt);
+    axyz, gxyz, mxyz = imu.getMotion9()
+
+    ax = axyz[0]
+    ay = axyz[1]
+    az = axyz[2]
+
+    gx = gxyz[0]
+    gy = gxyz[1]
+    gz = gxyz[2]
+
+    mx = mxyz[0]
+    my = mxyz[1]
+    mz = mxyz[2]
+
+    update(ax, ay, az, gx * 0.0175, gy * 0.0175, gz * 0.0175, my, mx, -mz, dt)
     #
 
     #------------------------ Read Euler angles - -----------------------------
