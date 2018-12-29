@@ -14,16 +14,17 @@
 
 class AHRS():
 
-    gyroOffset = [0, 0, 0]
+    def __init__(self):
+        self.gyroOffset = [0, 0, 0]
 
-    q0 = 1
-    q1 = 0
-    q2 = 0
-    q3 = 0
-    twoKi = 0
-    twoKp = 2
+        self.q0 = 1
+        self.q1 = 0
+        self.q2 = 0
+        self.q3 = 0
+        self.twoKi = 0
+        self.twoKp = 2
 
-    def update(ax, ay, az, gx,  gy,  gz,  mx,  my,  mz,  dt):
+    def update(self, ax, ay, az, gx,  gy,  gz,  mx,  my,  mz,  dt):
 
         # Use IMU algorithm if magnetometer measurement invalid(avoids NaN in magnetometer normalisation)
         if mx == 0 and my == 0 and mz == 0:
@@ -112,7 +113,7 @@ class AHRS():
         q2 *= recipNorm
         q3 *= recipNorm
 
-    def updateIMU(ax,  ay,  az,  gx,  gy,  gz,  dt):
+    def updateIMU(self, ax,  ay,  az,  gx,  gy,  gz,  dt):
 
         gx -= gyroOffset[0]
         gy -= gyroOffset[1]
@@ -180,7 +181,7 @@ class AHRS():
         gyroOffset[1] = offsetY
         gyroOffset[2] = offsetZ
 
-    def getEuler():
+    def getEuler(self):
         roll = atan2(2 * (q0 * q1 + q2 * q3), 1 - 2 * (q1 * q1 + q2 * q2)) * 180 / M_PI
         pitch = asin(2 * (q0 * q2 - q3 * q1)) * 180 / M_PI
         yaw = atan2(2 * (q0 * q3 + q1 * q2), 1 - 2 * (q2 * q2 + q3 * q3)) * 180 / M_PI
