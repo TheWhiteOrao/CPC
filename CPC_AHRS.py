@@ -142,7 +142,7 @@ def imuLoop():
 
         a = yaw * -1
         a, t = t, a
-        print(a, b)
+        print(a, t)
 
         # Network output
         # sprintf(sendline, "%10f %10f %10f %10f %dHz\n", getW(), getX(), getY(), getZ(), int(1 / dt));
