@@ -24,6 +24,7 @@ mindt = 0.01
 dtsumm = 0
 isFirst = 1
 currenttime = 0
+previoustime = 0
 
 
 def usleep(x):
