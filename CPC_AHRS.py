@@ -12,7 +12,7 @@ imu = MPU9250()
 
 # Timing data
 offset = [0, 0, 0]
-maxdt = None
+maxdt = 1
 mindt = 0.01
 dtsumm = 0
 isFirst = 1
