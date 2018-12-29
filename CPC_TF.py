@@ -1,11 +1,20 @@
 from time import *
 
-while True:
-    print(time_ns())
+# while True:
+g = 1
+
+
+def imuLoop():
+
+    # ----------------------- Calculate delta time - ---------------------------
+    currenttime = time_ns()
+    previoustime = currenttime
+    print(previoustime)
+
 
 # def usleep(x):
 #     return sleep(x / 1000000.0)
-
+imuLoop()
 
 # from CPC_CO import *
 # rotor_radius = 500

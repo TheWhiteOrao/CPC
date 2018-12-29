@@ -1,15 +1,7 @@
-
-# include <stdio.h>
-# include <sys/socket.h>
-# include <netinet/in.h>
-# include <arpa/inet.h>
-# include <stdint.h>
-# include <unistd.h>
-
-
+from time import *
 from CPC_AHRS_ import *
 from CPC_NAVIO2.mpu9250 import *
-from time import *
+
 
 G_SI = 9.80665
 PI = 3.14159
