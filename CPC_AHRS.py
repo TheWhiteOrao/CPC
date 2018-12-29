@@ -144,10 +144,12 @@ def imuLoop():
             a, t = t, a
             if j > 27 and j <= (27 + 100):
                 k += a - t
-
+        print(j, k)
         j += 1
         if j > 200:
             h += k / 100
+
+        print(h)
         # Console output
         print("ROLL: %-26s" % roll,
               "PITCH: %-26s" % pitch,
