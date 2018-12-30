@@ -13,4 +13,4 @@ ms5611.initialize()
 
 while True:
     ms5611.update()
-    print(ms5611.TEMP)
+    print(ms5611.TEMP, ms5611.PRES)
