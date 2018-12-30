@@ -12,12 +12,15 @@ null_p = 0
 lsm9ds1.initialize()
 mpu9250.initialize()
 ms5611.initialize()
+
 for i in range(1, 110):
     if i >= 10:
         ms5611.refreshPressure()
         sleep(0.01)
         ms5611.readPressure()
         null_p += ms5611.PRES / 100
+
+        ms5611.calculatePressureAndTemperature()
 
 
 while True:
