@@ -12,5 +12,14 @@ mpu9250.initialize()
 ms5611.initialize()
 
 while True:
-    ms5611.update()
-    print(ms5611.TEMP, ms5611.PRES)
+    ms5611.refreshPressure()
+
+    ms5611.readPressure()
+
+    ms5611.refreshTemperature()
+
+    ms5611.readTemperature()
+
+    ms5611.calculatePressureAndTemperature()
+
+    print("Temperature(C): %.6f" % (ms5611.TEMP), "Pressure(millibar): %.6f" % (ms5611.PRES))
