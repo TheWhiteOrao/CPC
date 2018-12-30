@@ -144,7 +144,7 @@ class comp_filt:
         if self.first_time == 1:
             dt = 0
             self.first_time = 0
-            self.previous_time = time.time_ns()
+            self.previous_time = time.time()
             # Use accelerometer and magnetometer angles as initial angles
             self.pitch = math.atan2(ax, math.sqrt(math.pow(ay, 2) + math.pow(az, 2)))
             self.roll = -math.atan2(ay, math.sqrt(math.pow(ax, 2) + math.pow(az, 2)))
@@ -156,8 +156,8 @@ class comp_filt:
                 self.yaw = self.yaw + 2 * math.pi
 
         else:
-            t1 = time.time_ns()
-            dt = (t1 - self.previous_time) / 1000000000
+            t1 = time.time()
+            dt = t1 - self.previous_time
             self.previous_time = t1
 
         # Schedule gains - based on total acceleration
