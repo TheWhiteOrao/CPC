@@ -275,6 +275,7 @@ if __name__ == '__main__':
         mx = mxyz[0]
         my = mxyz[1]
         mz = mxyz[2]
+        print(ax, ay, az, gx, gy, gz, mx, my, mz)
 
         agm.attitude3(ax, ay, az, gx, gy, gz, mx, my, mz)
 
