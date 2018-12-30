@@ -262,7 +262,7 @@ if __name__ == '__main__':
     agm = comp_filt()
 
     while True:
-        axyz, gxyz, mxyz = imu.getMotion9()
+        axyz, gxyz, = imu.getMotion6()
 
         ax = axyz[0]
         ay = axyz[1]
@@ -272,20 +272,20 @@ if __name__ == '__main__':
         gy = gxyz[1]
         gz = gxyz[2]
 
-        mx = mxyz[0]
-        my = mxyz[1]
-        mz = mxyz[2]
+        # mx = mxyz[0]
+        # my = mxyz[1]
+        # mz = mxyz[2]
 
-        agm.attitude3(ax, ay, az, gx, gy, gz, mx, my, mz)
+        agm.attitude3(ax, ay, az, gx, gy, gz)
 
         print("pitch_d: %-26s" % agm.pitch_d,
               "roll_d: %-26s" % agm.roll_d,
-              "yaw_d: %-26s" % agm.yaw_d,
+
 
               "pitch_r: %-26s" % agm.pitch_r,
               "roll_r: %-26s" % agm.roll_r,
-              "yaw_r: %-26s" % agm.yaw_r,
+
 
               "thetad_d: %-26s" % agm.thetad_d,
-              "phid_d: %-26s" % agm.phid_d,
-              "psid_d: %-26s" % agm.psid_d)
+              "phid_d: %-26s" % agm.phid_d
+              )
