@@ -32,6 +32,6 @@ while True:
 
     ms5611.calculatePressureAndTemperature()
 
-    print("Temperature(C): %.6f" % (ms5611.TEMP), "Pressure(millibar): %.6f" % (k - ms5611.PRES) * 10)
+    print("Temperature(C): %.6f" % (ms5611.TEMP), "Pressure(millibar): %.6f" % ((k - ms5611.PRES) * 10))
 
     sleep(0.1)
