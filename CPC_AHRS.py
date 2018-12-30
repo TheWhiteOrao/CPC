@@ -85,7 +85,7 @@ def imuLoop():
 
     # -------- Read raw measurements from the MPU and update AHRS - -------------
 
-    # # Accel + gyro.
+    # Accel + gyro.
     axyz, gxyz = imu.getMotion6()
     ax = axyz[0]
     ay = axyz[1]
@@ -122,6 +122,7 @@ def imuLoop():
     mz = mxyz[2]
 
     update(ax, ay, az, gx * 0.0175, gy * 0.0175, gz * 0.0175, my, mx, -mz, dt)
+    #
 
     #------------------------ Read Euler angles - -----------------------------
 
