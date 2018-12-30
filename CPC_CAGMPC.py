@@ -21,7 +21,7 @@ for i in range(1, 100100):
 
 print(k)
 
-for i in range(10000):
+while True:
     ms5611.refreshPressure()
     sleep(0.01)  # Waiting for pressure data ready
     ms5611.readPressure()
