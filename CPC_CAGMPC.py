@@ -19,8 +19,6 @@ for i in range(1, 110):
         null_p += ms5611.PRES / 100
 
 
-print(k)
-
 while True:
     Tempr = 0
 
