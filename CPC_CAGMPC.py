@@ -11,7 +11,7 @@ lsm9ds1.initialize()
 mpu9250.initialize()
 ms5611.initialize()
 
-for i in range(10)
+for i in range(10):
     ms5611.refreshPressure()
     sleep(0.01)  # Waiting for pressure data ready
     ms5611.readPressure()
