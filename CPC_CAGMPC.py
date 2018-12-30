@@ -27,7 +27,7 @@ while True:
     sleep(0.01)  # Waiting for temperature data ready
     ms5611.readTemperature()
 
-    for i in range(20):
+    for i in range(40):
         ms5611.refreshPressure()
         sleep(0.01)  # Waiting for pressure data ready
         ms5611.readPressure()
@@ -36,6 +36,6 @@ while True:
 
         ms5611.calculatePressureAndTemperature()
 
-        lol += ((k - ms5611.PRES) * 9.3 + 1) / 20
+        lol += ((k - ms5611.PRES) * 9.3 + 1) / 40
 
     print("Temperature(C): %.6f" % (ms5611.TEMP), "Pressure(millibar): %.6f" % (lol))
