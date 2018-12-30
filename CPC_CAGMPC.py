@@ -10,10 +10,13 @@ ms5611 = MS5611()
 lsm9ds1.initialize()
 mpu9250.initialize()
 ms5611.initialize()
+for i in range(100):
+    ms5611.refreshPressure()
+    sleep(0.01)
+    ms5611.readPressure()
+    k += ms5611.PRES
 
-ms5611.refreshPressure()
-ms5611.readPressure()
-k = ms5611.PRES
+k /= 100
 
 for i in range(10000):
     ms5611.refreshPressure()
@@ -26,6 +29,6 @@ for i in range(10000):
 
     ms5611.calculatePressureAndTemperature()
 
-    print("Temperature(C): %.6f" % (ms5611.TEMP), "Pressure(millibar): %.6f" % (ms5611.PRES - k))
+    print("Temperature(C): %.6f" % (ms5611.TEMP), "Pressure(millibar): %.6f" % (k - ms5611.PRES))
 
     sleep(0.01)
