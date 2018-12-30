@@ -9,7 +9,7 @@ mpu9250.initialize()
 
 while True:
 
-    lsm_axyz, lsm_gxyz = lsm9ds1.getMotion6(x)
+    lsm_axyz, lsm_gxyz = lsm9ds1.getMotion6()
     mpu_axyz, mpu_gxyz = mpu9250.getMotion6()
 
     lsm_ax = lsm_axyz[0]
