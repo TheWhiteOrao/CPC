@@ -32,7 +32,7 @@ while True:
         sleep(0.01)  # Waiting for pressure data ready
         ms5611.readPressure()
 
-        sleep(0.01)
+        sleep(0.02)
 
         ms5611.calculatePressureAndTemperature()
 
