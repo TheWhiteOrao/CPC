@@ -275,5 +275,6 @@ if __name__ == '__main__':
     agm = comp_filt()
 
     while True:
-        lol = agm.attitude3(ax, ay, az, gx, gy, gz, mx, my, mz)
-        print(lol.pitch_d)
+        agm.attitude3(ax, ay, az, gx, gy, gz, mx, my, mz)
+        h = agm.pitch_d
+        print(h)
