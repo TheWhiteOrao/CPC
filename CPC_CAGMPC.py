@@ -18,10 +18,10 @@ for i in range(1, 110):
         ms5611.refreshPressure()
         sleep(0.01)
         ms5611.readPressure()
-        null_p += ms5611.PRES / 100
 
         ms5611.calculatePressureAndTemperature()
 
+        null_p += ms5611.PRES / 100
 
 while True:
     Tempr = 0
