@@ -28,7 +28,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import time
 
-from smbus import SMBus
+from smbus2 import SMBus
 import spidev
 
 
