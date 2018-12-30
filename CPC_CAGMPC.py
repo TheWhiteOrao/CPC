@@ -9,22 +9,22 @@ mpu9250.initialize()
 
 while True:
 
-    lsm_agxyz = lsm9ds1.getMotion6()
-    mpu_agxyz = mpu9250.getMotion6()
+    lsm_axyz, lsm_gxyz = lsm9ds1.getMotion6(x)
+    mpu_axyz, mpu_gxyz = mpu9250.getMotion6()
 
-    lsm_ax = lsm_agxyz[0]
-    lsm_ay = lsm_agxyz[1]
-    lsm_az = lsm_agxyz[2]
-    lsm_gx = lsm_agxyz[3]
-    lsm_gy = lsm_agxyz[4]
-    lsm_gz = lsm_agxyz[5]
+    lsm_ax = lsm_axyz[0]
+    lsm_ay = lsm_axyz[1]
+    lsm_az = lsm_axyz[2]
+    lsm_gx = lsm_gxyz[0]
+    lsm_gy = lsm_gxyz[1]
+    lsm_gz = lsm_gxyz[2]
 
-    mpu_ax = mpu_agxyz[0]
-    mpu_ay = mpu_agxyz[1]
-    mpu_az = mpu_agxyz[2]
-    mpu_gx = mpu_agxyz[3]
-    mpu_gy = mpu_agxyz[4]
-    mpu_gz = mpu_agxyz[5]
+    mpu_ax = mpu_axyz[0]
+    mpu_ay = mpu_axyz[1]
+    mpu_az = mpu_axyz[2]
+    mpu_gx = mpu_gxyz[0]
+    mpu_gy = mpu_gxyz[1]
+    mpu_gz = mpu_gxyz[2]
 
     print("lsm_ax: %-26s" % lsm_ax,
           "lsm_ay: %-26s" % lsm_ay,
