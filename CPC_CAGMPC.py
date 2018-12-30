@@ -26,16 +26,16 @@ while True:
     mpu_gy = mpu_agxyz[4]
     mpu_gz = mpu_agxyz[5]
 
-        print("lsm_ax: %-26s" % lsm_ax,
-              "lsm_ay: %-26s" % lsm_ay,
-              "lsm_az: %-26s" % lsm_az,
-              "lsm_gx: %-26s" % lsm_gx,
-              "lsm_gy: %-26s" % lsm_gy,
-              "lsm_gz: %-26s\n" % lsm_gz,
-              "mpu_ax: %-26s" % mpu_ax,
-              "mpu_ay: %-26s" % mpu_ay,
-              "mpu_az: %-26s" % mpu_az,
-              "mpu_gx: %-26s" % mpu_gx,
-              "mpu_gy: %-26s" % mpu_gy,
-              "mpu_gz: %-26s\n" % mpu_gz,
-              )
+    print("lsm_ax: %-26s" % lsm_ax,
+          "lsm_ay: %-26s" % lsm_ay,
+          "lsm_az: %-26s" % lsm_az,
+          "lsm_gx: %-26s" % lsm_gx,
+          "lsm_gy: %-26s" % lsm_gy,
+          "lsm_gz: %-26s\n" % lsm_gz,
+          "mpu_ax: %-26s" % mpu_ax,
+          "mpu_ay: %-26s" % mpu_ay,
+          "mpu_az: %-26s" % mpu_az,
+          "mpu_gx: %-26s" % mpu_gx,
+          "mpu_gy: %-26s" % mpu_gy,
+          "mpu_gz: %-26s\n" % mpu_gz,
+          )
