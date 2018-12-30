@@ -31,11 +31,18 @@ while True:
           "lsm_az: %-26s" % lsm_az,
           "lsm_gx: %-26s" % lsm_gx,
           "lsm_gy: %-26s" % lsm_gy,
-          "lsm_gz: %-26s" % lsm_gz, "\n",
-          "mpu_ax: %-26s" % mpu_ax,
+          "lsm_gz: %-26s" % lsm_gz)
+
+    print("mpu_ax: %-26s" % mpu_ax,
           "mpu_ay: %-26s" % mpu_ay,
           "mpu_az: %-26s" % mpu_az,
           "mpu_gx: %-26s" % mpu_gx,
           "mpu_gy: %-26s" % mpu_gy,
-          "mpu_gz: %-26s" % mpu_gz,
-          )
+          "mpu_gz: %-26s" % mpu_gz)
+
+    print("d_ax: %-26s" % ((lsm_ax + mpu_ax) / 2),
+          "d_ay: %-26s" % ((lsm_ay + mpu_ay) / 2),
+          "d_az: %-26s" % ((lsm_az + mpu_az) / 2),
+          "d_gx: %-26s" % ((lsm_gx + mpu_gx) / 2),
+          "d_gy: %-26s" % ((lsm_gy + mpu_gy) / 2),
+          "d_gz: %-26s" % ((lsm_gz + mpu_gz) / 2))
