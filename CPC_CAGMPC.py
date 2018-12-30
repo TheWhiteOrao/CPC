@@ -20,7 +20,9 @@ for i in range(1000):
 
 k /= 1000
 
-for i in range(10000):
+print(k)
+
+for i in range(10):
     ms5611.refreshPressure()
     sleep(0.01)  # Waiting for pressure data ready
     ms5611.readPressure()
