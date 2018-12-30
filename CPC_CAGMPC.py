@@ -37,4 +37,4 @@ while True:
 
         lol += ((k - ms5611.PRES) * 9.3 + 1) / 20
 
-    print("Temperature(C): %.6f" % (ms5611.TEMP), "Höhe in meter: %.6f" % round(lol, 1))
+    print("Temperature(C): %.6f" % (ms5611.TEMP), "Höhe in meter: %.2f" % round(lol, 2))
