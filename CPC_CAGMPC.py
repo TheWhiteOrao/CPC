@@ -24,4 +24,4 @@ while True:
 
     print("Temperature(C): %.6f" % (ms5611.TEMP), "Pressure(millibar): %.6f" % (ms5611.PRES))
 
-    sleep(1)
+    sleep(0.01)
