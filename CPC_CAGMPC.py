@@ -27,25 +27,25 @@ while True:
     mpu_gy = mpu_gxyz[1]
     mpu_gz = mpu_gxyz[2]
 
-    print("lsm_ax: %-26s" % lsm_ax,
-          "lsm_ay: %-26s" % lsm_ay,
-          "lsm_az: %-26s" % lsm_az,
-          "lsm_gx: %-26s" % lsm_gx,
-          "lsm_gy: %-26s" % lsm_gy,
-          "lsm_gz: %-26s" % lsm_gz)
+    print("lsm_ax: %-26s" % round(lsm_ax, 8),
+          "lsm_ay: %-26s" % round(lsm_ay, 8),
+          "lsm_az: %-26s" % round(lsm_az, 8),
+          "lsm_gx: %-26s" % round(lsm_gx, 8),
+          "lsm_gy: %-26s" % round(lsm_gy, 8),
+          "lsm_gz: %-26s" % round(lsm_gz, 8))
 
-    print("mpu_ax: %-26s" % mpu_ax,
-          "mpu_ay: %-26s" % mpu_ay,
-          "mpu_az: %-26s" % mpu_az,
-          "mpu_gx: %-26s" % mpu_gx,
-          "mpu_gy: %-26s" % mpu_gy,
-          "mpu_gz: %-26s" % mpu_gz)
+    print("mpu_ax: %-26s" % round(mpu_ax, 8),
+          "mpu_ay: %-26s" % round(mpu_ay, 8),
+          "mpu_az: %-26s" % round(mpu_az, 8),
+          "mpu_gx: %-26s" % round(mpu_gx, 8),
+          "mpu_gy: %-26s" % round(mpu_gy, 8),
+          "mpu_gz: %-26s" % round(mpu_gz, 8))
 
-    print("  d_ax: %-26s" % ((lsm_ax + mpu_ax) / 2),
-          "  d_ay: %-26s" % ((lsm_ay + mpu_ay) / 2),
-          "  d_az: %-26s" % ((lsm_az + mpu_az) / 2),
-          "  d_gx: %-26s" % ((lsm_gx + mpu_gx) / 2),
-          "  d_gy: %-26s" % ((lsm_gy + mpu_gy) / 2),
-          "  d_gz: %-26s" % ((lsm_gz + mpu_gz) / 2))
+    print("  d_ax: %-26s" % round((lsm_ax + mpu_ax) / 2, 8),
+          "  d_ay: %-26s" % round((lsm_ay + mpu_ay) / 2, 8),
+          "  d_az: %-26s" % round((lsm_az + mpu_az) / 2, 8),
+          "  d_gx: %-26s" % round((lsm_gx + mpu_gx) / 2, 8),
+          "  d_gy: %-26s" % round((lsm_gy + mpu_gy) / 2, 8),
+          "  d_gz: %-26s" % round((lsm_gz + mpu_gz) / 2, 8))
     print("\n")
     sleep(0.1)
