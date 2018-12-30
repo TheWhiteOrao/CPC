@@ -260,7 +260,6 @@ class comp_filt:
 if __name__ == '__main__':
 
     agm = comp_filt()
-    agm.init()
 
     while True:
         axyz, gxyz, mxyz = imu.getMotion9()
