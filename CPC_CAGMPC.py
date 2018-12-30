@@ -13,5 +13,4 @@ ms5611.initialize()
 
 while True:
     ms5611.update()
-    h = ms5611.calculatePressureAndTemperature()
-    print(h.TEMP)
+    print(ms5611.TEMP)
