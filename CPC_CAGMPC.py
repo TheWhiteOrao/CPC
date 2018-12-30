@@ -7,7 +7,7 @@ lsm9ds1 = LSM9DS1()
 mpu9250 = MPU9250()
 ms5611 = MS5611()
 
-k = 0
+null_p = 0
 
 lsm9ds1.initialize()
 mpu9250.initialize()
