@@ -286,3 +286,15 @@ if __name__ == '__main__':
         print(agm.thetad_d, "thetad_d")
         print(agm.phid_d, "phid_d")
         print(agm.psid_d, "psid_d")
+
+        print("pitch_d: %-26s" % agm.pitch_d,
+              "roll_d: %-26s" % agm.roll_d,
+              "yaw_d: %-26s" % agm.yaw_d,
+
+              "pitch_r: %-26s" % agm.pitch_r,
+              "roll_r: %-26s" % agm.roll_r,
+              "yaw_r: %-26s" % agm.yaw_r,
+
+              "thetad_d: %-26s" % agm.thetad_d,
+              "phid_d: %-26s" % agm.phid_d,
+              "psid_d: %-26s" % agm.psid_d)
