@@ -15,7 +15,7 @@ ms5611.refreshPressure()
 ms5611.readPressure()
 k = ms5611.PRES
 
-for i in range(10):
+for i in range(10000):
     ms5611.refreshPressure()
     sleep(0.01)  # Waiting for pressure data ready
     ms5611.readPressure()
