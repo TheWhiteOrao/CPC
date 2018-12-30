@@ -276,7 +276,7 @@ if __name__ == '__main__':
         # my = mxyz[1]
         # mz = mxyz[2]
 
-        agm.attitude3(ax, ay, az, gx, gy, gz)
+        agm.attitude2(ax, ay, az, gx, gy, gz)
 
         print("pitch_d: %-26s" % agm.pitch_d,
               "roll_d: %-26s" % agm.roll_d,
