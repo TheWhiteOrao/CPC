@@ -122,7 +122,6 @@ def imuLoop():
     mz = mxyz[2]
 
     update(ax, ay, az, gx * 0.0175, gy * 0.0175, gz * 0.0175, my, mx, -mz, dt)
-    #
 
     #------------------------ Read Euler angles - -----------------------------
 
