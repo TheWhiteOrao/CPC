@@ -157,7 +157,7 @@ class comp_filt:
 
         else:
             t1 = time.time_ns()
-            dt = (t1 - self.previous_time) / 100000
+            dt = (t1 - self.previous_time) / 1000000
             self.previous_time = t1
 
         # Schedule gains - based on total acceleration
