@@ -44,6 +44,7 @@ import time
 from CPC_NAVIO2.lsm9ds1 import *
 
 imu = LSM9DS1()
+imu.initialize()
 
 
 class comp_filt:
