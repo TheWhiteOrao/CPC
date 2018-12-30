@@ -9,7 +9,7 @@ mpu9250.initialize()
 
 while True:
 
-lsm = lsm9ds1.getMotion9
-mpu = mpu9250.getMotion9
+lsm = lsm9ds1.getMotion9()
+mpu = mpu9250.getMotion9()
 
 print(lsm, mpu)
