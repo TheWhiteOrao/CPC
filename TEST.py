@@ -258,23 +258,32 @@ class comp_filt:
 
 
 if __name__ == '__main__':
-    axyz, gxyz, mxyz = imu.getMotion9()
-
-    ax = axyz[0]
-    ay = axyz[1]
-    az = axyz[2]
-
-    gx = gxyz[0]
-    gy = gxyz[1]
-    gz = gxyz[2]
-
-    mx = mxyz[0]
-    my = mxyz[1]
-    mz = mxyz[2]
 
     agm = comp_filt()
+    agm.init()
 
     while True:
+        axyz, gxyz, mxyz = imu.getMotion9()
+
+        ax = axyz[0]
+        ay = axyz[1]
+        az = axyz[2]
+
+        gx = gxyz[0]
+        gy = gxyz[1]
+        gz = gxyz[2]
+
+        mx = mxyz[0]
+        my = mxyz[1]
+        mz = mxyz[2]
+
         agm.attitude3(ax, ay, az, gx, gy, gz, mx, my, mz)
-        h = agm.pitch_d
-        print(h)
+        print(agm.pitch_d, "pitch_d")
+        print(agm.roll_d, "roll_d")
+        print(agm.yaw_d, "yaw_d")
+        print(agm.pitch_r, "pitch_r")
+        print(agm.roll_r, "roll_r")
+        print(agm.yaw_r, "yaw_r")
+        print(agm.thetad_d, "thetad_d")
+        print(agm.phid_d, "phid_d")
+        print(agm.psid_d, "psid_d")
