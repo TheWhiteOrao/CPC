@@ -12,11 +12,11 @@ k = 0
 lsm9ds1.initialize()
 mpu9250.initialize()
 ms5611.initialize()
-for i in range(1, 1011):
-    if i >= 10:
+for i in range(1, 10100):
+    if i >= 100:
         ms5611.refreshPressure()
         ms5611.readPressure()
-        k += ms5611.PRES / 1000
+        k += ms5611.PRES / 10000
 
 
 print(k)
