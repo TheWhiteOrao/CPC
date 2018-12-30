@@ -1,5 +1,6 @@
 from CPC_NAVIO2.lsm9ds1 import *
 from CPC_NAVIO2.mpu9250 import *
+from time import *
 
 lsm9ds1 = LSM9DS1()
 mpu9250 = MPU9250()
@@ -46,3 +47,5 @@ while True:
           "  d_gx: %-26s" % ((lsm_gx + mpu_gx) / 2),
           "  d_gy: %-26s" % ((lsm_gy + mpu_gy) / 2),
           "  d_gz: %-26s" % ((lsm_gz + mpu_gz) / 2))
+    print("\n")
+    sleep(0.1)
