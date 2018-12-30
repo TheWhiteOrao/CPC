@@ -70,7 +70,7 @@ class MS5611:
 
         def read_registers(self, reg_address, device_address=None):
             device_address = self.address
-            return self.bus.read_i2c_block_data(device_address, reg_address, 16)
+            return self.bus.read_i2c_block_data(device_address, reg_address, 32)
 
     __MS5611_ADDRESS_CSB_LOW = 0x76
     __MS5611_ADDRESS_CSB_HIGH = 0x77
