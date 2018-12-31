@@ -139,7 +139,7 @@ while True:
         lsm_halfey = (lsm_az * lsm_halfvx - lsm_ax * lsm_halfvz)
         lsm_halfez = (lsm_ax * lsm_halfvy - lsm_ay * lsm_halfvx)
 
-        if twoKi > 0:
+        if lsm_twoKi > 0:
             lsm_integralFBx += lsm_twoKi * lsm_halfex * lsm_dt
             lsm_integralFBy += lsm_twoKi * lsm_halfey * lsm_dt
             lsm_integralFBz += lsm_twoKi * lsm_halfez * lsm_dt
@@ -199,7 +199,7 @@ while True:
         mpu_halfey = (mpu_az * mpu_halfvx - mpu_ax * mpu_halfvz)
         mpu_halfez = (mpu_ax * mpu_halfvy - mpu_ay * mpu_halfvx)
 
-        if twoKi > 0:
+        if mpu_twoKi > 0:
             mpu_integralFBx += mpu_twoKi * mpu_halfex * mpu_dt
             mpu_integralFBy += mpu_twoKi * mpu_halfey * mpu_dt
             mpu_integralFBz += mpu_twoKi * mpu_halfez * mpu_dt
