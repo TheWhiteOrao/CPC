@@ -11,10 +11,23 @@ mpu9250.initialize()
 lsm_offset = [0, 0, 0]
 mpu_offset = [0, 0, 0]
 PI = 3.14159265
-q0 = 1
-q1 = 0
-q2 = 0
-q3 = 0
+lsm_q0 = 1
+lsm_q1 = 0
+lsm_q2 = 0
+lsm_q3 = 0
+
+mpu_q0 = 1
+mpu_q1 = 0
+mpu_q2 = 0
+mpu_q3 = 0
+
+currenttime = 0
+
+lsm_twoKi = 1
+lsm_twoKp = 2
+
+mpu_twoKi = 1
+mpu_twoKp = 2
 
 
 def usleep(x):
@@ -61,6 +74,19 @@ mpu_offset[2] /= 1000
 
 while True:
 
+    previoustime = currenttime
+    currenttime = time_ns()
+
+    lsm_dt = (currenttime - previoustime) / 1000000000
+    mpu_dt = (currenttime - previoustime) / 1000000000
+
+    if dt < (1 / 1300):
+        usleep((1 / 1300 - dt) * 1000000)
+        currenttime = time_ns()
+
+    lsm_dt = (currenttime - previoustime) / 1000000000
+    mpu_dt = (currenttime - previoustime) / 1000000000
+
     lsm_axyz, lsm_gxyz = lsm9ds1.getMotion6()
     mpu_axyz, mpu_gxyz = mpu9250.getMotion6()
 
@@ -89,10 +115,62 @@ while True:
     if not (lsm_ax == 0 and lsm_ay == 0 and lsm_az == 0):
 
         # Normalise accelerometer measurement
-        recipNorm = (lsm_ax * lsm_ax + lsm_ay * lsm_ay + lsm_az * lsm_az) ** -0.5
-        lsm_ax *= recipNorm
-        lsm_ay *= recipNorm
-        lsm_az *= recipNorm
+        lsm_recipNorm = (lsm_ax * lsm_ax + lsm_ay * lsm_ay + lsm_az * lsm_az) ** -0.5
+        lsm_ax *= lsm_recipNorm
+        lsm_ay *= lsm_recipNorm
+        lsm_az *= lsm_recipNorm
+
+        lsm_q0q0 = lsm_q0 * lsm_q0
+        lsm_q0q1 = lsm_q0 * lsm_q1
+        lsm_q0q2 = lsm_q0 * lsm_q2
+        lsm_q0q3 = lsm_q0 * lsm_q3
+        lsm_q1q1 = lsm_q1 * lsm_q1
+        lsm_q1q2 = lsm_q1 * lsm_q2
+        lsm_q1q3 = lsm_q1 * lsm_q3
+        lsm_q2q2 = lsm_q2 * lsm_q2
+        lsm_q2q3 = lsm_q2 * lsm_q3
+        lsm_q3q3 = lsm_q3 * lsm_q3
+
+        lsm_halfvx = lsm_q1q3 - lsm_q0q2
+        lsm_halfvy = lsm_q0q1 + lsm_q2q3
+        lsm_halfvz = lsm_q0q0 - 0.5 + lsm_q3q3
+
+        lsm_halfex = (ay * lsm_halfvz - az * lsm_halfvy)
+        lsm_halfey = (az * lsm_halfvx - ax * lsm_halfvz)
+        lsm_halfez = (ax * lsm_halfvy - ay * lsm_halfvx)
+
+        if twoKi > 0:
+            lsm_integralFBx += lsm_twoKi * lsm_halfex * lsm_dt
+            lsm_integralFBy += lsm_twoKi * lsm_halfey * lsm_dt
+            lsm_integralFBz += lsm_twoKi * lsm_halfez * lsm_dt
+            lsm_gx += lsm_integralFBx
+            lsm_gy += lsm_integralFBy
+            lsm_gz += lsm_integralFBz
+
+        else:
+            lsm_integralFBx = 0
+            lsm_integralFBy = 0
+            lsm_integralFBz = 0
+
+    lsm_gx *= 0.5 * lsm_dt
+    lsm_gy *= 0.5 * lsm_dt
+    lsm_gz *= 0.5 * lsm_dt
+    lsm_qa = lsm_q0
+    lsm_qb = lsm_q1
+    lsm_qc = lsm_q2
+    lsm_q0 += (-lsm_qb * lsm_gx - lsm_qc * lsm_gy - lsm_q3 * lsm_gz)
+    lsm_q1 += (lsm_qa * lsm_gx + lsm_qc * lsm_gz - lsm_q3 * lsm_gy)
+    lsm_q2 += (lsm_qa * lsm_gy - lsm_qb * lsm_gz + lsm_q3 * lsm_gx)
+    lsm_q3 += (lsm_qa * lsm_gz + lsm_qb * lsm_gy - lsm_qc * lsm_gx)
+    lsm_recipNorm = (lsm_q0 * lsm_q0 + lsm_q1 * lsm_q1 + lsm_q2 * lsm_q2 + lsm_q3 * lsm_q3) ** -0.5
+    lsm_q0 *= lsm_recipNorm
+    lsm_q1 *= lsm_recipNorm
+    lsm_q2 *= lsm_recipNorm
+    lsm_q3 *= lsm_recipNorm
+
+    lsm_roll = atan2(2 * (lsm_q0 * lsm_q1 + lsm_q2 * lsm_q3), 1 - 2 * (lsm_q1 * lsm_q1 + lsm_q2 * lsm_q2)) * 180 / PI
+    lsm_PItch = asin(2 * (lsm_q0 * lsm_q2 - lsm_q3 * lsm_q1)) * 180 / PI
+    lsm_yaw = atan2(2 * (lsm_q0 * lsm_q3 + lsm_q1 * lsm_q2), 1 - 2 * (lsm_q2 * lsm_q2 + lsm_q3 * lsm_q3)) * 180 / PI
 
     if not (mpu_ax == 0 and mpu_ay == 0 and mpu_az == 0):
 
@@ -101,6 +179,58 @@ while True:
         mpu_ax *= recipNorm
         mpu_ay *= recipNorm
         mpu_az *= recipNorm
+
+        mpu_q0q0 = mpu_q0 * mpu_q0
+        mpu_q0q1 = mpu_q0 * mpu_q1
+        mpu_q0q2 = mpu_q0 * mpu_q2
+        mpu_q0q3 = mpu_q0 * mpu_q3
+        mpu_q1q1 = mpu_q1 * mpu_q1
+        mpu_q1q2 = mpu_q1 * mpu_q2
+        mpu_q1q3 = mpu_q1 * mpu_q3
+        mpu_q2q2 = mpu_q2 * mpu_q2
+        mpu_q2q3 = mpu_q2 * mpu_q3
+        mpu_q3q3 = mpu_q3 * mpu_q3
+
+        mpu_halfvx = mpu_q1q3 - mpu_q0q2
+        mpu_halfvy = mpu_q0q1 + mpu_q2q3
+        mpu_halfvz = mpu_q0q0 - 0.5 + mpu_q3q3
+
+        mpu_halfex = (mpu_ay * mpu_halfvz - mpu_az * mpu_halfvy)
+        mpu_halfey = (mpu_az * mpu_halfvx - mpu_ax * mpu_halfvz)
+        mpu_halfez = (mpu_ax * mpu_halfvy - mpu_ay * mpu_halfvx)
+
+        if twoKi > 0:
+            mpu_integralFBx += mpu_twoKi * mpu_halfex * mpu_dt
+            mpu_integralFBy += mpu_twoKi * mpu_halfey * mpu_dt
+            mpu_integralFBz += mpu_twoKi * mpu_halfez * mpu_dt
+            mpu_gx += mpu_integralFBx
+            mpu_gy += mpu_integralFBy
+            mpu_gz += mpu_integralFBz
+
+        else:
+            mpu_integralFBx = 0
+            mpu_integralFBy = 0
+            mpu_integralFBz = 0
+
+    mpu_gx *= 0.5 * mpu_dt
+    mpu_gy *= 0.5 * mpu_dt
+    mpu_gz *= 0.5 * mpu_dt
+    mpu_qa = mpu_q0
+    mpu_qb = mpu_q1
+    mpu_qc = mpu_q2
+    mpu_q0 += (-mpu_qb * mpu_gx - mpu_qc * mpu_gy - mpu_q3 * mpu_gz)
+    mpu_q1 += (mpu_qa * mpu_gx + mpu_qc * mpu_gz - mpu_q3 * mpu_gy)
+    mpu_q2 += (mpu_qa * mpu_gy - mpu_qb * mpu_gz + mpu_q3 * mpu_gx)
+    mpu_q3 += (mpu_qa * mpu_gz + mpu_qb * mpu_gy - mpu_qc * mpu_gx)
+    mpu_recipNorm = (mpu_q0 * mpu_q0 + mpu_q1 * mpu_q1 + mpu_q2 * mpu_q2 + mpu_q3 * mpu_q3) ** -0.5
+    mpu_q0 *= mpu_recipNorm
+    mpu_q1 *= mpu_recipNorm
+    mpu_q2 *= mpu_recipNorm
+    mpu_q3 *= mpu_recipNorm
+
+    mpu_roll = atan2(2 * (mpu_q0 * mpu_q1 + mpu_q2 * mpu_q3), 1 - 2 * (mpu_q1 * mpu_q1 + mpu_q2 * mpu_q2)) * 180 / PI
+    mpu_PItch = asin(2 * (mpu_q0 * mpu_q2 - mpu_q3 * mpu_q1)) * 180 / PI
+    mpu_yaw = atan2(2 * (mpu_q0 * mpu_q3 + mpu_q1 * mpu_q2), 1 - 2 * (mpu_q2 * mpu_q2 + mpu_q3 * mpu_q3)) * 180 / PI
 
     print("lsm_offset: %-26s" % lsm_offset[0],
           "lsm_offset: %-26s" % lsm_offset[1],
@@ -129,6 +259,13 @@ while True:
           "  d_gx: %-26s" % ((lsm_gx + mpu_gx) / 2),
           "  d_gy: %-26s" % ((lsm_gy + mpu_gy) / 2),
           "  d_gz: %-26s" % ((lsm_gz + mpu_gz) / 2))
+
+    print("lsm_roll  : %-26s" % lsm_roll,
+          "lsm_PItch  : %-26s" % lsm_PItch,
+          "lsm_yaw  : %-26s" % lsm_yaw,
+          "mpu_roll  : %-26s" % mpu_roll,
+          "mpu_PItch  : %-26s" % mpu_PItch,
+          "mpu_yaw  : %-26s" % mpu_yaw)
 
     print("\n")
     sleep(0.1)
