@@ -1,6 +1,7 @@
 from CPC_NAVIO2.lsm9ds1 import *
 from CPC_NAVIO2.mpu9250 import *
 from time import *
+from math import *
 
 lsm9ds1 = LSM9DS1()
 mpu9250 = MPU9250()
