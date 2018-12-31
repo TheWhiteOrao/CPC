@@ -12,15 +12,6 @@ mpu9250.initialize()
 lsm_offset = [0, 0, 0]
 mpu_offset = [0, 0, 0]
 PI = 3.14159265
-lsm_q0 = 1
-lsm_q1 = 0
-lsm_q2 = 0
-lsm_q3 = 0
-
-mpu_q0 = 1
-mpu_q1 = 0
-mpu_q2 = 0
-mpu_q3 = 0
 
 currenttime = 0
 
@@ -82,6 +73,16 @@ mpu_offset[1] /= 1000
 mpu_offset[2] /= 1000
 
 while True:
+
+    lsm_q0 = 1
+    lsm_q1 = 0
+    lsm_q2 = 0
+    lsm_q3 = 0
+
+    mpu_q0 = 1
+    mpu_q1 = 0
+    mpu_q2 = 0
+    mpu_q3 = 0
 
     previoustime = currenttime
     currenttime = time_ns()
