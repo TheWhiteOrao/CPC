@@ -309,6 +309,5 @@ while True:
           "mpu_PItch  : %-26s" % mpu_PItch,
           "mpu_yaw  : %-26s" % mpu_yaw)
 
-    print(lsm_yaw + mpu_yaw)
     print("\n")
     sleep(0.1)
