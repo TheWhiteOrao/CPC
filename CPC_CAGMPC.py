@@ -11,6 +11,10 @@ mpu9250.initialize()
 lsm_offset = [0, 0, 0]
 mpu_offset = [0, 0, 0]
 PI = 3.14159265
+q0 = 1
+q1 = 0
+q2 = 0
+q3 = 0
 
 
 def usleep(x):
@@ -81,6 +85,22 @@ while True:
     mpu_gx -= mpu_offset[0]
     mpu_gy -= mpu_offset[1]
     mpu_gz -= mpu_offset[2]
+
+    if not (lsm_ax == 0 and lsm_ay == 0 and lsm_az == 0):
+
+        # Normalise accelerometer measurement
+        recipNorm = (lsm_ax * lsm_ax + lsm_ay * lsm_ay + lsm_az * lsm_az) ** -0.5
+        lsm_ax *= recipNorm
+        lsm_ay *= recipNorm
+        lsm_az *= recipNorm
+
+    if not (mpu_ax == 0 and mpu_ay == 0 and mpu_az == 0):
+
+        # Normalise accelerometer measurement
+        recipNorm = (mpu_ax * mpu_ax + mpu_ay * mpu_ay + mpu_az * mpu_az) ** -0.5
+        mpu_ax *= recipNorm
+        mpu_ay *= recipNorm
+        mpu_az *= recipNorm
 
     print("lsm_offset: %-26s" % lsm_offset[0],
           "lsm_offset: %-26s" % lsm_offset[1],
