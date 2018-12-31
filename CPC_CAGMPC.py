@@ -17,7 +17,7 @@ def usleep(x):
     return sleep(x / 1000000.0)
 
 
-for i in range(100):
+for i in range(1000):
     lsm_axyz, lsm_gxyz = lsm9ds1.getMotion6()
     mpu_axyz, mpu_gxyz = mpu9250.getMotion6()
 
@@ -47,13 +47,13 @@ for i in range(100):
 
     usleep(10000)
 
-lsm_offset[0] /= 100.0
-lsm_offset[1] /= 100.0
-lsm_offset[2] /= 100.0
+lsm_offset[0] /= 1000
+lsm_offset[1] /= 1000
+lsm_offset[2] /= 1000
 
-mpu_offset[0] /= 100.0
-mpu_offset[1] /= 100.0
-mpu_offset[2] /= 100.0
+mpu_offset[0] /= 1000
+mpu_offset[1] /= 1000
+mpu_offset[2] /= 1000
 
 while True:
 
@@ -81,6 +81,13 @@ while True:
     mpu_gx -= mpu_offset[0]
     mpu_gy -= mpu_offset[1]
     mpu_gz -= mpu_offset[2]
+
+    print("lsm_offset: %-26s" % lsm_offset[0],
+          "lsm_offset: %-26s" % lsm_offset[1],
+          "lsm_offset: %-26s" % lsm_offset[2],
+          "mpu_offset: %-26s" % mpu_offset[0],
+          "mpu_offset: %-26s" % mpu_offset[1],
+          "mpu_offset: %-26s" % mpu_offset[2])
 
     print("lsm_ax: %-26s" % lsm_ax,
           "lsm_ay: %-26s" % lsm_ay,
