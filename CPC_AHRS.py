@@ -86,29 +86,7 @@ def imuLoop():
     # -------- Read raw measurements from the MPU and update AHRS - -------------
 
     # Accel + gyro.
-    # axyz, gxyz = imu.getMotion6()
-    # ax = axyz[0]
-    # ay = axyz[1]
-    # az = axyz[2]
-    #
-    # gx = gxyz[0]
-    # gy = gxyz[1]
-    # gz = gxyz[2]
-    #
-    # ax /= G_SI
-    # ay /= G_SI
-    # az /= G_SI
-    # gx *= 180 / PI
-    # gy *= 180 / PI
-    # gz *= 180 / PI
-    #
-    # updateIMU(ax, ay, az, gx * 0.0175, gy * 0.0175, gz * 0.0175, dt)
-
-    # Accel + gyro + mag.
-    # Soft and hard iron calibration required for proper function.
-    #
-    axyz, gxyz, mxyz = imu.getMotion9()
-
+    axyz, gxyz = imu.getMotion6()
     ax = axyz[0]
     ay = axyz[1]
     az = axyz[2]
@@ -117,10 +95,6 @@ def imuLoop():
     gy = gxyz[1]
     gz = gxyz[2]
 
-    mx = mxyz[0]
-    my = mxyz[1]
-    mz = mxyz[2]
-
     ax /= G_SI
     ay /= G_SI
     az /= G_SI
@@ -128,7 +102,33 @@ def imuLoop():
     gy *= 180 / PI
     gz *= 180 / PI
 
-    update(ax, ay, az, gx * 0.0175, gy * 0.0175, gz * 0.0175, my, mx, -mz, dt)
+    updateIMU(ax, ay, az, gx * 0.0175, gy * 0.0175, gz * 0.0175, dt)
+
+    # Accel + gyro + mag.
+    # Soft and hard iron calibration required for proper function.
+    #
+    # axyz, gxyz, mxyz = imu.getMotion9()
+    #
+    # ax = axyz[0]
+    # ay = axyz[1]
+    # az = axyz[2]
+    #
+    # gx = gxyz[0]
+    # gy = gxyz[1]
+    # gz = gxyz[2]
+    #
+    # mx = mxyz[0]
+    # my = mxyz[1]
+    # mz = mxyz[2]
+    #
+    # ax /= G_SI
+    # ay /= G_SI
+    # az /= G_SI
+    # gx *= 180 / PI
+    # gy *= 180 / PI
+    # gz *= 180 / PI
+    #
+    # update(ax, ay, az, gx * 0.0175, gy * 0.0175, gz * 0.0175, my, mx, -mz, dt)
     #
 
     #------------------------ Read Euler angles - -----------------------------
