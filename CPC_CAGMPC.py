@@ -12,14 +12,26 @@ mpu9250.initialize()
 lsm_offset = [0, 0, 0]
 mpu_offset = [0, 0, 0]
 PI = 3.14159265
+G_SI = 9.80665
 
 currenttime = 0
+
 
 lsm_twoKi = 0
 lsm_twoKp = 2
 
 mpu_twoKi = 0
 mpu_twoKp = 2
+
+lsm_q0 = 1
+lsm_q1 = 0
+lsm_q2 = 0
+lsm_q3 = 0
+
+mpu_q0 = 1
+mpu_q1 = 0
+mpu_q2 = 0
+mpu_q3 = 0
 
 lsm_integralFBx = 0
 lsm_integralFBy = 0
@@ -74,16 +86,6 @@ mpu_offset[2] /= 1000
 
 while True:
 
-    lsm_q0 = 1
-    lsm_q1 = 0
-    lsm_q2 = 0
-    lsm_q3 = 0
-
-    mpu_q0 = 1
-    mpu_q1 = 0
-    mpu_q2 = 0
-    mpu_q3 = 0
-
     previoustime = currenttime
     currenttime = time_ns()
 
@@ -113,6 +115,20 @@ while True:
     mpu_gx = round(mpu_gxyz[0], 8)
     mpu_gy = round(mpu_gxyz[1], 8)
     mpu_gz = round(mpu_gxyz[2], 8)
+
+    lsm_ax /= G_SI
+    lsm_ay /= G_SI
+    lsm_az /= G_SI
+    lsm_gx *= 180 / PI
+    lsm_gy *= 180 / PI
+    lsm_gz *= 180 / PI
+
+    mpu_ax /= G_SI
+    mpu_ay /= G_SI
+    mpu_az /= G_SI
+    mpu_gx *= 180 / PI
+    mpu_gy *= 180 / PI
+    mpu_gz *= 180 / PI
 
     lsm_gx -= lsm_offset[0]
     lsm_gy -= lsm_offset[1]
