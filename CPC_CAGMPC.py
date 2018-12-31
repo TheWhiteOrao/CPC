@@ -135,9 +135,9 @@ while True:
         lsm_halfvy = lsm_q0q1 + lsm_q2q3
         lsm_halfvz = lsm_q0q0 - 0.5 + lsm_q3q3
 
-        lsm_halfex = (ay * lsm_halfvz - az * lsm_halfvy)
-        lsm_halfey = (az * lsm_halfvx - ax * lsm_halfvz)
-        lsm_halfez = (ax * lsm_halfvy - ay * lsm_halfvx)
+        lsm_halfex = (lsm_ay * lsm_halfvz - lsm_az * lsm_halfvy)
+        lsm_halfey = (lsm_az * lsm_halfvx - lsm_ax * lsm_halfvz)
+        lsm_halfez = (lsm_ax * lsm_halfvy - lsm_ay * lsm_halfvx)
 
         if twoKi > 0:
             lsm_integralFBx += lsm_twoKi * lsm_halfex * lsm_dt
