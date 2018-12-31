@@ -186,6 +186,10 @@ while True:
             lsm_integralFBy = 0
             lsm_integralFBz = 0
 
+        lsm_gx += lsm_twoKp * lsm_halfex
+        lsm_gy += lsm_twoKp * lsm_halfey
+        lsm_gz += lsm_twoKp * lsm_halfez
+
     lsm_gx *= 0.5 * lsm_dt
     lsm_gy *= 0.5 * lsm_dt
     lsm_gz *= 0.5 * lsm_dt
@@ -245,6 +249,10 @@ while True:
             mpu_integralFBx = 0
             mpu_integralFBy = 0
             mpu_integralFBz = 0
+
+        mpu_gx += mpu_twoKp * mpu_halfex
+        mpu_gy += mpu_twoKp * mpu_halfey
+        mpu_gz += mpu_twoKp * mpu_halfez
 
     mpu_gx *= 0.5 * mpu_dt
     mpu_gy *= 0.5 * mpu_dt
