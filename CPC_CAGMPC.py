@@ -123,16 +123,16 @@ while True:
     lsm_gy *= 180 / PI
     lsm_gz *= 180 / PI
 
-    lsm_gx *= 180 / PI
-    lsm_gy *= 180 / PI
-    lsm_gz *= 180 / PI
+    lsm_gx *= 0.0175
+    lsm_gy *= 0.0175
+    lsm_gz *= 0.0175
 
     mpu_ax /= G_SI
     mpu_ay /= G_SI
     mpu_az /= G_SI
-    mpu_gx *= 0.0175
-    mpu_gy *= 0.0175
-    mpu_gz *= 0.0175
+    mpu_gx *= 180 / PI
+    mpu_gy *= 180 / PI
+    mpu_gz *= 180 / PI
 
     mpu_gx *= 0.0175
     mpu_gy *= 0.0175
