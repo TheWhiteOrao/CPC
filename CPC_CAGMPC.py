@@ -80,8 +80,8 @@ while True:
     lsm_dt = (currenttime - previoustime) / 1000000000
     mpu_dt = (currenttime - previoustime) / 1000000000
 
-    if dt < (1 / 1300):
-        usleep((1 / 1300 - dt) * 1000000)
+    if (lsm_dt + mpu_dt) / 2 < (1 / 1300):
+        usleep((1 / 1300 - (lsm_dt + mpu_dt) / 2) * 1000000)
         currenttime = time_ns()
 
     lsm_dt = (currenttime - previoustime) / 1000000000
