@@ -24,10 +24,10 @@ mpu_q3 = 0
 
 currenttime = 0
 
-lsm_twoKi = 1
+lsm_twoKi = 0
 lsm_twoKp = 2
 
-mpu_twoKi = 1
+mpu_twoKi = 0
 mpu_twoKp = 2
 
 lsm_integralFBx = 0
