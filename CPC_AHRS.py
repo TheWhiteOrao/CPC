@@ -7,8 +7,8 @@ G_SI = 9.80665
 PI = 3.14159
 
 
-# imu = MPU9250()
-imu = LSM9DS1()
+imu = MPU9250()
+# imu = LSM9DS1()
 
 # Timing data
 offset = [0, 0, 0]
