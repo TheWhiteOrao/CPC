@@ -186,9 +186,9 @@ while True:
             lsm_integralFBy = 0
             lsm_integralFBz = 0
 
-        lsm_gx += lsm_twoKp * lsm_halfex
-        lsm_gy += lsm_twoKp * lsm_halfey
-        lsm_gz += lsm_twoKp * lsm_halfez
+        lsmgx += lsmtwoKp * lsmhalfex
+        lsmgy += lsmtwoKp * lsmhalfey
+        lsmgz += lsmtwoKp * lsmhalfez
 
     lsm_gx *= 0.5 * lsm_dt
     lsm_gy *= 0.5 * lsm_dt
