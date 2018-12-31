@@ -29,6 +29,14 @@ lsm_twoKp = 2
 mpu_twoKi = 1
 mpu_twoKp = 2
 
+lsm_integralFBx = 0
+lsm_integralFBy = 0
+lsm_integralFBz = 0
+
+mpu_integralFBx = 0
+mpu_integralFBy = 0
+mpu_integralFBz = 0
+
 
 def usleep(x):
     return sleep(x / 1000000.0)
