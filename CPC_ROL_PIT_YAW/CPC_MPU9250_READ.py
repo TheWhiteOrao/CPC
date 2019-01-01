@@ -1,6 +1,5 @@
 
-
-def test(mpu9250):
+def mpu9250_sensor_read(mpu9250):
     mpu9250.read_acc()
     mpu9250.read_gyro()
     mpu9250.read_mag()
