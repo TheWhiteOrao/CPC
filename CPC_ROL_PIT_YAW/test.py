@@ -1,4 +1,3 @@
-from CPC_SENSOR_READ import *
 
 
 def test():
