@@ -11,5 +11,15 @@ mpu9250.initialize()
 lsm9ds1.initialize()
 
 while True:
-    print(mpu9250_sensor_read(mpu9250))
-    print(lsm9ds1_sensor_read(lsm9ds1))
+    acc_mpu, gyr_mpu, mag_mpu, tem_mpu = mpu9250_sensor_read(mpu9250)
+    acc_lsm, gyr_lsm, mag_lsm, tem_lsm = lsm9ds1_sensor_read(lsm9ds1)
+
+    print("acc_mpu: %-26s" % acc_mpu,
+          "gyr_mpu: %-26s" % gyr_mpu,
+          "mag_mpu: %-26s" % mag_mpu,
+          "tem_mpu: %-26s" % tem_mpu)
+
+    print("acc_lsm: %-26s" % acc_lsm,
+          "gyr_lsm: %-26s" % gyr_lsm,
+          "mag_lsm: %-26s" % mag_lsm,
+          "tem_lsm: %-26s" % tem_lsm)
