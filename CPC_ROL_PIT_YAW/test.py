@@ -1,7 +1,7 @@
 from CPC_SENSOR_READ import *
 
 
-def test()
+def test():
     mpu9250.read_acc()
     mpu9250.read_gyro()
     mpu9250.read_mag()
