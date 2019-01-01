@@ -23,8 +23,6 @@ def offset_setup():
 
     print("Beginning to calibration the Gyro.\n")
 
-    acc_mpu, gyr_mpu, mag_mpu, tem_mpu = mpu9250_sensor_read(mpu9250)
-    acc_lsm, gyr_lsm, mag_lsm, tem_lsm = lsm9ds1_sensor_read(lsm9ds1)
 
 # print("acc_mpu: %-26s" % acc_mpu[0],
 #       "%-26s" % acc_mpu[1],

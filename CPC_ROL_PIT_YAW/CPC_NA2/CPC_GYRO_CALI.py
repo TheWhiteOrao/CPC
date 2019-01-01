@@ -1,2 +1,0 @@
-
-def gyroscope_calibration()
