@@ -7,33 +7,45 @@ from CPC_LSM9DS1_READ import lsm9ds1_sensor_read
 mpu9250 = MPU9250()
 lsm9ds1 = LSM9DS1()
 
-mpu9250.initialize()
-lsm9ds1.initialize()
 
-while True:
+def offset_setup():
+
+    # ---------------------------- Sensors Initialize ---------------------------- #
+
+    print("Initialize of mpu9250 and lsm9ds1 sensors starts.\n")
+
+    mpu9250.initialize()
+    lsm9ds1.initialize()
+
+    print("Initialize of mpu9250 and lsm9ds1 sensors is done.\n")
+
+    # ---------------------------------------------------------------------------- #
+
+    print("Beginning to calibration the Gyro.\n")
+
     acc_mpu, gyr_mpu, mag_mpu, tem_mpu = mpu9250_sensor_read(mpu9250)
     acc_lsm, gyr_lsm, mag_lsm, tem_lsm = lsm9ds1_sensor_read(lsm9ds1)
 
-    print("acc_mpu: %-26s" % acc_mpu[0],
-          "%-26s" % acc_mpu[1],
-          "%-26s" % acc_mpu[2],
-          "gyr_mpu: %-26s" % gyr_mpu[0],
-          "%-26s" % gyr_mpu[1],
-          "%-26s" % gyr_mpu[2],
-          "mag_mpu: %-26s" % mag_mpu[0],
-          "%-26s" % mag_mpu[1],
-          "%-26s" % mag_mpu[2],
-          "tem_mpu: %-26s" % tem_mpu
-          )
-
-    print("acc_lsm: %-26s" % acc_lsm[0],
-          "%-26s" % acc_lsm[1],
-          "%-26s" % acc_lsm[2],
-          "gyr_lsm: %-26s" % gyr_lsm[0],
-          "%-26s" % gyr_lsm[1],
-          "%-26s" % gyr_lsm[2],
-          "mag_lsm: %-26s" % mag_lsm[0],
-          "%-26s" % mag_lsm[1],
-          "%-26s" % mag_lsm[2],
-          "tem_lsm: %-26s" % tem_lsm
-          )
+# print("acc_mpu: %-26s" % acc_mpu[0],
+#       "%-26s" % acc_mpu[1],
+#       "%-26s" % acc_mpu[2],
+#       "gyr_mpu: %-26s" % gyr_mpu[0],
+#       "%-26s" % gyr_mpu[1],
+#       "%-26s" % gyr_mpu[2],
+#       "mag_mpu: %-26s" % mag_mpu[0],
+#       "%-26s" % mag_mpu[1],
+#       "%-26s" % mag_mpu[2],
+#       "tem_mpu: %-26s" % tem_mpu
+#       )
+#
+# print("acc_lsm: %-26s" % acc_lsm[0],
+#       "%-26s" % acc_lsm[1],
+#       "%-26s" % acc_lsm[2],
+#       "gyr_lsm: %-26s" % gyr_lsm[0],
+#       "%-26s" % gyr_lsm[1],
+#       "%-26s" % gyr_lsm[2],
+#       "mag_lsm: %-26s" % mag_lsm[0],
+#       "%-26s" % mag_lsm[1],
+#       "%-26s" % mag_lsm[2],
+#       "tem_lsm: %-26s" % tem_lsm
+#       )
