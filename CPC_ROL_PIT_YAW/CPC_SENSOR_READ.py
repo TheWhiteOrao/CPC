@@ -9,4 +9,4 @@ lsm9ds1 = LSM9DS1()
 mpu9250.initialize()
 lsm9ds1.initialize()
 
-print(test())
+test(mpu9250)
