@@ -9,24 +9,11 @@ from CPC_IMU_UPDATA import *
 mpu9250 = MPU9250()
 lsm9ds1 = LSM9DS1()
 
-mpu_gyr_offset_x = 0
-mpu_gyr_offset_y = 0
-mpu_gyr_offset_z = 0
-lsm_gyr_offset_x = 0
-lsm_gyr_offset_y = 0
-lsm_gyr_offset_z = 0
-
 mpu_gyr_offset = 0
 lsm_gyr_offset = 0
 
 
 def offset_setup():
-    global mpu_gyr_offset_x
-    global mpu_gyr_offset_y
-    global mpu_gyr_offset_z
-    global sm_gyr_offset_x
-    global sm_gyr_offset_y
-    global sm_gyr_offset_z
     global mpu_gyr_offset
     global lsm_gyr_offset
 
@@ -76,14 +63,14 @@ def main_loope():
     # ---------------------------------------------------------------------------- #
     # ------------ Read raw measurements from the mpu9250 and lsm9ds1 ------------ #
 
-    # acc_mpu, gyr_mpu, mag_mpu, tem_mpu = sensor_read(mpu9250)
-    acc_lsm, gyr_lsm, mag_lsm, tem_lsm = sensor_read(lsm9ds1)
+    acc_mpu, gyr_mpu, tem_mpu = sensor_read(mpu9250)
+    acc_lsm, gyr_lsm, tem_lsm = sensor_read(lsm9ds1)
 
-    # print(acc_mpu, gyr_mpu, mag_mpu, tem_mpu,
-    #       acc_lsm, gyr_lsm, mag_lsm, tem_lsm)
+    # print(acc_mpu, gyr_mpu, tem_mpu,
+    #       acc_lsm, gyr_lsm, tem_lsm)
 
-    # mpu_quats = imu_update(acc_mpu, gyr_mpu, mag_mpu, delta_time, mpu_gyr_offset, mpu_quats)
-    lsm_quats = imu_update(acc_lsm, gyr_lsm, mag_lsm, delta_time, lsm_gyr_offset, lsm_quats)
+    mpu_quats = imu_update(acc_mpu, gyr_mpu,  delta_time, mpu_gyr_offset, mpu_quats)
+    lsm_quats = imu_update(acc_lsm, gyr_lsm,  delta_time, lsm_gyr_offset, lsm_quats)
 
     # mpu_roll, mpu_pitch, mpu_yaw = get_euler(mpu_quats)
     lsm_roll, lsm_pitch, lsm_yaw = get_euler(lsm_quats)
@@ -92,11 +79,11 @@ def main_loope():
     if dtsumm > 0.05:
 
         # Console output
-        # print("ROLL: %-26s" % round(mpu_roll, 2),
-        #       "PITCH: %-26s" % round(mpu_pitch, 2),
-        #       "YAW: %-26s" % round(mpu_yaw * -1, 2),
-        #       "PERIOD %-26s" % delta_time,
-        #       "RATE %-26s \n" % int(1 / delta_time))
+        print("ROLL: %-26s" % round(mpu_roll, 2),
+              "PITCH: %-26s" % round(mpu_pitch, 2),
+              "YAW: %-26s" % round(mpu_yaw * -1, 2),
+              "PERIOD %-26s" % delta_time,
+              "RATE %-26s \n" % int(1 / delta_time))
 
         print("ROLL: %-26s" % round(lsm_roll, 2),
               "PITCH: %-26s" % round(lsm_pitch, 2),
