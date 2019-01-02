@@ -59,6 +59,8 @@ mpu_quats = [1, 0, 0, 0,
 lsm_quats = [1, 0, 0, 0,
              1, 0, 0, 0]
 
+pi = 3.14159265358
+
 
 def main_loope():
     global I
@@ -66,6 +68,7 @@ def main_loope():
     global r_lsm
     global p_mup
     global p_lsm
+    global pi
 
     global prev_time
     global dtsumm
@@ -89,8 +92,8 @@ def main_loope():
     mpu_quats = imu_update(acc_mpu, gyr_mpu,  delta_time, mpu_gyr_offset, mpu_quats)
     lsm_quats = imu_update(acc_lsm, gyr_lsm,  delta_time, lsm_gyr_offset, lsm_quats)
 
-    mpu_roll, mpu_pitch = get_euler(mpu_quats)
-    lsm_roll, lsm_pitch = get_euler(lsm_quats)
+    mpu_roll, mpu_pitch = get_euler(mpu_quats, r_mup * pi / 180, p_mup * pi / 180)
+    lsm_roll, lsm_pitch = get_euler(lsm_quats, r_lsm * pi / 180, p_lsm * pi / 180)
 
     if I > 10000 and I <= 11000:
         r_mup += mpu_roll / 1000
