@@ -1,12 +1,12 @@
-from time import *
-from CPC_DELTA_TIME import delta_time_calculate
-from CPC_UNSLEEP import usleep
-prev_time = 0
-
-for I in range(100):
-    delta_time, prev_time = delta_time_calculate(prev_time)
-
-    print(delta_time, I)
+# from time import *
+# from CPC_DELTA_TIME import delta_time_calculate
+# from CPC_UNSLEEP import usleep
+# prev_time = 0
+#
+# for I in range(100):
+#     delta_time, prev_time = delta_time_calculate(prev_time)
+#
+#     print(delta_time, I)
 
 # currenttime = 0
 # for I in range(100):
@@ -22,3 +22,24 @@ for I in range(100):
 #     dt = (currenttime - previoustime) / 1000000000
 #
 #     print(dt, I)
+
+# print((2 * 2) ** -0.5)
+# print(4 ** 0.5)
+
+
+l = 0
+
+
+def lol():
+    global l
+    for i in range(4):
+        l += 1
+
+
+def test():
+    k = l + l
+    return k
+
+
+print(lol(), l)
+print(test())

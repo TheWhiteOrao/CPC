@@ -4,13 +4,26 @@ from CPC_NA2.lsm9ds1 import *
 from CPC_SENSORS_READ import sensor_read
 from CPC_GYRO_CALI import gyroscope_calibration
 from CPC_DELTA_TIME import delta_time_calculate
-
+from CPC_IMU_UPDATA import imu_update
 
 mpu9250 = MPU9250()
 lsm9ds1 = LSM9DS1()
 
+mpu_gyr_offset_x = 0
+mpu_gyr_offset_y = 0
+mpu_gyr_offset_z = 0
+lsm_gyr_offset_x = 0
+lsm_gyr_offset_y = 0
+lsm_gyr_offset_z = 0
+
 
 def offset_setup():
+    global mpu_gyr_offset_x
+    global mpu_gyr_offset_y
+    global mpu_gyr_offset_z
+    global sm_gyr_offset_x
+    global sm_gyr_offset_y
+    global sm_gyr_offset_z
 
     # ---------------------------- Sensors Initialize ---------------------------- #
 
@@ -26,8 +39,8 @@ def offset_setup():
 
     print("Calibration the Gyro.")
 
-    mpu_gyr_offset_x, mpu_gyr_offset_y, mpu_gyr_offset_z = gyroscope_calibration(mpu9250)
-    lsm_gyr_offset_x, lsm_gyr_offset_y, lsm_gyr_offset_z = gyroscope_calibration(lsm9ds1)
+    mpu_gyr_offset = gyroscope_calibration(mpu9250)
+    lsm_gyr_offset = gyroscope_calibration(lsm9ds1)
 
     print("The Gyro calibration is done\n")
 
@@ -51,29 +64,8 @@ def main_loope():
     acc_mpu, gyr_mpu, mag_mpu, tem_mpu = sensor_read(mpu9250)
     acc_lsm, gyr_lsm, mag_lsm, tem_lsm = sensor_read(lsm9ds1)
 
-    acc_mpu_x = acc_mpu[0]
-    acc_mpu_y = acc_mpu[1]
-    acc_mpu_z = acc_mpu[2]
-
-    gyr_mpu_x = gyr_mpu[0]
-    gyr_mpu_y = gyr_mpu[1]
-    gyr_mpu_z = gyr_mpu[2]
-
-    mag_mpu_x = mag_mpu[0]
-    mag_mpu_y = mag_mpu[1]
-    mag_mpu_z = mag_mpu[2]
-
-    acc_lsm_x = acc_lsm[0]
-    acc_lsm_y = acc_lsm[1]
-    acc_lsm_z = acc_lsm[2]
-
-    gyr_lsm_x = gyr_lsm[0]
-    gyr_lsm_y = gyr_lsm[1]
-    gyr_lsm_z = gyr_lsm[2]
-
-    mag_lsm_x = mag_lsm[0]
-    mag_lsm_y = mag_lsm[1]
-    mag_lsm_z = mag_lsm[2]
+    mpu_roll, mpu_pitch, mpu_yaw = get_euler(acc_mpu, gyr_mpu, mag_mpu, delta_time, mpu_gyr_offset)
+    lsm_roll, lsm_pitch, lsm_yaw = get_euler(acc_lsm, gyr_lsm, mag_lsm, delta_time, lsm_gyr_offset)
 
     # print("acc_mpu: %-26s" % acc_mpu[0],
     #       "%-26s" % acc_mpu[1],

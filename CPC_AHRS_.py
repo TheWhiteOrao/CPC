@@ -69,6 +69,7 @@ def update(ax, ay, az, gx,  gy,  gz,  mx,  my,  mz,  dt):
         halfvx = q1q3 - q0q2
         halfvy = q0q1 + q2q3
         halfvz = q0q0 - 0.5 + q3q3
+
         halfwx = bx * (0.5 - q2q2 - q3q3) + bz * (q1q3 - q0q2)
         halfwy = bx * (q1q2 - q0q3) + bz * (q0q1 + q2q3)
         halfwz = bx * (q0q2 + q1q3) + bz * (0.5 - q1q1 - q2q2)
@@ -122,6 +123,7 @@ def updateIMU(ax,  ay,  az,  gx,  gy,  gz,  dt):
     global q2
     global q3
 
+    print(q0, q1, q2, q3)
     gx -= gyroOffset[0]
     gy -= gyroOffset[1]
     gz -= gyroOffset[2]
