@@ -95,7 +95,7 @@ def get_euler(sen_quats, sub_r, sub_p):
     roll_pitch_quat_two = sen_quats[2]
     roll_pitch_quat_thr = sen_quats[3]
 
-    roll = atan2(2 * (roll_pitch_quat_zer * roll_pitch_quat_one + roll_pitch_quat_two * roll_pitch_quat_thr), 1 - 2 * (roll_pitch_quat_one * roll_pitch_quat_one + roll_pitch_quat_two * roll_pitch_quat_two)) - sub_r) * 180 / pi
-    pitch=asin(2 * (roll_pitch_quat_zer * roll_pitch_quat_two - roll_pitch_quat_thr * roll_pitch_quat_one)) - sub_p) * 180 / pi
+    roll = (atan2(2 * (roll_pitch_quat_zer * roll_pitch_quat_one + roll_pitch_quat_two * roll_pitch_quat_thr), 1 - 2 * (roll_pitch_quat_one * roll_pitch_quat_one + roll_pitch_quat_two * roll_pitch_quat_two)) - sub_r) * 180 / pi
+    pitch = (asin(2 * (roll_pitch_quat_zer * roll_pitch_quat_two - roll_pitch_quat_thr * roll_pitch_quat_one)) - sub_p) * 180 / pi
 
     return roll, pitch
