@@ -18,10 +18,9 @@ def gyroscope_calibration(sensor, n=100):
         gyr_y *= 180 / PI
         gyr_z *= 180 / PI
 
-        gyr_offset_[0] += (-gx * 0.0175) / n
-        gyr_offset_[1] += (-gy * 0.0175) / n
-        gyr_offset_[2] += (-gz * 0.0175) / n
-
+        gyr_offset[0] += (-gyr_x * 0.0175) / n
+        gyr_offset[1] += (-gyr_y * 0.0175) / n
+        gyr_offset[2] += (-gyr_z * 0.0175) / n
         usleep(10000)
 
     return gyr_offset
