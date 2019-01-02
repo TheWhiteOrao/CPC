@@ -55,9 +55,12 @@ mpu_quats = [1, 0, 0, 0,
 lsm_quats = [1, 0, 0, 0,
              1, 0, 0, 0]
 
+dtsumm = 0
+
 
 def main_loope():
     global prev_time
+    global dtsumm
 
     # -------------------------------- Main Loope -------------------------------- #
     # --------------------------- Calculate Delta Time --------------------------- #
@@ -76,6 +79,28 @@ def main_loope():
     mpu_roll, mpu_pitch, mpu_yaw = get_euler(mpu_quats)
     lsm_roll, lsm_pitch, lsm_yaw = get_euler(lsm_quats)
 
+    dtsumm += delta_time
+    if dtsumm > 0.05:
+
+        # Console output
+        print("ROLL: %-26s" % round(mpu_roll, 2),
+              "PITCH: %-26s" % round(mpu_pitch, 2),
+              "YAW: %-26s" % round(mpu_yaw * -1, 2),
+              "PERIOD %-26s" % delta_time,
+              "RATE %-26s \n" % int(1 / delta_time))
+
+        print("ROLL: %-26s" % round(lsm_roll, 2),
+              "PITCH: %-26s" % round(lsm_pitch, 2),
+              "YAW: %-26s" % round(lsm_yaw * -1, 2),
+              "PERIOD %-26s" % delta_time,
+              "RATE %-26s \n" % int(1 / delta_time))
+
+        dtsumm = 0
+
+
+offset_setup()
+while True:
+    main_loope()
     # print("acc_mpu: %-26s" % acc_mpu[0],
     #       "%-26s" % acc_mpu[1],
     #       "%-26s" % acc_mpu[2],
