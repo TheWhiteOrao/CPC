@@ -47,6 +47,12 @@ def offset_setup():
 prev_time = 0
 dtsumm = 0
 
+I = 0
+r_mup = 0
+r_lsm = 0
+p_mup = 0
+p_lsm = 0
+
 mpu_quats = [1, 0, 0, 0,
              1, 0, 0, 0]
 
@@ -55,6 +61,12 @@ lsm_quats = [1, 0, 0, 0,
 
 
 def main_loope():
+    global I
+    global r_mup
+    global r_lsm
+    global p_mup
+    global p_lsm
+
     global prev_time
     global dtsumm
     global mpu_quats
@@ -80,23 +92,31 @@ def main_loope():
     mpu_roll, mpu_pitch = get_euler(mpu_quats)
     lsm_roll, lsm_pitch = get_euler(lsm_quats)
 
+    if I > 100 and I <= 200:
+        r_mup += mpu_roll / 100
+        r_lsm += lsm_roll / 100
+        p_mup += mpu_pitch / 100
+        p_lsm += lsm_pitch / 100
+
     dtsumm += delta_time
     if dtsumm > 0.05:
 
         # Console output
-        print("ROLL: %-26s" % round(mpu_roll, 2),
-              "PITCH: %-26s" % round(mpu_pitch, 2),
+        print("ROLL: %-26s" % round(mpu_roll - r_mup, 2),
+              "PITCH: %-26s" % round(mpu_pitch - p_mup, 2),
               "TEMP: %-26s" % round(tem_mpu, 2),
               "PERIOD %-26s" % delta_time,
               "RATE %-26s \n" % int(1 / delta_time))
 
-        print("ROLL: %-26s" % round(lsm_roll, 2),
-              "PITCH: %-26s" % round(lsm_pitch, 2),
+        print("ROLL: %-26s" % round(lsm_roll - r_lsm, 2),
+              "PITCH: %-26s" % round(lsm_pitch - p_lsm, 2),
               "TEMP: %-26s" % round(tem_lsm, 2),
               "PERIOD %-26s" % delta_time,
               "RATE %-26s \n" % int(1 / delta_time))
 
         dtsumm = 0
+
+    I += 1
 
 
 offset_setup()
