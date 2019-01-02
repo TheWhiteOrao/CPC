@@ -96,7 +96,7 @@ def main_loope():
     lsm_roll, lsm_pitch = get_euler(lsm_quats, r_lsm * pi / 180, p_lsm * pi / 180)
 
     if I > 10000 and I <= 11000:
-        if I == 10001:
+        if I == 10000:
             r_mup -= 1
             r_lsm -= 1
             p_mup -= 1
