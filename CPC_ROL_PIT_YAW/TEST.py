@@ -27,28 +27,29 @@
 # print(4 ** 0.5)
 
 
-l = 0
-
-
-def lol():
-    global l
-    for i in range(4):
-        l += 1
-
-
-g = 1
-s = 1
-k = 1
-m = 1
-
-
-def test(g,
-         s,
-         k,
-         m):
-    k = l + l
-    return k
-
-
-print(lol(), l)
-print(test(g, s, k, m))
+# l = 0
+#
+#
+# def lol():
+#     global l
+#     for i in range(4):
+#         l += 1
+#
+#
+# g = 1
+# s = 1
+# k = 1
+# m = 1
+#
+#
+# def test(g,
+#          s,
+#          k,
+#          m):
+#     k = l + l
+#     return k
+#
+#
+# print(lol(), l)
+# print(test(g, s, k, m))
+print(0 / 1)
