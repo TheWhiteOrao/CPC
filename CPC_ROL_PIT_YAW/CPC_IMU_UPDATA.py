@@ -3,7 +3,6 @@ from math import *
 
 def imu_update(acc_sen,
                gyr_sen,
-               mag_sen,
                delta_time,
                sen_gyr_offset,
                sen_quats):
