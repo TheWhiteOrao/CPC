@@ -33,11 +33,10 @@ def imu_update(acc_sen,
     yaw_gyr_sen_y = gyr_sen[1]
     yaw_gyr_sen_z = gyr_sen[2]
 
+    print(roll_pitch_gyr_sen_x, sen_gyr_offset)
     mag_sen_x = mag_sen[0]
     mag_sen_y = mag_sen[1]
     mag_sen_z = mag_sen[2]
-
-    print(roll_pitch_gyr_sen_x, sen_gyr_offset[0])
 
     roll_pitch_gyr_sen_x -= sen_gyr_offset[0]
     roll_pitch_gyr_sen_y -= sen_gyr_offset[1]
