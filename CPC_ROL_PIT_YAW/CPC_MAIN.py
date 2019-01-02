@@ -76,27 +76,27 @@ def main_loope():
     # ---------------------------------------------------------------------------- #
     # ------------ Read raw measurements from the mpu9250 and lsm9ds1 ------------ #
 
-    acc_mpu, gyr_mpu, mag_mpu, tem_mpu = sensor_read(mpu9250)
+    # acc_mpu, gyr_mpu, mag_mpu, tem_mpu = sensor_read(mpu9250)
     acc_lsm, gyr_lsm, mag_lsm, tem_lsm = sensor_read(lsm9ds1)
 
     # print(acc_mpu, gyr_mpu, mag_mpu, tem_mpu,
     #       acc_lsm, gyr_lsm, mag_lsm, tem_lsm)
 
-    mpu_quats = imu_update(acc_mpu, gyr_mpu, mag_mpu, delta_time, mpu_gyr_offset, mpu_quats)
+    # mpu_quats = imu_update(acc_mpu, gyr_mpu, mag_mpu, delta_time, mpu_gyr_offset, mpu_quats)
     lsm_quats = imu_update(acc_lsm, gyr_lsm, mag_lsm, delta_time, lsm_gyr_offset, lsm_quats)
 
-    mpu_roll, mpu_pitch, mpu_yaw = get_euler(mpu_quats)
+    # mpu_roll, mpu_pitch, mpu_yaw = get_euler(mpu_quats)
     lsm_roll, lsm_pitch, lsm_yaw = get_euler(lsm_quats)
 
     dtsumm += delta_time
     if dtsumm > 0.05:
 
         # Console output
-        print("ROLL: %-26s" % round(mpu_roll, 2),
-              "PITCH: %-26s" % round(mpu_pitch, 2),
-              "YAW: %-26s" % round(mpu_yaw * -1, 2),
-              "PERIOD %-26s" % delta_time,
-              "RATE %-26s \n" % int(1 / delta_time))
+        # print("ROLL: %-26s" % round(mpu_roll, 2),
+        #       "PITCH: %-26s" % round(mpu_pitch, 2),
+        #       "YAW: %-26s" % round(mpu_yaw * -1, 2),
+        #       "PERIOD %-26s" % delta_time,
+        #       "RATE %-26s \n" % int(1 / delta_time))
 
         print("ROLL: %-26s" % round(lsm_roll, 2),
               "PITCH: %-26s" % round(lsm_pitch, 2),
