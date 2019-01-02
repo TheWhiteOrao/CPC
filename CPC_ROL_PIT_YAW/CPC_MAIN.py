@@ -28,7 +28,7 @@ def offset_setup():
     global sm_gyr_offset_y
     global sm_gyr_offset_z
     global mpu_gyr_offset
-    global sm_gyr_offset
+    global lsm_gyr_offset
 
     # ---------------------------- Sensors Initialize ---------------------------- #
 
