@@ -53,6 +53,7 @@ def offset_setup():
 
 
 prev_time = 0
+dtsumm = 0
 
 mpu_quats = [1, 0, 0, 0,
              1, 0, 0, 0]
@@ -60,12 +61,12 @@ mpu_quats = [1, 0, 0, 0,
 lsm_quats = [1, 0, 0, 0,
              1, 0, 0, 0]
 
-dtsumm = 0
-
 
 def main_loope():
     global prev_time
     global dtsumm
+    global mpu_quats
+    global lsm_quats
 
     # -------------------------------- Main Loope -------------------------------- #
     # --------------------------- Calculate Delta Time --------------------------- #
