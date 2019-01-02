@@ -119,14 +119,14 @@ def main_loope():
     if dtsumm > 0.05:
 
         # Console output
-        print("ROLL: %-26s" % round(mpu_roll - r_mup, 2),
-              "PITCH: %-26s" % round(mpu_pitch - p_mup, 2),
+        print("ROLL: %-26s" % round(mpu_roll, 2),
+              "PITCH: %-26s" % round(mpu_pitch, 2),
               "TEMP: %-26s" % round(tem_mpu, 2),
               "PERIOD %-26s" % delta_time,
               "RATE %-26s \n" % int(1 / delta_time))
 
-        print("ROLL: %-26s" % round(lsm_roll - r_lsm, 2),
-              "PITCH: %-26s" % round(lsm_pitch - p_lsm, 2),
+        print("ROLL: %-26s" % round(lsm_roll, 2),
+              "PITCH: %-26s" % round(lsm_pitch, 2),
               "TEMP: %-26s" % round(tem_lsm, 2),
               "PERIOD %-26s" % delta_time,
               "RATE %-26s \n" % int(1 / delta_time))
