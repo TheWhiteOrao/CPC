@@ -81,17 +81,17 @@ def main_loope():
         # Console output
         print("ROLL: %-26s" % round(mpu_roll, 2),
               "PITCH: %-26s" % round(mpu_pitch, 2),
-              "YAW: %-26s" % round(mpu_yaw * -1, 2),
+              "TEMP: %-26s" % round(tem_mpu), 2),
               "PERIOD %-26s" % delta_time,
               "RATE %-26s \n" % int(1 / delta_time))
 
         print("ROLL: %-26s" % round(lsm_roll, 2),
               "PITCH: %-26s" % round(lsm_pitch, 2),
-              "YAW: %-26s" % round(lsm_yaw * -1, 2),
+              "TEMP: %-26s" % round(tem_lsm, 2),
               "PERIOD %-26s" % delta_time,
               "RATE %-26s \n" % int(1 / delta_time))
 
-        dtsumm = 0
+        dtsumm=0
 
 
 offset_setup()
