@@ -34,7 +34,12 @@ def offset_setup():
     mpu_gyr_offset = gyroscope_calibration(mpu9250)
     lsm_gyr_offset = gyroscope_calibration(lsm9ds1)
 
+    print(mpu_gyr_offset,
+          lsm_gyr_offset)
+
     print("The Gyro calibration is done\n")
+
+    sleep(2)
 
     # ---------------------------------------------------------------------------- #
 
