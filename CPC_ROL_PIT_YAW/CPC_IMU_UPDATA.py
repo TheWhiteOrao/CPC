@@ -54,7 +54,7 @@ def imu_update(acc_sen,
         acc_sen_z *= acc_norm
 
         # Normalise magnetometer measurement
-        if not (mag_sen_x == 0 and mag_sen_y == 0 and mag_sen_z == 0)
+        if not (mag_sen_x == 0 and mag_sen_y == 0 and mag_sen_z == 0):
             mag_norm = (mag_sen_x * mag_sen_x + mag_sen_y * mag_sen_y + mag_sen_z * mag_sen_z) ** -0.5
             mag_sen_x *= mag_norm
             mag_sen_y *= mag_norm
