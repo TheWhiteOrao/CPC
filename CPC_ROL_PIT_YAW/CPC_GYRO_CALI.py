@@ -10,6 +10,8 @@ def gyroscope_calibration(sensor, n=100):
     for i in range(n):
         acc_sen, gyr_sen, mag_sen, tem_sen = sensor_read(sensor)
 
+        print(acc_sen, gyr_sen, mag_sen, tem_sen)
+
         gyr_x = gyr_sen[0]
         gyr_y = gyr_sen[1]
         gyr_z = gyr_sen[2]
