@@ -92,7 +92,7 @@ def main_loope():
     mpu_roll, mpu_pitch = get_euler(mpu_quats)
     lsm_roll, lsm_pitch = get_euler(lsm_quats)
 
-    if I > 100 and I <= 200:
+    if I > 1100 and I <= 1200:
         r_mup += mpu_roll / 100
         r_lsm += lsm_roll / 100
         p_mup += mpu_pitch / 100
