@@ -4,7 +4,7 @@ from CPC_NA2.lsm9ds1 import *
 from CPC_SENSORS_READ import sensor_read
 from CPC_GYRO_CALI import gyroscope_calibration
 from CPC_DELTA_TIME import delta_time_calculate
-from CPC_IMU_UPDATA import imu_update
+from CPC_IMU_UPDATA import *
 
 mpu9250 = MPU9250()
 lsm9ds1 = LSM9DS1()
