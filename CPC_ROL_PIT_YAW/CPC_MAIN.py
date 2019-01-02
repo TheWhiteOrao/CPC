@@ -72,8 +72,8 @@ def main_loope():
     mpu_quats = imu_update(acc_mpu, gyr_mpu,  delta_time, mpu_gyr_offset, mpu_quats)
     lsm_quats = imu_update(acc_lsm, gyr_lsm,  delta_time, lsm_gyr_offset, lsm_quats)
 
-    # mpu_roll, mpu_pitch, mpu_yaw = get_euler(mpu_quats)
-    lsm_roll, lsm_pitch, lsm_yaw = get_euler(lsm_quats)
+    mpu_roll, mpu_pitch = get_euler(mpu_quats)
+    lsm_roll, lsm_pitch = get_euler(lsm_quats)
 
     dtsumm += delta_time
     if dtsumm > 0.05:
