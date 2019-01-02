@@ -16,6 +16,9 @@ lsm_gyr_offset_x = 0
 lsm_gyr_offset_y = 0
 lsm_gyr_offset_z = 0
 
+mpu_gyr_offset = 0
+lsm_gyr_offset = 0
+
 
 def offset_setup():
     global mpu_gyr_offset_x
@@ -24,6 +27,8 @@ def offset_setup():
     global sm_gyr_offset_x
     global sm_gyr_offset_y
     global sm_gyr_offset_z
+    global mpu_gyr_offset
+    global sm_gyr_offset
 
     # ---------------------------- Sensors Initialize ---------------------------- #
 
