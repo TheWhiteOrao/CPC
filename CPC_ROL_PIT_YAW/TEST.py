@@ -36,10 +36,19 @@ def lol():
         l += 1
 
 
-def test():
+g = 1
+s = 1
+k = 1
+m = 1
+
+
+def test(g,
+         s,
+         k,
+         m):
     k = l + l
     return k
 
 
 print(lol(), l)
-print(test())
+print(test(g, s, k, m))

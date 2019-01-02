@@ -49,6 +49,12 @@ def offset_setup():
 
 prev_time = 0
 
+mpu_quats = [1, 0, 0, 0,
+             1, 0, 0, 0]
+
+lsm_quats = [1, 0, 0, 0,
+             1, 0, 0, 0]
+
 
 def main_loope():
     global prev_time
@@ -64,8 +70,11 @@ def main_loope():
     acc_mpu, gyr_mpu, mag_mpu, tem_mpu = sensor_read(mpu9250)
     acc_lsm, gyr_lsm, mag_lsm, tem_lsm = sensor_read(lsm9ds1)
 
-    mpu_roll, mpu_pitch, mpu_yaw = get_euler(acc_mpu, gyr_mpu, mag_mpu, delta_time, mpu_gyr_offset)
-    lsm_roll, lsm_pitch, lsm_yaw = get_euler(acc_lsm, gyr_lsm, mag_lsm, delta_time, lsm_gyr_offset)
+    mpu_quats = imu_update(acc_mpu, gyr_mpu, mag_mpu, delta_time, mpu_gyr_offset, mpu_quats)
+    lsm_quats = imu_update(acc_lsm, gyr_lsm, mag_lsm, delta_time, lsm_gyr_offset, lsm_quats)
+
+    mpu_roll, mpu_pitch, mpu_yaw = get_euler(mpu_quats)
+    lsm_roll, lsm_pitch, lsm_yaw = get_euler(lsm_quats)
 
     # print("acc_mpu: %-26s" % acc_mpu[0],
     #       "%-26s" % acc_mpu[1],

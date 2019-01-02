@@ -1,31 +1,23 @@
 from math import *
 
-roll_pitch_quat_zer = 1
-roll_pitch_quat_one = 0
-roll_pitch_quat_two = 0
-roll_pitch_quat_thr = 0
-
-
-yaw_quat_zer = 1
-yaw_quat_one = 0
-yaw_quat_two = 0
-yaw_quat_thr = 0
-
-
 twoKp = 2
 
 
-def imu_update(acc_sen, gyr_sen, mag_sen, delta_time, sen_gyr_offset):
+def imu_update(acc_sen,
+               gyr_sen,
+               mag_sen,
+               delta_time,
+               sen_gyr_offset,
+               sen_quats):
 
-    global roll_pitch_quat_zer
-    global roll_pitch_quat_one
-    global roll_pitch_quat_two
-    global roll_pitch_quat_thr
-
-    global yaw_quat_zer
-    global yaw_quat_one
-    global yaw_quat_two
-    global yaw_quat_thr
+    roll_pitch_quat_zer = sen_quats[0]
+    roll_pitch_quat_one = sen_quats[1]
+    roll_pitch_quat_two = sen_quats[2]
+    roll_pitch_quat_thr = sen_quats[3]
+    yaw_quat_zer = sen_quats[4]
+    yaw_quat_one = sen_quats[5]
+    yaw_quat_two = sen_quats[6]
+    yaw_quat_thr = sen_quats[7]
 
     global twoKp
 
@@ -165,10 +157,26 @@ def imu_update(acc_sen, gyr_sen, mag_sen, delta_time, sen_gyr_offset):
         yaw_quat_two *= yaw_quat_norm
         yaw_quat_thr *= yaw_quat_norm
 
+        return [roll_pitch_quat_zer,
+                roll_pitch_quat_one,
+                roll_pitch_quat_two,
+                roll_pitch_quat_thr,
+                yaw_quat_zer,
+                yaw_quat_one,
+                yaw_quat_two,
+                yaw_quat_thr]
 
-def get_euler(acc_sen, gyr_sen, mag_sen, delta_time, sen_gyr_offset):
 
-    imu_update(acc_sen, gyr_sen, mag_sen, delta_time, sen_gyr_offset)
+def get_euler(sen_quats):
+
+    roll_pitch_quat_zer = sen_quats[0]
+    roll_pitch_quat_one = sen_quats[1]
+    roll_pitch_quat_two = sen_quats[2]
+    roll_pitch_quat_thr = sen_quats[3]
+    yaw_quat_zer = sen_quats[4]
+    yaw_quat_one = sen_quats[5]
+    yaw_quat_two = sen_quats[6]
+    yaw_quat_thr = sen_quats[7]
 
     roll = atan2(2 * (roll_pitch_quat_zer * roll_pitch_quat_one + roll_pitch_quat_two * roll_pitch_quat_thr), 1 - 2 * (roll_pitch_quat_one * roll_pitch_quat_one + roll_pitch_quat_two * roll_pitch_quat_two)) * 180 / pi
     pitch = asin(2 * (roll_pitch_quat_zer * roll_pitch_quat_two - roll_pitch_quat_thr * roll_pitch_quat_one)) * 180 / pi
