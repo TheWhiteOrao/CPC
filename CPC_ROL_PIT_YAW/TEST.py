@@ -54,33 +54,23 @@
 # print(test(g, s, k, m))
 # print(0 / 1)
 
-def converter(imp, imp_kor, min=-90, max=90):
-    gu = max - min
-    if imp_kor > 0:
-        lol = max - imp_kor
+def converter(raw_imput, offset_imput, raw_output_lowest, raw_output_highest):
+    set_output_lowest = raw_output_lowest - offset_imput
+    set_output_highest = raw_output_highest - offset_imput
+
+    # print(set_output_lowest, set_output_highest, raw_output_lowest, raw_output_highest)
+
+    set_output_range = raw_output_highest - raw_output_lowest
+
+    if set_output_lowest + offset_imput * 2 < raw_imput and set_output_highest + offset_imput * 2 > raw_imput:
+        return (((set_output_highest - set_output_lowest) / set_output_range) * (set_output_range - (raw_output_highest - raw_imput))) + set_output_lowest
+
+    elif set_output_lowest + offset_imput * 2 <= raw_imput and set_output_highest + offset_imput * 2 <= raw_imput:
+        return set_output_lowest - (raw_output_highest - raw_imput)
     else:
-        lol = max + imp_kor
-
-    # print(lol, "lol")
-
-    l = max - imp_kor
-    k = min - imp_kor
-    g = max - imp
-    j = min - imp
-    o = (l - k) - g
-    p = (l - k) - j
-    if imp_kor > 0:
-        if imp < lol:
-            return((o + l) - 0)
-        else:
-            return((o + k) - 0)
-    else:
-        if imp < lol:
-            return((o + l) - gu)
-        else:
-            return((o + k) - gu)
+        return set_output_highest + (raw_output_highest + raw_imput)
 
 
-for i in range(-180, 180):
-
-    print(i, converter(i, 170, -180, 180))
+if __name__ == '__main__':
+    for i in range(-90, 90):
+        print(converter(i, -32, -90, 90))

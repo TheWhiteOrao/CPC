@@ -44,31 +44,21 @@ def offset_setup():
     # ---------------------------------------------------------------------------- #
 
 
-def converter(imp, imp_kor, min, max):
-    gu = max - min
-    if imp_kor > 0:
-        lol = max - imp_kor
-    else:
-        lol = max + imp_kor
+def converter(raw_imput, offset_imput, raw_output_lowest, raw_output_highest):
+    set_output_lowest = raw_output_lowest - offset_imput
+    set_output_highest = raw_output_highest - offset_imput
 
-    # print(lol, "lol")
+    # print(set_output_lowest, set_output_highest, raw_output_lowest, raw_output_highest)
 
-    l = max - imp_kor
-    k = min - imp_kor
-    g = max - imp
-    j = min - imp
-    o = (l - k) - g
-    p = (l - k) - j
-    if imp_kor > 0:
-        if imp < lol:
-            return((o + l) - 0)
-        else:
-            return((o + k) - 0)
+    set_output_range = raw_output_highest - raw_output_lowest
+
+    if set_output_lowest + offset_imput * 2 < raw_imput and set_output_highest + offset_imput * 2 > raw_imput:
+        return (((set_output_highest - set_output_lowest) / set_output_range) * (set_output_range - (raw_output_highest - raw_imput))) + set_output_lowest
+
+    elif set_output_lowest + offset_imput * 2 <= raw_imput and set_output_highest + offset_imput * 2 <= raw_imput:
+        return set_output_lowest - (raw_output_highest - raw_imput)
     else:
-        if imp < lol:
-            return((o + l) - gu)
-        else:
-            return((o + k) - gu)
+        return set_output_highest + (raw_output_highest + raw_imput)
 
 
 prev_time = 0

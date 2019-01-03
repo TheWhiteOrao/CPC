@@ -14,4 +14,4 @@ def RC(receiver_imput, Convertet_output_lowes, Convertet_output_highest, receive
 
 
 if __name__ == '__main__':
-    print(RC(1494, -1, 1))
+    print(RC(180, -212, 148, -180, 180))
