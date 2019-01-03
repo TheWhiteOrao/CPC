@@ -65,17 +65,17 @@ def converter(imp, imp_kor, min=-180, max=180):
     j = min - imp
     o = (l - k) - g
     p = (l - k) - j
-    if imp_kor < 0:
+    if imp_kor > 0:
         if imp < lolo:
-            print((o + l) - lol - lolo)
+            return((o + l) - lol - lolo)
         else:
-            print((o + k) - lol - lolo)
+            return((o + k) - lol - lolo)
     else:
         if imp < lol:
-            print((o + l) - lol * 2)
+            return((o + l) - lol * 2)
         else:
-            print((o + k) - lol * 2)
+            return((o + k) - lol * 2)
 
 
 for i in range(-180, 180):
-    converter(i, -150)
+    print(i, converter(i, -10))

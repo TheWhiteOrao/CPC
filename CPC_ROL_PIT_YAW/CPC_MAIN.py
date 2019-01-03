@@ -55,7 +55,7 @@ def converter(imp, imp_kor, min, max):
     j = min - imp
     o = (l - k) - g
     p = (l - k) - j
-    if imp_kor < 0:
+    if imp_kor > 0:
         if imp < lolo:
             return ((o + l) - lol - lolo)
         else:
