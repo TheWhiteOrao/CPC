@@ -52,4 +52,16 @@
 #
 # print(lol(), l)
 # print(test(g, s, k, m))
-print(0 / 1)
+# print(0 / 1)
+
+def converter(imp, imp_kor, min=-90, max=90):
+    steps = max - min
+    max_imp_kor = max - imp_kor
+    min_imp_kor = min - imp_kor
+    max_imp = max - imp
+    max_min_imp_kor = (max_imp_kor - min_imp_kor) - max_imp
+
+    return ((max_min_imp_kor + max_imp_kor) - steps)
+
+
+print(converter(-83, 0))
