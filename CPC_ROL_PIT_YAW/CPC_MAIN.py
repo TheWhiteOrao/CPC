@@ -108,11 +108,11 @@ def main_loope():
     mpu_roll, mpu_pitch = get_euler(mpu_quats)
     lsm_roll, lsm_pitch = get_euler(lsm_quats)
 
-    if I > 10000 and I <= 11000:
-        temp_mpu_roll += mpu_roll / 1000
-        temp_mpu_pitch += mpu_pitch / 1000
-        temp_lsm_roll += lsm_roll / 1000
-        temp_lsm_pitch += lsm_pitch / 1000
+    # if I > 10000 and I <= 11000:
+    #     temp_mpu_roll += mpu_roll / 1000
+    #     temp_mpu_pitch += mpu_pitch / 1000
+    #     temp_lsm_roll += lsm_roll / 1000
+    #     temp_lsm_pitch += lsm_pitch / 1000
 
     dtsumm += delta_time
     if dtsumm > 0.05:
