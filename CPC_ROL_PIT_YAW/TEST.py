@@ -55,9 +55,13 @@
 # print(0 / 1)
 
 def converter(imp, imp_kor, min=-180, max=180):
-    lol = max - imp_kor
-    lolo = min - imp_kor
-    #print(lol, lolo)
+    if imp < 0:
+        lol = max - imp_kor
+        lolo = min + imp_kor
+    else:
+        lol = max + imp_kor
+        lolo = min - imp_kor
+    # print(lol, lolo)
 
     l = max - imp_kor
     k = min - imp_kor
@@ -66,16 +70,17 @@ def converter(imp, imp_kor, min=-180, max=180):
     o = (l - k) - g
     p = (l - k) - j
     if imp_kor > 0:
-        if imp < lolo:
-            return((o + l) - lol - lolo)
+        if imp < lol:
+            return((o + l) - 360 + imp_kor * 2), 1
         else:
-            return((o + k) - lol - lolo)
+            return((o + k) - 360 + imp_kor * 2), 2
     else:
         if imp < lol:
-            return((o + l) - lol * 2)
+            return((o + l) - 360), 3,
         else:
-            return((o + k) - lol * 2)
+            return((o + k) - 360), 4
 
 
 for i in range(-180, 180):
+
     print(i, converter(i, -10))
