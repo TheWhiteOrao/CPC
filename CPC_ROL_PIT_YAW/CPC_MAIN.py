@@ -61,14 +61,14 @@ def converter(imp, imp_kor, min, max):
     p = (l - k) - j
     if imp_kor > 0:
         if imp < lol:
-            return((o + l) - 360 + imp_kor * 2), 1
+            return((o + l) - 360 + imp_kor * 2)
         else:
-            return((o + k) - 360 + imp_kor * 2), 2
+            return((o + k) - 360 + imp_kor * 2)
     else:
         if imp < lol:
-            return((o + l) - 360), 3,
+            return((o + l) - 360)
         else:
-            return((o + k) - 360), 4
+            return((o + k) - 360)
 
 
 prev_time = 0
