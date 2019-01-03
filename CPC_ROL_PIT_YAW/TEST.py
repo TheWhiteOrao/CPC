@@ -83,4 +83,4 @@ def converter(imp, imp_kor, min=-180, max=180):
 
 for i in range(-180, 180):
 
-    print(i, converter(i, -10))
+    print(i, converter(i, 15))
