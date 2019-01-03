@@ -45,13 +45,26 @@ def offset_setup():
 
 
 def converter(imp, imp_kor, min, max):
-    steps = max - min
-    max_imp_kor = max - imp_kor
-    min_imp_kor = min - imp_kor
-    max_imp = max - imp
-    max_min_imp_kor = (max_imp_kor - min_imp_kor) - max_imp
+    lol = max - imp_kor
+    lolo = min - imp_kor
+    #print(lol, lolo)
 
-    return ((max_min_imp_kor + max_imp_kor) - steps)
+    l = max - imp_kor
+    k = min - imp_kor
+    g = max - imp
+    j = min - imp
+    o = (l - k) - g
+    p = (l - k) - j
+    if imp_kor < 0:
+        if imp < lolo:
+            return ((o + l) - lol - lolo)
+        else:
+            return ((o + k) - lol - lolo)
+    else:
+        if imp < lol:
+            return ((o + l) - lol * 2)
+        else:
+            return ((o + k) - lol * 2)
 
 
 prev_time = 0
