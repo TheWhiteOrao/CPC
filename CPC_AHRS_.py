@@ -123,7 +123,6 @@ def updateIMU(ax,  ay,  az,  gx,  gy,  gz,  dt):
     global q2
     global q3
 
-    print(q0, q1, q2, q3)
     gx -= gyroOffset[0]
     gy -= gyroOffset[1]
     gz -= gyroOffset[2]
