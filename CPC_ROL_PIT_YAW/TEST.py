@@ -54,7 +54,8 @@
 # print(test(g, s, k, m))
 # print(0 / 1)
 
-def converter(imp, imp_kor, min=-180, max=180):
+def converter(imp, imp_kor, min=-90, max=90):
+    gu = max - min
     if imp < 0:
         lol = max - imp_kor
         lolo = min + imp_kor
@@ -71,16 +72,16 @@ def converter(imp, imp_kor, min=-180, max=180):
     p = (l - k) - j
     if imp_kor > 0:
         if imp < lol:
-            return((o + l) - 360 + imp_kor * 2), 1
+            return((o + l) - gu + imp_kor * 2)
         else:
-            return((o + k) - 360 + imp_kor * 2), 2
+            return((o + k) - gu + imp_kor * 2)
     else:
         if imp < lol:
-            return((o + l) - 360), 3,
+            return((o + l) - gu)
         else:
-            return((o + k) - 360), 4
+            return((o + k) - gu)
 
 
-for i in range(-180, 180):
+for i in range(-90, 90):
 
-    print(i, converter(i, 15))
+    print(i, converter(i, 0))

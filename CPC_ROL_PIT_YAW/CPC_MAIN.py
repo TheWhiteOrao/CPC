@@ -45,6 +45,7 @@ def offset_setup():
 
 
 def converter(imp, imp_kor, min, max):
+    gu = max - min
     if imp < 0:
         lol = max - imp_kor
         lolo = min + imp_kor
@@ -61,14 +62,14 @@ def converter(imp, imp_kor, min, max):
     p = (l - k) - j
     if imp_kor > 0:
         if imp < lol:
-            return((o + l) - 360 + imp_kor * 2)
+            return((o + l) - gu + imp_kor * 2)
         else:
-            return((o + k) - 360 + imp_kor * 2)
+            return((o + k) - gu + imp_kor * 2)
     else:
         if imp < lol:
-            return((o + l) - 360)
+            return((o + l) - gu)
         else:
-            return((o + k) - 360)
+            return((o + k) - gu)
 
 
 prev_time = 0
