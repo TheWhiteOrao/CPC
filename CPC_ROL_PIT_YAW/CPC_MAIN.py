@@ -47,38 +47,14 @@ def offset_setup():
 prev_time = 0
 dtsumm = 0
 
-I = 0
-r_mup = 0
-r_lsm = 0
-p_mup = 0
-p_lsm = 0
-
-temp_r_mup = 0
-temp_r_lsm = 0
-temp_p_mup = 0
-temp_p_lsm = 0
-
 mpu_quats = [1, 0, 0, 0,
              1, 0, 0, 0]
 
 lsm_quats = [1, 0, 0, 0,
              1, 0, 0, 0]
 
-pi = 3.14159265358
-
 
 def main_loope():
-    global I
-    global r_mup
-    global r_lsm
-    global p_mup
-    global p_lsm
-    global temp_r_mup
-    global temp_r_lsm
-    global temp_p_mup
-    global temp_p_lsm
-    global pi
-
     global prev_time
     global dtsumm
     global mpu_quats
@@ -101,39 +77,26 @@ def main_loope():
     mpu_quats = imu_update(acc_mpu, gyr_mpu,  delta_time, mpu_gyr_offset, mpu_quats)
     lsm_quats = imu_update(acc_lsm, gyr_lsm,  delta_time, lsm_gyr_offset, lsm_quats)
 
-    mpu_roll, mpu_pitch = get_euler(mpu_quats, r_mup, p_mup)
-    lsm_roll, lsm_pitch = get_euler(lsm_quats, r_lsm, p_lsm)
-
-    if I > 10000 and I <= 11000:
-        temp_r_mup += mpu_roll / 1000
-        temp_r_lsm += lsm_roll / 1000
-        temp_p_mup += mpu_pitch / 1000
-        temp_p_lsm += lsm_pitch / 1000
-    if I == 11001:
-        r_mup = temp_r_mup * pi / 180
-        r_lsm = temp_r_lsm * pi / 180
-        p_mup = temp_p_mup * pi / 180
-        p_lsm = temp_p_lsm * pi / 180
+    mpu_roll, mpu_pitch = get_euler(mpu_quats)
+    lsm_roll, lsm_pitch = get_euler(lsm_quats)
 
     dtsumm += delta_time
     if dtsumm > 0.05:
 
         # Console output
-        print("ROLL: %-26s" % round(mpu_roll - temp_r_mup, 2),
-              "PITCH: %-26s" % round(mpu_pitch - temp_p_mup, 2),
+        print("ROLL: %-26s" % round(mpu_roll, 2),
+              "PITCH: %-26s" % round(mpu_pitch, 2),
               "TEMP: %-26s" % round(tem_mpu, 2),
               "PERIOD %-26s" % delta_time,
               "RATE %-26s \n" % int(1 / delta_time))
 
-        print("ROLL: %-26s" % round(lsm_roll - temp_r_lsm, 2),
-              "PITCH: %-26s" % round(lsm_pitch - temp_p_lsm, 2),
+        print("ROLL: %-26s" % round(lsm_roll, 2),
+              "PITCH: %-26s" % round(lsm_pitch, 2),
               "TEMP: %-26s" % round(tem_lsm, 2),
               "PERIOD %-26s" % delta_time,
               "RATE %-26s \n" % int(1 / delta_time))
 
         dtsumm = 0
-
-    I += 1
 
 
 offset_setup()
