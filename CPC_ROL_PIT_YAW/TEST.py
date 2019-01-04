@@ -71,7 +71,7 @@
 #         return set_output_highest + (raw_output_highest + raw_imput)
 from CPC_NA2.leds import *
 led = Led()
-led.ledB(0.5)
+led.ledB.write(0.5)
 
 # if __name__ == '__main__':
 #     for i in range(-90, 90):
