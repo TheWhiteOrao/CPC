@@ -78,6 +78,7 @@ temp_mpu_roll = 0
 temp_mpu_pitch = 0
 temp_lsm_roll = 0
 temp_lsm_pitch = 0
+led_t = 14000
 
 
 def main_loope():
@@ -90,6 +91,7 @@ def main_loope():
     global temp_mpu_pitch
     global temp_lsm_roll
     global temp_lsm_pitch
+    global led_t
 
     # -------------------------------- Main Loope -------------------------------- #
     # --------------------------- Calculate Delta Time --------------------------- #
@@ -117,8 +119,15 @@ def main_loope():
         temp_lsm_roll += lsm_roll / 1000
         temp_lsm_pitch += lsm_pitch / 1000
 
-    if I > 14000 and I <= 14001:
-        led.setColor("Green")
+    for I in range(100000):
+        # print(I)
+        if I > 14000:
+            if led_t - 400 < I and led_t - 200 >= I:
+                led.setColor("Black")
+            else:
+                led.setColor("Green")
+                if I > led_t:
+                    led_t += 400
 
     dtsumm += delta_time
     if dtsumm > 0.05:

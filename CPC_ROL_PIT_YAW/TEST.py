@@ -69,13 +69,22 @@
 #         return set_output_lowest - (raw_output_highest - raw_imput)
 #     else:
 #         return set_output_highest + (raw_output_highest + raw_imput)
-from CPC_NA2.leds import *
-from time import *
-led = Led()
-led.setColor("Green")
-
-sleep(3)
-
+# from CPC_NA2.leds import *
+# from time import *
+# led = Led()
+# led.setColor("Green")
+#
+# sleep(3)
+led_t = 14000
+for I in range(100000):
+    # print(I)
+    if I > 14000:
+        if led_t - 400 < I and led_t - 200 >= I:
+            print("Black")
+        else:
+            print("Green")
+            if I > led_t:
+                led_t += 400
 # if __name__ == '__main__':
 #     for i in range(-90, 90):
 #         print(converter(i, -32, -90, 90))
