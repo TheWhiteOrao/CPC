@@ -19,31 +19,30 @@ led = Led()
 def offset_setup():
     global mpu_gyr_offset
     global lsm_gyr_offset
-    led.ledB(0.5)
+
+    led.setColor("Red")
 
     # ---------------------------- Sensors Initialize ---------------------------- #
 
-    print("Initialize of mpu9250 and lsm9ds1 sensors starts.")
+    # print("Initialize of mpu9250 and lsm9ds1 sensors starts.")
 
     mpu9250.initialize()
     lsm9ds1.initialize()
 
-    print("Initialize of mpu9250 and lsm9ds1 sensors is done.\n")
+    # print("Initialize of mpu9250 and lsm9ds1 sensors is done.\n")
 
     # ---------------------------------------------------------------------------- #
     # ----------------------------- Gyro Calibration ----------------------------- #
 
-    print("Calibration the Gyro.")
+    # print("Calibration the Gyro.")
 
     mpu_gyr_offset = gyroscope_calibration(mpu9250)
     lsm_gyr_offset = gyroscope_calibration(lsm9ds1)
 
-    print(mpu_gyr_offset,
-          lsm_gyr_offset)
+    # print(mpu_gyr_offset,
+    #       lsm_gyr_offset)
 
-    print("The Gyro calibration is done\n")
-
-    sleep(2)
+    # print("The Gyro calibration is done\n")
 
     # ---------------------------------------------------------------------------- #
 
@@ -117,6 +116,9 @@ def main_loope():
         temp_mpu_pitch += mpu_pitch / 1000
         temp_lsm_roll += lsm_roll / 1000
         temp_lsm_pitch += lsm_pitch / 1000
+
+    if I > 14000 and I < 14001:
+        led.setColor("Green")
 
     dtsumm += delta_time
     if dtsumm > 0.05:
