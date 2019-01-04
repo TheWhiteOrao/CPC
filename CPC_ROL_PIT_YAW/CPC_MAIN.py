@@ -158,7 +158,7 @@ def main_loope():
 
         dtsumm = 0
 
-    led_loop("Black", "Cyan", 1000)
+    led_loop("Black", "Cyan", 250)
 
 
 if __name__ == '__main__':
