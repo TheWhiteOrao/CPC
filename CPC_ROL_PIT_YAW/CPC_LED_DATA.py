@@ -15,11 +15,11 @@ def led_loop(color_one, color_two, set_interval=200):
         print("3")
 
     if loop_counter < set_interval:
-        led.setColor(color_one)
+        led.setColor("Green")
         print("1")
 
     if loop_counter >= set_interval and loop_counter < set_interval * 2:
-        led.setColor(color_one)
+        led.setColor("Black")
         print("2")
 
     loop_counter += 1
