@@ -27,4 +27,4 @@ def led_loop(color_one, color_two, set_interval=200):
 
 if __name__ == '__main__':
     for i in range(14000):
-        led_loop("Black", "Green", 200)
+        led_loop("Black", "Green", 1000)
