@@ -72,12 +72,8 @@
 from CPC_NA2.leds import *
 from time import *
 led = Led()
-led.ledR = Pin("rgb_led0")
-led.ledB = Pin("rgb_led1")
-led.ledG = Pin("rgb_led2")
-led.ledR.write(1)
-led.ledG.write(1)
-led.ledB.write(1)
+led.setColor("Green")
+
 sleep(3)
 
 # if __name__ == '__main__':
