@@ -5,6 +5,7 @@ from CPC_SENSORS_READ import sensor_read
 from CPC_GYRO_CALI import gyroscope_calibration
 from CPC_DELTA_TIME import delta_time_calculate
 from CPC_IMU_UPDATA import *
+from CPC_NA2.leds import *
 
 mpu9250 = MPU9250()
 lsm9ds1 = LSM9DS1()
@@ -12,10 +13,13 @@ lsm9ds1 = LSM9DS1()
 mpu_gyr_offset = 0
 lsm_gyr_offset = 0
 
+led = Led()
+
 
 def offset_setup():
     global mpu_gyr_offset
     global lsm_gyr_offset
+    led.ledB(0.5)
 
     # ---------------------------- Sensors Initialize ---------------------------- #
 
@@ -108,11 +112,11 @@ def main_loope():
     mpu_roll, mpu_pitch = get_euler(mpu_quats)
     lsm_roll, lsm_pitch = get_euler(lsm_quats)
 
-    # if I > 10000 and I <= 11000:
-    #     temp_mpu_roll += mpu_roll / 1000
-    #     temp_mpu_pitch += mpu_pitch / 1000
-    #     temp_lsm_roll += lsm_roll / 1000
-    #     temp_lsm_pitch += lsm_pitch / 1000
+    if I > 10000 and I <= 11000:
+        temp_mpu_roll += mpu_roll / 1000
+        temp_mpu_pitch += mpu_pitch / 1000
+        temp_lsm_roll += lsm_roll / 1000
+        temp_lsm_pitch += lsm_pitch / 1000
 
     dtsumm += delta_time
     if dtsumm > 0.05:

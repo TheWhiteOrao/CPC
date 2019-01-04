@@ -53,24 +53,26 @@
 # print(lol(), l)
 # print(test(g, s, k, m))
 # print(0 / 1)
+#
+# def converter(raw_imput, offset_imput, raw_output_lowest, raw_output_highest):
+#     set_output_lowest = raw_output_lowest - offset_imput
+#     set_output_highest = raw_output_highest - offset_imput
+#
+#     # print(set_output_lowest, set_output_highest, raw_output_lowest, raw_output_highest)
+#
+#     set_output_range = raw_output_highest - raw_output_lowest
+#
+#     if set_output_lowest + offset_imput * 2 < raw_imput and set_output_highest + offset_imput * 2 > raw_imput:
+#         return (((set_output_highest - set_output_lowest) / set_output_range) * (set_output_range - (raw_output_highest - raw_imput))) + set_output_lowest
+#
+#     elif set_output_lowest + offset_imput * 2 <= raw_imput and set_output_highest + offset_imput * 2 <= raw_imput:
+#         return set_output_lowest - (raw_output_highest - raw_imput)
+#     else:
+#         return set_output_highest + (raw_output_highest + raw_imput)
+from CPC_NA2.leds import *
 
-def converter(raw_imput, offset_imput, raw_output_lowest, raw_output_highest):
-    set_output_lowest = raw_output_lowest - offset_imput
-    set_output_highest = raw_output_highest - offset_imput
+led.ledB(0.5)
 
-    # print(set_output_lowest, set_output_highest, raw_output_lowest, raw_output_highest)
-
-    set_output_range = raw_output_highest - raw_output_lowest
-
-    if set_output_lowest + offset_imput * 2 < raw_imput and set_output_highest + offset_imput * 2 > raw_imput:
-        return (((set_output_highest - set_output_lowest) / set_output_range) * (set_output_range - (raw_output_highest - raw_imput))) + set_output_lowest
-
-    elif set_output_lowest + offset_imput * 2 <= raw_imput and set_output_highest + offset_imput * 2 <= raw_imput:
-        return set_output_lowest - (raw_output_highest - raw_imput)
-    else:
-        return set_output_highest + (raw_output_highest + raw_imput)
-
-
-if __name__ == '__main__':
-    for i in range(-90, 90):
-        print(converter(i, -32, -90, 90))
+# if __name__ == '__main__':
+#     for i in range(-90, 90):
+#         print(converter(i, -32, -90, 90))
