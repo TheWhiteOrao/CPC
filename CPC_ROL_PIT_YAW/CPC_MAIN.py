@@ -5,22 +5,32 @@ from CPC_SENSORS_READ import sensor_read
 from CPC_GYRO_CALI import gyroscope_calibration
 from CPC_DELTA_TIME import delta_time_calculate
 from CPC_IMU_UPDATA import *
-from CPC_NA2.leds import *
+from CPC_LED_DATA import *
 
 mpu9250 = MPU9250()
 lsm9ds1 = LSM9DS1()
 
 mpu_gyr_offset = 0
 lsm_gyr_offset = 0
+prev_time = 0
+dtsumm = 0
+temp_mpu_roll = 0
+temp_mpu_pitch = 0
+temp_lsm_roll = 0
+temp_lsm_pitch = 0
 
-led = Led()
+mpu_quats = [1, 0, 0, 0,
+             1, 0, 0, 0]
+
+lsm_quats = [1, 0, 0, 0,
+             1, 0, 0, 0]
 
 
 def offset_setup():
     global mpu_gyr_offset
     global lsm_gyr_offset
 
-    led.setColor("Red")
+    led_singel("Red")
 
     # ---------------------------- Sensors Initialize ---------------------------- #
 
@@ -64,25 +74,43 @@ def converter(raw_imput, offset_imput, raw_output_lowest, raw_output_highest):
         return set_output_highest + (raw_output_highest + raw_imput)
 
 
-prev_time = 0
-dtsumm = 0
-I = 0
+def set_roll_pitch_offset(start_offset=10000, offset_steps=1000):
+    global prev_time
+    global mpu_quats
+    global lsm_quats
+    global temp_mpu_roll
+    global temp_mpu_pitch
+    global temp_lsm_roll
+    global temp_lsm_pitch
 
-mpu_quats = [1, 0, 0, 0,
-             1, 0, 0, 0]
+    # ---------------------------- Roll Pitch Offsets ---------------------------- #
+    # --------------------------- Calculate Delta Time --------------------------- #
+    for roll_pitch_loop in range(start_offset + offset_steps):
 
-lsm_quats = [1, 0, 0, 0,
-             1, 0, 0, 0]
+        delta_time, prev_time = delta_time_calculate(prev_time)
 
-temp_mpu_roll = 0
-temp_mpu_pitch = 0
-temp_lsm_roll = 0
-temp_lsm_pitch = 0
-led_t = 14000
+        # ------------------------------------------------------------------------ #
+        # ---------- Read raw measurements from the mpu9250 and lsm9ds1 ---------- #
+
+        acc_mpu, gyr_mpu, tem_mpu = sensor_read(mpu9250)
+        acc_lsm, gyr_lsm, tem_lsm = sensor_read(lsm9ds1)
+
+        mpu_quats = imu_update(acc_mpu, gyr_mpu,  delta_time, mpu_gyr_offset, mpu_quats)
+        lsm_quats = imu_update(acc_lsm, gyr_lsm,  delta_time, lsm_gyr_offset, lsm_quats)
+
+        mpu_roll, mpu_pitch = get_euler(mpu_quats)
+        lsm_roll, lsm_pitch = get_euler(lsm_quats)
+
+        if roll_pitch_loop >= start_offset:
+            temp_mpu_roll += mpu_roll / offset_steps
+            temp_mpu_pitch += mpu_pitch / offset_steps
+            temp_lsm_roll += lsm_roll / offset_steps
+            temp_lsm_pitch += lsm_pitch / offset_steps
+
+        led_loop("Black", "Green", offset_steps)
 
 
 def main_loope():
-    global I
     global prev_time
     global dtsumm
     global mpu_quats
@@ -91,7 +119,6 @@ def main_loope():
     global temp_mpu_pitch
     global temp_lsm_roll
     global temp_lsm_pitch
-    global led_t
 
     # -------------------------------- Main Loope -------------------------------- #
     # --------------------------- Calculate Delta Time --------------------------- #
@@ -113,21 +140,6 @@ def main_loope():
     mpu_roll, mpu_pitch = get_euler(mpu_quats)
     lsm_roll, lsm_pitch = get_euler(lsm_quats)
 
-    if I > 10000 and I <= 11000:
-        temp_mpu_roll += mpu_roll / 1000
-        temp_mpu_pitch += mpu_pitch / 1000
-        temp_lsm_roll += lsm_roll / 1000
-        temp_lsm_pitch += lsm_pitch / 1000
-
-    # print(I)
-    if I > 14000:
-        if led_t - 400 < I and led_t - 200 >= I:
-            led.setColor("Black")
-        else:
-            led.setColor("Green")
-            if I > led_t:
-                led_t += 400
-
     dtsumm += delta_time
     if dtsumm > 0.05:
 
@@ -146,32 +158,11 @@ def main_loope():
 
         dtsumm = 0
 
-    I += 1
+    led_loop("Black", "Cyan", 1000)
 
 
-offset_setup()
-while True:
-    main_loope()
-    # print("acc_mpu: %-26s" % acc_mpu[0],
-    #       "%-26s" % acc_mpu[1],
-    #       "%-26s" % acc_mpu[2],
-    #       "gyr_mpu: %-26s" % gyr_mpu[0],
-    #       "%-26s" % gyr_mpu[1],
-    #       "%-26s" % gyr_mpu[2],
-    #       "mag_mpu: %-26s" % mag_mpu[0],
-    #       "%-26s" % mag_mpu[1],
-    #       "%-26s" % mag_mpu[2],
-    #       "tem_mpu: %-26s" % tem_mpu
-    #       )
-    #
-    # print("acc_lsm: %-26s" % acc_lsm[0],
-    #       "%-26s" % acc_lsm[1],
-    #       "%-26s" % acc_lsm[2],
-    #       "gyr_lsm: %-26s" % gyr_lsm[0],
-    #       "%-26s" % gyr_lsm[1],
-    #       "%-26s" % gyr_lsm[2],
-    #       "mag_lsm: %-26s" % mag_lsm[0],
-    #       "%-26s" % mag_lsm[1],
-    #       "%-26s" % mag_lsm[2],
-    #       "tem_lsm: %-26s" % tem_lsm
-    #       )
+if __name__ == '__main__':
+    offset_setup()
+    set_roll_pitch_offset()
+    while True:
+        main_loope()
