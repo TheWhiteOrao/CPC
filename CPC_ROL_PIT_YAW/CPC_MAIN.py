@@ -117,7 +117,7 @@ def main_loope():
         temp_lsm_roll += lsm_roll / 1000
         temp_lsm_pitch += lsm_pitch / 1000
 
-    if I > 14000 and I < 14001:
+    if I > 14000 and I <= 14001:
         led.setColor("Green")
 
     dtsumm += delta_time
