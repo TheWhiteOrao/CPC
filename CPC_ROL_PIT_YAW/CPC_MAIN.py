@@ -119,15 +119,14 @@ def main_loope():
         temp_lsm_roll += lsm_roll / 1000
         temp_lsm_pitch += lsm_pitch / 1000
 
-    for I in range(100000):
-        # print(I)
-        if I > 14000:
-            if led_t - 400 < I and led_t - 200 >= I:
-                led.setColor("Black")
-            else:
-                led.setColor("Green")
-                if I > led_t:
-                    led_t += 400
+    # print(I)
+    if I > 14000:
+        if led_t - 400 < I and led_t - 200 >= I:
+            led.setColor("Black")
+        else:
+            led.setColor("Green")
+            if I > led_t:
+                led_t += 400
 
     dtsumm += delta_time
     if dtsumm > 0.05:
