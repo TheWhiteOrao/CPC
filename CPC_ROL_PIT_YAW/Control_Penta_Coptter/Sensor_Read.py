@@ -19,4 +19,4 @@ if __name__ == '__main__':
 
     mpu9250.initialize()
 
-    print(sensor_read(mpu9250))
+    print(sensor_read(mpu9250), 1)
