@@ -13,10 +13,10 @@ def sensor_read(sensor):
 
 
 if __name__ == '__main__':
-    from N2.mup9250 import *
+    from N2.mpu9250 import *
 
     mpu9250 = MPU9250()
 
     mpu9250.initialize()
 
-    print(sensor_read(mpu9250), 1)
+    print(sensor_read(mpu9250))
