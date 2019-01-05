@@ -1,5 +1,6 @@
 from N2.leds import Led()
 
+
 # LED Control, can be used to turn on the led in one color and visualize that the program is running
 # Static LED, can be used to turn on the led in one color
 # Looping LED, can be used to visualize that the program is running, through the flashing LED in different colors
@@ -9,6 +10,7 @@ loop_counter = 0
 
 
 def static_LED(set_first_color):
+
     led.setColor(set_first_color)
 
 

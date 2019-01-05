@@ -1,6 +1,6 @@
 
 
-# Receiver Signal Converter, converts the receiver signal in usable values between a set Range
+# Receiver Signal Converter, converts the receiver signal in usable values, between a set Range
 
 def receiver_signal_converter(receiver_signal_imput, set_lowest_output, set_highest_output, lowest_receiver_output=982, highest_receiver_output=2006):
 

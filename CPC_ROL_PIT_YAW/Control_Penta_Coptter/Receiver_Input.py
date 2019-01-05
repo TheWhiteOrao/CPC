@@ -7,9 +7,11 @@ rc_imput = RCInput()
 
 
 def receiver_imput(channel_number):
+
     return int(rc_imput.read(channel_number))
 
 
 if __name__ == '__main__':
+
     while True:
         print(receiver_imput(0))
