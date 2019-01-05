@@ -10,7 +10,7 @@ def cosinus(cosinus_x, pi=3.141592653589):
 
     cosinus_result = 1
 
-    for intervals in range(1, 10):
+    for intervals in range(1, 20):  # range must end on a even number and start at 1
 
         cosinus_funktion = (cosinus_radial ** (2 * intervals)) / factorial(2 * intervals)
         sign_switcher = (-1)**(intervals)
@@ -21,4 +21,4 @@ def cosinus(cosinus_x, pi=3.141592653589):
 
 if __name__ == '__main__':
 
-    print(cosinus(50))
+    print(cosinus(300))
