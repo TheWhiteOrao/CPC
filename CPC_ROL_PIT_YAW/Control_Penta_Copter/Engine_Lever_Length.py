@@ -2,7 +2,7 @@ from Sinus import sinus
 from Cosinus import cosinus
 
 
-#
+# Engine Lever Length, is to determine the lever length of any copter in x and y axis
 
 def engine_lever_length(number_of_engien, radius_of_engien=500, engine_type="x"):
     if number_of_engien <= 1:
