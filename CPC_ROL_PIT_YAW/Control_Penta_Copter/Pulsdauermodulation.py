@@ -8,6 +8,8 @@ def pulsdauermodulation(number_of_engien):
     for i in range(number_of_engien):
         engine[i] = PWM(i)
 
+    print(engine)
+
     for i in range(number_of_engien):
         engine[i].initialize()
 
