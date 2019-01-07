@@ -11,7 +11,7 @@ def pulsdauermodulation(number_of_engien, refresh_frequency=500, pos_range_max=1
         engine[i].set_period(refresh_frequency)
         engine[i].enable()
 
-    print(engine)
+    return engine
 
 
 if __name__ == '__main__':
