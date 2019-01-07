@@ -1,7 +1,7 @@
 from N2.pwm import *
 
 
-def pulsdauermodulation(number_of_engien, refresh_frequency=500, pos_range_max=1100, pos_range_may=1940):
+def pulsdauermodulation_creator(number_of_engien, refresh_frequency=500, pos_range_max=1100, pos_range_may=1940):
 
     engine = dict(map(lambda x: (x, 0), range(number_of_engien)))
 
@@ -15,4 +15,4 @@ def pulsdauermodulation(number_of_engien, refresh_frequency=500, pos_range_max=1
 
 
 if __name__ == '__main__':
-    pulsdauermodulation(5)
+    pulsdauermodulation_creator(5)

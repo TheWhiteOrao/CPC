@@ -1,0 +1,4 @@
+from Pulsdauermodulation_creator import pulsdauermodulation_creator
+
+
+def pulsdauermodulation_transmitter(pulsdauermodulation_creator_output)
