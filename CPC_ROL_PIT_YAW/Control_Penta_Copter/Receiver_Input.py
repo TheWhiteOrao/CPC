@@ -13,7 +13,7 @@ def receiver_imput(channel_range):
     for i in channel_range:
         imput_dir[i] = int(rc_imput.read(i)), channel_range[i]
 
-    print(imput_dir)
+    return imput_dir
 
 
 if __name__ == '__main__':
