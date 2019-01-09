@@ -27,6 +27,7 @@
 #
 # print(k1, k2, k3, k4, k5, k6, k7, k8, k9, k10, k11, k12)
 
-h = (1, 19)
+h = {0: 1, 1: 19}
 
-print(type(h) == str)
+for i in h:
+    print(h[i])

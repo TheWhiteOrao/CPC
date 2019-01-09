@@ -8,18 +8,14 @@ rc_imput = RCInput()
 
 def receiver_imput(channel_range):
 
-    if type(channel_range) == tuple:
-        imput_dir = {}
+    imput_dir = {}
 
-        for i in channel_range:
-            imput_dir[i] = int(rc_imput.read(i))
+    for i in channel_range:
+        imput_dir[i] = int(rc_imput.read(i)), channel_range[i]
 
-        return imput_dir
-
-    if type(channel_range) == int:
-        return int(rc_imput.read(channel_range))
+    print(imput_dir)
 
 
 if __name__ == '__main__':
     while True:
-        print(receiver_imput((0, 1, 2, 3)))
+        print(receiver_imput({0: (0, 1), 1: (-1, 1), 2: (-1, 1), 3: (-1, 1)}))
