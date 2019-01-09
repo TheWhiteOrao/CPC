@@ -10,7 +10,7 @@ def stabilization_controller(current_converted_receiver, previous_converted_rece
 
             angle_white[i] = current_converted_receiver[i] - previous_converted_receiver[i]
 
-        print(angle_white)
+        # print(angle_white)
 
     return angle_white, current_converted_receiver
 
@@ -27,7 +27,7 @@ if __name__ == '__main__':
 
         outputs = receiver_signal_converter(receiver_imput({0: (0, 1), 1: (-1, 1), 2: (-1, 1), 3: (-1, 1)}))
         angle_white, previous_converted_receiver = stabilization_controller(outputs, previous_converted_receiver, first)
-        print(1000000000 / (process_time_ns() - h))
+        print(angle_white, 1000000000 / (process_time_ns() - ns))
         ns = process_time_ns()
 
         if first == 0:
