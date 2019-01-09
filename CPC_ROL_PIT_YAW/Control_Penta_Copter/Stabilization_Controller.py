@@ -18,6 +18,7 @@ def stabilization_controller(current_converted_receiver, previous_converted_rece
 if __name__ == '__main__':
     from Receiver_Input import receiver_imput
     from Receiver_Signal_Converter import receiver_signal_converter
+    from time import sleep
 
     previous_converted_receiver = {}
     first = 0
@@ -25,6 +26,7 @@ if __name__ == '__main__':
 
         outputs = receiver_signal_converter(receiver_imput({0: (0, 1), 1: (-1, 1), 2: (-1, 1), 3: (-1, 1)}))
         angle_white, previous_converted_receiver = stabilization_controller(outputs, previous_converted_receiver, first)
+        sleep(0.01)
 
         if first == 0:
             first = 1
