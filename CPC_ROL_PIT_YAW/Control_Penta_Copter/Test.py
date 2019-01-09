@@ -40,4 +40,4 @@ h = 0
 while True:
     print(receiver_signal_converter(receiver_imput({0: (0, 1), 1: (-1, 1), 2: (-1, 1), 3: (-1, 1)})))
     print(h - process_time_ns())
-    h = process_time()
+    h = process_time_ns()
