@@ -38,5 +38,6 @@ from time import process_time_ns
 
 h = 0
 while True:
-    print(receiver_signal_converter(receiver_imput({0: (0, 1), 1: (-1, 1), 2: (-1, 1), 3: (-1, 1)})), 1000000000 / (process_time_ns() - h))
+    receiver_signal_converter(receiver_imput({0: (0, 1), 1: (-1, 1), 2: (-1, 1), 3: (-1, 1)}))
+    print(, 1000000000 / (process_time_ns() - h))
     h = process_time_ns()
