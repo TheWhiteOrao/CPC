@@ -6,7 +6,7 @@ def stabilization_controller(current_converted_receiver, previous_converted_rece
     if first == 1:
         for i in current_converted_receiver:
 
-            angle_white[i] += current_converted_receiver[i] - previous_converted_receiver[i]
+            angle_white[i] += 75 * (current_converted_receiver[i] - previous_converted_receiver[i])
 
         # print(angle_white)
 
