@@ -61,8 +61,6 @@ def converter(raw_imput, offset_imput, raw_output_lowest, raw_output_highest):
     set_output_lowest = raw_output_lowest - offset_imput
     set_output_highest = raw_output_highest - offset_imput
 
-    # print(set_output_lowest, set_output_highest, raw_output_lowest, raw_output_highest)
-
     set_output_range = raw_output_highest - raw_output_lowest
 
     if set_output_lowest + offset_imput * 2 < raw_imput and set_output_highest + offset_imput * 2 > raw_imput:
