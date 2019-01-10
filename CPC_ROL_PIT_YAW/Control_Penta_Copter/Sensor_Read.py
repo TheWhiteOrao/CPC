@@ -8,9 +8,13 @@ def sensor_read(sensor):
 
     sensor_output = {"acce": {}, "gyro": {}}
 
-    print(sensor.read_acc())
+    sensor.read_acc()
     sensor.read_gyro()
     sensor.read_temp()
+
+    sensor_output["acce"]["ax"] = sensor.accelerometer_data[0]
+
+    print(sensor_output)
 
     return sensor.accelerometer_data, sensor.gyroscope_data, sensor.temperature
 
