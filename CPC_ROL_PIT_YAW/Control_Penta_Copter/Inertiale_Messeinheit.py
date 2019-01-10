@@ -6,14 +6,15 @@
 def inertiale_messeinheit(sensor_data, hz):
     sensor_dict = sensor_data
 
-    print("ax: %-26s" % sensor_dict["acce"]["ax"],
-          "ay: %-26s" % sensor_dict["acce"]["ay"],
-          "az: %-26s" % sensor_dict["acce"]["az"],
-          "gx: %-26s" % sensor_dict["gyro"]["gx"],
-          "gy: %-26s" % sensor_dict["gyro"]["gy"],
-          "gz: %-26s" % sensor_dict["gyro"]["gz"],
-          "te: %-26s" % sensor_dict["temp"],
-          "hz: %-26s" % hz)
+    # print("ax: %-26s" % sensor_dict["acce"]["ax"],
+    #       "ay: %-26s" % sensor_dict["acce"]["ay"],
+    #       "az: %-26s" % sensor_dict["acce"]["az"],
+    #       "gx: %-26s" % sensor_dict["gyro"]["gx"],
+    #       "gy: %-26s" % sensor_dict["gyro"]["gy"],
+    #       "gz: %-26s" % sensor_dict["gyro"]["gz"],
+    #       "te: %-26s" % sensor_dict["temp"],
+    #       "hz: %-26s" % hz)
+    print("hz: %-26s" % hz)
 
 
 if __name__ == '__main__':
