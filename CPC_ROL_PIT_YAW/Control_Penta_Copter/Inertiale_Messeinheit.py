@@ -4,7 +4,11 @@
 
 
 def inertiale_messeinheit(sensor_data):
-    pass
+    accelerometer_data, gyroscope_data, temperature = sensor_data
+
+    print("acce: %-26s" % accelerometer_data,
+          "gyro: %-26s" % gyroscope_data,
+          "temp: %-26s" % temperature)
 
 
 if __name__ == '__main__':
@@ -14,5 +18,4 @@ if __name__ == '__main__':
     sensor = sensor_initialize("mpu9250")
 
     for i in range(1000):
-        sensor_data = sensor_read(sensor)
-        print(sensor_data)
+        IMU = inertiale_messeinheit(sensor_read(sensor))
