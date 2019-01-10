@@ -1,16 +1,19 @@
 from Engine_Force_Calculate import engine_force_calculate
 
 
-def stabilization_controller(current_converted_receiver, previous_converted_receiver, first):
-
-    angle_white = {}
+def stabilization_controller(current_converted_receiver, previous_converted_receiver, angle_white, first):
 
     if first == 1:
         for i in current_converted_receiver:
 
-            angle_white[i] = current_converted_receiver[i] - previous_converted_receiver[i]
+            angle_white[i] += current_converted_receiver[i] - previous_converted_receiver[i]
 
         # print(angle_white)
+
+    if first == 0:
+
+        for i in current_converted_receiver:
+            angle_white[i] = 0
 
     return angle_white, current_converted_receiver
 
@@ -23,10 +26,11 @@ if __name__ == '__main__':
     previous_converted_receiver = {}
     first = 0
     ns = 0
+    angle_white = {}
     while True:
 
         outputs = receiver_signal_converter(receiver_imput({0: (0, 1), 1: (-1, 1), 2: (-1, 1), 3: (-1, 1)}))
-        angle_white, previous_converted_receiver = stabilization_controller(outputs, previous_converted_receiver, first)
+        angle_white, previous_converted_receiver = stabilization_controller(outputs, previous_converted_receiver, angle_white, first)
         print(1000000000 / (process_time_ns() - ns))
         ns = process_time_ns()
 
