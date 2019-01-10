@@ -4,12 +4,15 @@
 
 
 def inertiale_messeinheit(sensor_data):
-    accelerometer_data, gyroscope_data, temperature = sensor_data
-    accelerometer_data accelerometer_data
+    sensor_dict = sensor_data
 
-    print("acce: %-26s" % accelerometer_data,
-          "gyro: %-26s" % gyroscope_data,
-          "temp: %-26s" % temperature)
+    print("ax: %-26s" % sensor_dict["acce"]["ax"],
+          "ay: %-26s" % sensor_dict["acce"]["ay"],
+          "az: %-26s" % sensor_dict["acce"]["az"],
+          "gx: %-26s" % sensor_dict["gyro"]["gx"],
+          "gy: %-26s" % sensor_dict["gyro"]["gy"],
+          "gz: %-26s" % sensor_dict["gyro"]["gz"],
+          "te: %-26s" % sensor_dict["temp"])
 
 
 if __name__ == '__main__':
