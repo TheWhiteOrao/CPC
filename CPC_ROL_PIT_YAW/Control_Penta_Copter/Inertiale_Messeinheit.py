@@ -5,6 +5,7 @@
 
 def inertiale_messeinheit(sensor_data):
     accelerometer_data, gyroscope_data, temperature = sensor_data
+    accelerometer_data accelerometer_data
 
     print("acce: %-26s" % accelerometer_data,
           "gyro: %-26s" % gyroscope_data,
