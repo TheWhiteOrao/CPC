@@ -31,7 +31,7 @@ if __name__ == '__main__':
 
         outputs = receiver_signal_converter(receiver_imput({0: (0, 1), 1: (-1, 1), 2: (-1, 1), 3: (-1, 1)}))
         angle_white, previous_converted_receiver = stabilization_controller(outputs, previous_converted_receiver, angle_white, first)
-        print(1000000000 / (process_time_ns() - ns))
+        print(angle_white, 1000000000 / (process_time_ns() - ns))
         ns = process_time_ns()
 
         if first == 0:
