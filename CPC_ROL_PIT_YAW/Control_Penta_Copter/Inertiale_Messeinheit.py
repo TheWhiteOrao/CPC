@@ -12,5 +12,7 @@ if __name__ == '__main__':
     from Sensor_Read import sensor_read
 
     sensor = sensor_initialize("mpu9250")
-    sensor_data = sensor_read(sensor)
-    print(sensor_data)
+
+    for i in range(1000):
+        sensor_data = sensor_read(sensor)
+        print(sensor_data)
