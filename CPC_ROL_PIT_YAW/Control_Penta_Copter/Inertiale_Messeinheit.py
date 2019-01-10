@@ -22,6 +22,7 @@ if __name__ == '__main__':
     from time import process_time_ns
 
     ns = 0
+    hz = 0
 
     sensor = sensor_initialize("mpu9250")
 
