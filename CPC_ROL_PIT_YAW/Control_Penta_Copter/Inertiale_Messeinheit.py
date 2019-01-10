@@ -21,5 +21,5 @@ if __name__ == '__main__':
 
     sensor = sensor_initialize("mpu9250")
 
-    for i in range(1000):
+    while True:
         IMU = inertiale_messeinheit(sensor_read(sensor))
