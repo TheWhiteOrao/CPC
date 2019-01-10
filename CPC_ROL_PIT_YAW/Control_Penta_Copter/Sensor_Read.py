@@ -22,9 +22,7 @@ def sensor_read(sensor):
 
     sensor_output["temp"] = sensor.temperature
 
-    print(sensor_output)
-
-    return sensor.accelerometer_data, sensor.gyroscope_data, sensor.temperature
+    return sensor_output
 
 
 if __name__ == '__main__':
