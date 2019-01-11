@@ -56,8 +56,8 @@ def inertial_measurement_unit(sensor_data):
     gyroZangle += rate_gyr_z * LP
 
     # Convert Accelerometer values to degrees
-    AccXangle = (math.atan2(ACCy, ACCz) * RAD_TO_DEG)
-    AccYangle = (math.atan2(ACCz, ACCx) + M_PI) * RAD_TO_DEG
+    AccXangle = (atan2(ACCy, ACCz) * RAD_TO_DEG)
+    AccYangle = (atan2(ACCz, ACCx) + M_PI) * RAD_TO_DEG
 
     # convert the values to -180 and +180
     if AccYangle > 90:
@@ -70,12 +70,12 @@ def inertial_measurement_unit(sensor_data):
     CFangleY = AA * (CFangleY + rate_gyr_y * LP) + (1 - AA) * AccYangle
 
     # Normalize accelerometer raw values.
-    accXnorm = ACCx / math.sqrt(ACCx * ACCx + ACCy * ACCy + ACCz * ACCz)
-    accYnorm = ACCy / math.sqrt(ACCx * ACCx + ACCy * ACCy + ACCz * ACCz)
+    accXnorm = ACCx / sqrt(ACCx * ACCx + ACCy * ACCy + ACCz * ACCz)
+    accYnorm = ACCy / sqrt(ACCx * ACCx + ACCy * ACCy + ACCz * ACCz)
 
     # Calculate pitch and roll
-    pitch = math.asin(accXnorm)
-    roll = -math.asin(accYnorm / math.cos(pitch))
+    pitch = asin(accXnorm)
+    roll = -asin(accYnorm / cos(pitch))
 
     return pitch, roll
     # print("ax: %-26s" % sensor_data["acce"]["ax"],
