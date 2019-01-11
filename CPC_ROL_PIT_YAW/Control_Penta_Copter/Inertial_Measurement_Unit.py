@@ -8,8 +8,8 @@ from cmath import asin, cos
 
 RAD_TO_DEG = 57.29578
 M_PI = 3.14159265358979323846
-G_GAIN = 0.001  # 0.070  # [deg/s/LSB]  If you change the dps for gyro, you need to update this value accordingly
-AA = 0.001  # 0.40      # Complementary filter constant
+G_GAIN = 0.07  # 0.070  # [deg/s/LSB]  If you change the dps for gyro, you need to update this value accordingly
+AA = 0.8  # 0.40      # Complementary filter constant
 
 gyroXangle = 0.0
 gyroYangle = 0.0
