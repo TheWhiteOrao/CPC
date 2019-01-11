@@ -6,7 +6,7 @@ PI = 3.14159265358
 
 def gyroscope_calibration(sensor_type, interval=100):
 
-    gyroscope_offset = [0, 0, 0]
+    gyroscope_offset = {"gx": 0, "gy":, "gz": 0}
 
     for i in range(interval):
 
@@ -20,9 +20,9 @@ def gyroscope_calibration(sensor_type, interval=100):
         gyroscopeY *= 180 / PI
         gyroscopeZ *= 180 / PI
 
-        gyroscope_offset[0] += (-gyroscopeX * 0.0175) / interval
-        gyroscope_offset[1] += (-gyroscopeY * 0.0175) / interval
-        gyroscope_offset[2] += (-gyroscopeZ * 0.0175) / interval
+        gyroscope_offset["gx"] += (-gyroscopeX * 0.0175) / interval
+        gyroscope_offset["gy"] += (-gyroscopeY * 0.0175) / interval
+        gyroscope_offset["gz"] += (-gyroscopeZ * 0.0175) / interval
 
         micro_sleep(10000)
 
