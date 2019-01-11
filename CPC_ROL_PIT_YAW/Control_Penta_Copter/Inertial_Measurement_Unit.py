@@ -78,7 +78,7 @@ def inertial_measurement_unit(sensor_data):
     pitch = asin(accXnorm)
     roll = -asin(accYnorm / cos(pitch))
 
-    return pitch, roll, CFangleX, CFangleY
+    return pitch, roll, accXnorm, accYnorm  # CFangleX, CFangleY
     # print("ax: %-26s" % sensor_data["acce"]["ax"],
     #       "ay: %-26s" % sensor_data["acce"]["ay"],
     #       "az: %-26s" % sensor_data["acce"]["az"],
