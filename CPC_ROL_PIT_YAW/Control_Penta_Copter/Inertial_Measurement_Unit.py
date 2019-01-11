@@ -96,4 +96,5 @@ if __name__ == '__main__':
 
     while True:
         IMU = inertial_measurement_unit(sensor_read(sensor))
-        print(IMU)
+        print("pitch: %-26s" % IMU[0],
+              "roll: %-26s" % IMU[-1])
