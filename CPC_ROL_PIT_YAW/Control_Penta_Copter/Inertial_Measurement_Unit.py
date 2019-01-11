@@ -78,7 +78,7 @@ def inertial_measurement_unit(sensor_data):
     pitch = asin(accXnorm)
     roll = -asin(accYnorm / cos(pitch))
 
-    return pitch, roll
+    return pitch, roll, CFangleX, CFangleY
     # print("ax: %-26s" % sensor_data["acce"]["ax"],
     #       "ay: %-26s" % sensor_data["acce"]["ay"],
     #       "az: %-26s" % sensor_data["acce"]["az"],
@@ -96,5 +96,7 @@ if __name__ == '__main__':
 
     while True:
         IMU = inertial_measurement_unit(sensor_read(sensor))
-        print("pitch: %-26s" % IMU[0],
-              "roll: %-26s" % IMU[-1])
+        print("pitch: %-29s" % IMU[0],
+              "roll: %-29s" % IMU[1],
+              "CFangleX: %-29s" % IMU[1],
+              "CFangleY: %-29s" % IMU[1])
