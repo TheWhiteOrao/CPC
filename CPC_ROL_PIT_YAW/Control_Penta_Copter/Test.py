@@ -82,6 +82,25 @@ AA = 0.40      # Complementary filter constant
 # Calibrating the compass isnt mandatory, however a calibrated
 # compass will result in a more accurate heading values.
 
+magXmin = 0
+magYmin = 0
+magZmin = 0
+magXmax = 0
+magYmax = 0
+magZmax = 0
+
+
+'''
+Here is an example:
+magXmin =  -1748
+magYmin =  -1025
+magZmin =  -1876
+magXmax =  959
+magYmax =  1651
+magZmax =  708
+Dont use the above values, these are just an example.
+'''
+
 
 gyroXangle = 0.0
 gyroYangle = 0.0
@@ -106,6 +125,9 @@ while True:
     GYRx = IMU.readGYRx()
     GYRy = IMU.readGYRy()
     GYRz = IMU.readGYRz()
+    MAGx = IMU.readMAGx()
+    MAGy = IMU.readMAGy()
+    MAGz = IMU.readMAGz()
 
     # Calculate loop Period(LP). How long between Gyro Reads
     b = datetime.datetime.now() - a
