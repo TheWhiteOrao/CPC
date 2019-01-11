@@ -96,8 +96,8 @@ if __name__ == '__main__':
 
     while True:
         IMU = inertial_measurement_unit(sensor_read(sensor))
-        print("pitch: %-25s" % round(IMU[0], 3),
-              "roll: %-25s" % round(IMU[1], 3),
+        print("pitch: %-25s" % round(IMU[0].real, 3),
+              "roll: %-25s" % round(IMU[1].real, 3),
               "accXnorm: %-25s" % round(IMU[2], 3),
               "accYnorm: %-25s" % round(IMU[3], 3),
               "accXnorm: %-25s" % round(IMU[4], 3),
