@@ -30,6 +30,7 @@ def inertial_measurement_unit(sensor_data):
     global gyroZangle
     global CFangleX
     global CFangleY
+    global a
 
     # Read the accelerometer and gyroscope values
     ACCx = sensor_data["acce"]["ax"]
