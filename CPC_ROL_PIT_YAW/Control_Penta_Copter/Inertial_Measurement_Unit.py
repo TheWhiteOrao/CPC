@@ -98,5 +98,5 @@ if __name__ == '__main__':
         IMU = inertial_measurement_unit(sensor_read(sensor))
         print("pitch: %-29s" % IMU[0],
               "roll: %-29s" % IMU[1],
-              "CFangleX: %-29s" % IMU[1],
-              "CFangleY: %-29s" % IMU[1])
+              "CFangleX: %-29s" % IMU[2],
+              "CFangleY: %-29s" % IMU[3])
