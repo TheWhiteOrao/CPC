@@ -96,14 +96,14 @@ if __name__ == '__main__':
 
     while True:
         IMU = inertial_measurement_unit(sensor_read(sensor))
-        print("pitch: %-29s" % IMU[0],
-              "roll: %-29s" % IMU[1],
-              "accXnorm: %-29s" % IMU[2],
-              "accYnorm: %-29s" % IMU[3],
-              "accXnorm: %-29s" % IMU[4],
-              "accYnorm: %-29s" % IMU[5],
-              "gyroXangle: %-29s" % IMU[6],
-              "gyroYangle: %-29s" % IMU[7],
-              "gyroZangle: %-29s" % IMU[8],
-              "CFangleX: %-29s" % IMU[9],
-              "CFangleY: %-29s" % IMU[10])
+        print("pitch: %-25s" % round(IMU[0], 3),
+              "roll: %-25s" % round(IMU[1], 3),
+              "accXnorm: %-25s" % round(IMU[2], 3),
+              "accYnorm: %-25s" % round(IMU[3], 3),
+              "accXnorm: %-25s" % round(IMU[4], 3),
+              "accYnorm: %-25s" % round(IMU[5], 3),
+              "gyroXangle: %-25s" % round(IMU[6], 3),
+              "gyroYangle: %-25s" % round(IMU[7], 3),
+              "gyroZangle: %-25s" % round(IMU[8], 3),
+              "CFangleX: %-25s" % round(IMU[9], 3),
+              "CFangleY: %-25s" % round(IMU[10], 3))
