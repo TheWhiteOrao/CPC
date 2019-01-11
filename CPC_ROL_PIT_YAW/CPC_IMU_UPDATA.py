@@ -1,5 +1,4 @@
-from math import atan2, pi
-from cmath import asin
+from math import *
 
 
 def imu_update(acc_sen,
@@ -30,7 +29,7 @@ def imu_update(acc_sen,
     if not (acc_sen_x == 0 and acc_sen_y == 0 and acc_sen_z == 0):
 
         # Normalise accelerometer measurement
-        acc_norm = (acc_sen_x * acc_sen_x + acc_sen_y * acc_sen_y + acc_sen_z * acc_sen_z) ** 0.5
+        acc_norm = (acc_sen_x * acc_sen_x + acc_sen_y * acc_sen_y + acc_sen_z * acc_sen_z) ** -0.5
         acc_sen_x *= acc_norm
         acc_sen_y *= acc_norm
         acc_sen_z *= acc_norm
@@ -77,7 +76,7 @@ def imu_update(acc_sen,
         roll_pitch_quat_thr += (roll_pitch_quat_a * roll_pitch_gyr_sen_z + roll_pitch_quat_b * roll_pitch_gyr_sen_y - roll_pitch_quat_c * roll_pitch_gyr_sen_x)
 
         # Normalise quaternion
-        roll_pitch_quat_norm = (roll_pitch_quat_zer * roll_pitch_quat_zer + roll_pitch_quat_one * roll_pitch_quat_one + roll_pitch_quat_two * roll_pitch_quat_two + roll_pitch_quat_thr * roll_pitch_quat_thr) ** 0.5
+        roll_pitch_quat_norm = (roll_pitch_quat_zer * roll_pitch_quat_zer + roll_pitch_quat_one * roll_pitch_quat_one + roll_pitch_quat_two * roll_pitch_quat_two + roll_pitch_quat_thr * roll_pitch_quat_thr) ** -0.5
         roll_pitch_quat_zer *= roll_pitch_quat_norm
         roll_pitch_quat_one *= roll_pitch_quat_norm
         roll_pitch_quat_two *= roll_pitch_quat_norm
