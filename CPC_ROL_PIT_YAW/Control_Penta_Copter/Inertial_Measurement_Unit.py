@@ -195,16 +195,16 @@ if __name__ == '__main__':
 
     while True:
         IMU = inertial_measurement_unit(sensor_read(sensor))
-        print("pitch: %-15s" % round(IMU[0].real, 3),
-              "roll: %-15s" % round(IMU[1].real, 3),
-              "accXnorm: %-15s" % round(IMU[2], 3),
-              "accYnorm: %-15s" % round(IMU[3], 3),
-              "AccXangle: %-15s" % round(IMU[4], 3),
-              "AccYangle: %-15s" % round(IMU[5], 3),
-              "gyroXangle: %-15s" % round(IMU[6], 3),
-              "gyroYangle: %-15s" % round(IMU[7], 3),
-              "gyroZangle: %-15s" % round(IMU[8], 3),
-              "CFangleX: %-15s" % round(IMU[9], 3),
-              "CFangleY: %-15s" % round(IMU[10], 3),
-              "kalmanY: %-15s" % round(IMU[11], 3),
-              "kalmanX: %-15s" % round(IMU[12], 3))
+        print("pitch: %-10s" % round(IMU[0].real, 3),
+              "roll: %-10s" % round(IMU[1].real, 3),
+              "accXnorm: %-10s" % round(IMU[2], 3),
+              "accYnorm: %-10s" % round(IMU[3], 3),
+              "AccXangle: %-10s" % round(IMU[4], 3),
+              "AccYangle: %-10s" % round(IMU[5], 3),
+              "gyroXangle: %-10s" % round(IMU[6], 3),
+              "gyroYangle: %-10s" % round(IMU[7], 3),
+              "gyroZangle: %-10s" % round(IMU[8], 3),
+              "CFangleX: %-10s" % round(IMU[9], 3),
+              "CFangleY: %-10s" % round(IMU[10], 3),
+              "kalmanY: %-10s" % round(IMU[11], 3),
+              "kalmanX: %-10s" % round(IMU[12], 3))
