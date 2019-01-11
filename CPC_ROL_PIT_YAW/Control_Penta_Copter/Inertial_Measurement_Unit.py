@@ -98,12 +98,12 @@ if __name__ == '__main__':
         IMU = inertial_measurement_unit(sensor_read(sensor))
         print("pitch: %-29s" % IMU[0],
               "roll: %-29s" % IMU[1],
-              "accXnorm: %-29s" % IMU[3],
-              "accYnorm: %-29s" % IMU[4],
-              "accXnorm: %-29s" % IMU[5],
-              "accYnorm: %-29s" % IMU[6],
-              "gyroXangle: %-29s" % IMU[7],
-              "gyroYangle: %-29s" % IMU[8],
-              "gyroZangle: %-29s" % IMU[9],
-              "CFangleX: %-29s" % IMU[10],
-              "CFangleY: %-29s" % IMU[11])
+              "accXnorm: %-29s" % IMU[2],
+              "accYnorm: %-29s" % IMU[3],
+              "accXnorm: %-29s" % IMU[4],
+              "accYnorm: %-29s" % IMU[5],
+              "gyroXangle: %-29s" % IMU[6],
+              "gyroYangle: %-29s" % IMU[7],
+              "gyroZangle: %-29s" % IMU[8],
+              "CFangleX: %-29s" % IMU[9],
+              "CFangleY: %-29s" % IMU[10])
