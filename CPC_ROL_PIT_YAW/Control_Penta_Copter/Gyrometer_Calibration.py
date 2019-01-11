@@ -6,7 +6,7 @@ PI = 3.14159265358
 
 def gyroscope_calibration(sensor_type, interval=100):
 
-    gyroscope_offset = {"gx": 0, "gy":, "gz": 0}
+    gyroscope_offset = {"gx": 0, "gy": 0, "gz": 0}
 
     for i in range(interval):
 
