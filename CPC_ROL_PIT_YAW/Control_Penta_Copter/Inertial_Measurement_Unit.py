@@ -16,6 +16,8 @@ gyroZangle = 0.0
 CFangleX = 0.0
 CFangleY = 0.0
 
+a = datetime.now()
+
 
 def inertial_measurement_unit(sensor_data):
 
@@ -38,8 +40,8 @@ def inertial_measurement_unit(sensor_data):
     GYRz = sensor_data["gyro"]["gz"]
 
     # Calculate loop Period(LP). How long between Gyro Reads
-    b = datetime.datetime.now() - a
-    a = datetime.datetime.now()
+    b = datetime.now() - a
+    a = datetime.now()
     LP = b.microseconds / (1000000 * 1.0)
 
     # Convert Gyro raw to degrees per second

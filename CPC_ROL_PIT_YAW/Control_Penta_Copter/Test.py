@@ -99,7 +99,7 @@ a = datetime.datetime.now()
 
 while True:
 
-    # Read the accelerometer,gyroscope values
+    # Read the accelerometer,gyroscope and magnetometer values
     ACCx = IMU.readACCx()
     ACCy = IMU.readACCy()
     ACCz = IMU.readACCz()
@@ -137,6 +137,13 @@ while True:
     CFangleX = AA * (CFangleX + rate_gyr_x * LP) + (1 - AA) * AccXangle
     CFangleY = AA * (CFangleY + rate_gyr_y * LP) + (1 - AA) * AccYangle
 
+    # Calculate heading
+    heading = 180 * math.atan2(MAGy, MAGx) / M_PI
+
+    # Only have our heading between 0 and 360
+    if heading < 0:
+        heading += 360
+
     # Normalize accelerometer raw values.
     accXnorm = ACCx / math.sqrt(ACCx * ACCx + ACCy * ACCy + ACCz * ACCz)
     accYnorm = ACCy / math.sqrt(ACCx * ACCx + ACCy * ACCy + ACCz * ACCz)
@@ -144,6 +151,37 @@ while True:
     # Calculate pitch and roll
     pitch = math.asin(accXnorm)
     roll = -math.asin(accYnorm / math.cos(pitch))
+
+    # Calculate the new tilt compensated values
+    magXcomp = MAGx * math.cos(pitch) + MAGz * math.sin(pitch)
+
+    # The compass and accelerometer are orientated differently on the LSM9DS0 and LSM9DS1 and the Z axis on the compass
+    # is also reversed. This needs to be taken into consideration when performing the calculations
+    if(IMU.LSM9DS0):
+        magYcomp = MAGx * math.sin(roll) * math.sin(pitch) + MAGy * math.cos(roll) - MAGz * math.sin(roll) * math.cos(pitch)  # LSM9DS0
+    else:
+        magYcomp = MAGx * math.sin(roll) * math.sin(pitch) + MAGy * math.cos(roll) + MAGz * math.sin(roll) * math.cos(pitch)  # LSM9DS1
+
+    # Calculate tilt compensated heading
+    tiltCompensatedHeading = 180 * math.atan2(magYcomp, magXcomp) / M_PI
+
+    if tiltCompensatedHeading < 0:
+        tiltCompensatedHeading += 360
+
+    if 1:  # Change to '0' to stop showing the angles from the accelerometer
+        print("# ACCX Angle %5.2f ACCY Angle %5.2f #  " % (AccXangle, AccYangle)),
+
+    if 1:  # Change to '0' to stop  showing the angles from the gyro
+        print("\t# GRYX Angle %5.2f  GYRY Angle %5.2f  GYRZ Angle %5.2f # " % (gyroXangle, gyroYangle, gyroZangle)),
+
+    if 1:  # Change to '0' to stop  showing the angles from the complementary filter
+        print("\t# CFangleX Angle %5.2f   CFangleY Angle %5.2f #" % (CFangleX, CFangleY)),
+
+    if 1:  # Change to '0' to stop  showing the heading
+        print("\t# HEADING %5.2f  tiltCompensatedHeading %5.2f #" % (heading, tiltCompensatedHeading)),
+
+    # print a new line
+    print ""
 
     # slow program down a bit, makes the output more readable
     time.sleep(0.03)
