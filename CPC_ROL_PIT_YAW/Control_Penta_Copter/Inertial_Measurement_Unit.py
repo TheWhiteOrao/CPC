@@ -3,7 +3,8 @@
 # output: roll and pitch not converted in a dictionary. like this {roll:deg, pitch:deg}
 
 from datetime import datetime
-from math import atan2, sqrt, asin, cos
+from math import atan2, sqrt
+from cmath import asin, cos
 
 RAD_TO_DEG = 57.29578
 M_PI = 3.14159265358979323846
