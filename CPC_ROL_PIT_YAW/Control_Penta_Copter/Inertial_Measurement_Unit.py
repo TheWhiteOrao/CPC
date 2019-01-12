@@ -33,4 +33,4 @@ if __name__ == '__main__':
         delta_time, Hz, current_delta_time = calculate_delta_time(current_delta_time, Hz)
 
         Quaternion = inertial_measurement_unit(sensor_read(sensor), gyroscope_offset, delta_time, Quaternion)
-        print(euler_angle(Quaternion), Hz)
+        # print(euler_angle(Quaternion), Hz)
