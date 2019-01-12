@@ -4,9 +4,9 @@ def inertial_measurement_unit(sensor_data, gyroscope_offset, delta_time, Quatern
 
     # Normalise accelerometer measurement
     acceNorm = (
-        sensor_data["acce"]["ax"] +
-        sensor_data["acce"]["ay"] +
-        sensor_data["acce"]["az"]
+        sensor_data["acce"]["ax"] * sensor_data["acce"]["ax"] +
+        sensor_data["acce"]["ay"] * sensor_data["acce"]["ay"] +
+        sensor_data["acce"]["az"] * sensor_data["acce"]["az"]
     ) * 0.5
 
     print(acceNorm)
