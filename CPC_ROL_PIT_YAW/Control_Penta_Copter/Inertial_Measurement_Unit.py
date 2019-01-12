@@ -33,9 +33,9 @@ def inertial_measurement_unit(sensor_data, gyroscope_offset, delta_time, Quatern
         eInt["z"] = 0
 
     # Apply feedback terms
-    sensor_data["gyro"]["gx"] = sensor_data["gyro"]["gx"] + Kp * ex + Ki * eInt[0]
-    sensor_data["gyro"]["gy"] = sensor_data["gyro"]["gy"] + Kp * ey + Ki * eInt[1]
-    sensor_data["gyro"]["gz"] = sensor_data["gyro"]["gz"] + Kp * ez + Ki * eInt[2]
+    sensor_data["gyro"]["gx"] = sensor_data["gyro"]["gx"] + Kp * ex + Ki * eInt["x"]
+    sensor_data["gyro"]["gy"] = sensor_data["gyro"]["gy"] + Kp * ey + Ki * eInt["y"]
+    sensor_data["gyro"]["gz"] = sensor_data["gyro"]["gz"] + Kp * ez + Ki * eInt["z"]
 
     # Integrate rate of change of quaternion
     pa = Quaternion["QuaternionX"]
