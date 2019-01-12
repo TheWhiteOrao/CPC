@@ -2,13 +2,22 @@
 
 def inertial_measurement_unit(sensor_data, gyroscope_offset, delta_time, Quaternion={"QuaternionW": 1, "QuaternionX": 0, "QuaternionY": 0, "QuaternionZ": 0}, Kp=2):
 
-    print("ax: %-26s" % sensor_data["acce"]["ax"],
-          "ay: %-26s" % sensor_data["acce"]["ay"],
-          "az: %-26s" % sensor_data["acce"]["az"],
-          "gx: %-26s" % sensor_data["gyro"]["gx"],
-          "gy: %-26s" % sensor_data["gyro"]["gy"],
-          "gz: %-26s" % sensor_data["gyro"]["gz"],
-          "te: %-26s" % sensor_data["temp"])
+    # Normalise accelerometer measurement
+    acceNorm = (
+        sensor_data["acce"]["ax"] +
+        sensor_data["acce"]["ay"] +
+        sensor_data["acce"]["az"]
+    ) * 0.5
+
+    print(acceNorm)
+
+    # print("ax: %-26s" % sensor_data["acce"]["ax"],
+    #       "ay: %-26s" % sensor_data["acce"]["ay"],
+    #       "az: %-26s" % sensor_data["acce"]["az"],
+    #       "gx: %-26s" % sensor_data["gyro"]["gx"],
+    #       "gy: %-26s" % sensor_data["gyro"]["gy"],
+    #       "gz: %-26s" % sensor_data["gyro"]["gz"],
+    #       "te: %-26s" % sensor_data["temp"])
 
     return Quaternion
 
