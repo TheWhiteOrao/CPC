@@ -74,14 +74,12 @@ if __name__ == '__main__':
     from Delta_Time import calculate_delta_time
 
     sensor = sensor_initialize("mpu9250")
-
     gyroscope_offset = gyroscope_calibration(sensor)
-
-    delta_time,  current_delta_time = calculate_delta_time()
-
+    delta_time, Hz current_delta_time = calculate_delta_time()
     Quaternion, eInt = inertial_measurement_unit(sensor_read(sensor), gyroscope_offset, delta_time)
+
     while True:
 
-        delta_time,  current_delta_time = calculate_delta_time(current_delta_time)
+        delta_time, Hz, current_delta_time = calculate_delta_time(current_delta_time, Hz)
         Quaternion, eInt = inertial_measurement_unit(sensor_read(sensor), gyroscope_offset, delta_time, Quaternion, eInt)
-        print(Quaternion, eInt, 1 / delta_time)
+        print(Quaternion, eInt, Hz)
