@@ -72,6 +72,7 @@ if __name__ == '__main__':
     from Sensor_Read import sensor_read
     from Gyrometer_Calibration import gyroscope_calibration
     from Delta_Time import calculate_delta_time
+    from Euler_Angle import euler_angle
 
     sensor = sensor_initialize("mpu9250")
     gyroscope_offset = gyroscope_calibration(sensor)
@@ -82,4 +83,4 @@ if __name__ == '__main__':
 
         delta_time, Hz, current_delta_time = calculate_delta_time(current_delta_time, Hz)
         Quaternion, eInt = inertial_measurement_unit(sensor_read(sensor), gyroscope_offset, delta_time, Quaternion, eInt)
-        print(Hz)
+        print(euler_angle(Quaternion), Hz)
