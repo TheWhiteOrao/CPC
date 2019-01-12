@@ -1,6 +1,6 @@
 
 
-def inertial_measurement_unit(sensor_data, gyroscope_offset, Quaternion={"QuaternionW": 1, "QuaternionX": 0, "QuaternionY": 0, "QuaternionZ": 0}, eInt={"x": 0, "y": 0, "z": 0}, Ki=0):
+def inertial_measurement_unit(sensor_data, gyroscope_offset, delta_time, Quaternion={"QuaternionW": 1, "QuaternionX": 0, "QuaternionY": 0, "QuaternionZ": 0}, eInt={"x": 0, "y": 0, "z": 0}, KP=2, Ki=0):
 
     # Gyroscope offset
     sensor_data["gyro"]["gx"] -= gyroscope_offset["gx"]
@@ -42,10 +42,10 @@ def inertial_measurement_unit(sensor_data, gyroscope_offset, Quaternion={"Quater
     pb = Quaternion["QuaternionY"]
     pc = Quaternion["QuaternionZ"]
     Quaternion["QuaternionW"] = Quaternion["QuaternionW"] + (-Quaternion["QuaternionX"] * sensor_data["gyro"]["gx"] - Quaternion["QuaternionY"] * sensor_data["gyro"]
-                                                             ["gy"] - Quaternion["QuaternionZ"] * sensor_data["gyro"]["gz"]) * (0.5 * SamplePeriod)
-    Quaternion["QuaternionX"] = pa + (Quaternion["QuaternionW"] * sensor_data["gyro"]["gx"] + pb * sensor_data["gyro"]["gz"] - pc * sensor_data["gyro"]["gy"]) * (0.5 * SamplePeriod)
-    Quaternion["QuaternionY"] = pb + (Quaternion["QuaternionW"] * sensor_data["gyro"]["gy"] - pa * sensor_data["gyro"]["gz"] + pc * sensor_data["gyro"]["gx"]) * (0.5 * SamplePeriod)
-    Quaternion["QuaternionZ"] = pc + (Quaternion["QuaternionW"] * sensor_data["gyro"]["gz"] + pa * sensor_data["gyro"]["gy"] - pb * sensor_data["gyro"]["gx"]) * (0.5 * SamplePeriod)
+                                                             ["gy"] - Quaternion["QuaternionZ"] * sensor_data["gyro"]["gz"]) * (0.5 * delta_time)
+    Quaternion["QuaternionX"] = pa + (Quaternion["QuaternionW"] * sensor_data["gyro"]["gx"] + pb * sensor_data["gyro"]["gz"] - pc * sensor_data["gyro"]["gy"]) * (0.5 * delta_time)
+    Quaternion["QuaternionY"] = pb + (Quaternion["QuaternionW"] * sensor_data["gyro"]["gy"] - pa * sensor_data["gyro"]["gz"] + pc * sensor_data["gyro"]["gx"]) * (0.5 * delta_time)
+    Quaternion["QuaternionZ"] = pc + (Quaternion["QuaternionW"] * sensor_data["gyro"]["gz"] + pa * sensor_data["gyro"]["gy"] - pb * sensor_data["gyro"]["gx"]) * (0.5 * delta_time)
 
     # Normalise quaternion
     norm = (Quaternion["QuaternionW"] * Quaternion["QuaternionW"] + Quaternion["QuaternionX"] * Quaternion["QuaternionX"] + Quaternion["QuaternionY"] * Quaternion["QuaternionY"] + Quaternion["QuaternionZ"] * Quaternion["QuaternionZ"]) ** 0.5
@@ -71,10 +71,16 @@ if __name__ == '__main__':
     from Sensor_Initialize import sensor_initialize
     from Sensor_Read import sensor_read
     from Gyrometer_Calibration import gyroscope_calibration
+    from Delta_Time import delta_time
 
     sensor = sensor_initialize("mpu9250")
+
     gyroscope_offset = gyroscope_calibration(sensor)
-    Quaternion, eInt = inertial_measurement_unit(sensor_read(sensor), gyroscope_offset, Quaternion={"QuaternionW": 1, "QuaternionX": 0, "QuaternionY": 0, "QuaternionZ": 0}, eInt={"x": 0, "y": 0, "z": 0})
+
+    delta_time = delta_time()
+
+    Quaternion, eInt = inertial_measurement_unit(sensor_read(sensor), gyroscope_offset, delta_time, Quaternion={"QuaternionW": 1, "QuaternionX": 0, "QuaternionY": 0, "QuaternionZ": 0}, eInt={"x": 0, "y": 0, "z": 0})
     while True:
-        Quaternion, eInt = inertial_measurement_unit(sensor_read(sensor), gyroscope_offset, Quaternion, eInt)
+        delta_time = delta_time(delta_time)
+        Quaternion, eInt = inertial_measurement_unit(sensor_read(sensor), gyroscope_offset, delta_time, Quaternion, eInt)
         print(Quaternion, eInt)
