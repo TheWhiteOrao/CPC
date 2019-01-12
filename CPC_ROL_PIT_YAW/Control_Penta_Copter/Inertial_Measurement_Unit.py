@@ -1,9 +1,11 @@
 
-Quaternion = {"QuaternionW": 1, "QuaternionX": 0, "QuaternionY": 0, "QuaternionZ": 0}
-eInt = {"x": 0, "y": 0, "z": 0}
 
+def inertial_measurement_unit(sensor_data, gyroscope_offset, Quaternion={"QuaternionW": 1, "QuaternionX": 0, "QuaternionY": 0, "QuaternionZ": 0}, eInt={"x": 0, "y": 0, "z": 0}, Ki=0):
 
-def inertial_measurement_unit(sensor_data, gyroscope_offset, Quaternion):
+    # Gyroscope offset
+    sensor_data["gyro"]["gx"] -= gyroscope_offset["gx"]
+    sensor_data["gyro"]["gy"] -= gyroscope_offset["gy"]
+    sensor_data["gyro"]["gz"] -= gyroscope_offset["gz"]
 
     # Normalise accelerometer measurement
     norm = (sensor_data["acce"]["ax"] * sensor_data["acce"]["ax"] + sensor_data["acce"]["ay"] * sensor_data["acce"]["ay"] + sensor_data["acce"]["az"] * sensor_data["acce"]["az"]) ** 0.5
@@ -22,13 +24,13 @@ def inertial_measurement_unit(sensor_data, gyroscope_offset, Quaternion):
     ey = (sensor_data["acce"]["az"] * vx - sensor_data["acce"]["ax"] * vz)
     ez = (sensor_data["acce"]["ax"] * vy - sensor_data["acce"]["ay"] * vx)
     if Ki > 0:
-        eInt[0] += ex  # accumulate integral error
-        eInt[1] += ey
-        eInt[2] += ez
+        eInt["x"] += ex  # accumulate integral error
+        eInt["y"] += ey
+        eInt["z"] += ez
     else:
-        eInt[0] = 0  # prevent integral wind up
-        eInt[1] = 0
-        eInt[2] = 0
+        eInt["x"] = 0  # prevent integral wind up
+        eInt["y"] = 0
+        eInt["z"] = 0
 
     # Apply feedback terms
     sensor_data["gyro"]["gx"] = sensor_data["gyro"]["gx"] + Kp * ex + Ki * eInt[0]
@@ -54,7 +56,7 @@ def inertial_measurement_unit(sensor_data, gyroscope_offset, Quaternion):
     Quaternion["QuaternionY"] = Quaternion["QuaternionY"] * norm
     Quaternion["QuaternionZ"] = Quaternion["QuaternionZ"] * norm
 
-    return Quaternion
+    return Quaternion, eInt
 
     # print("ax: %-26s" % sensor_data["acce"]["ax"],
     #       "ay: %-26s" % sensor_data["acce"]["ay"],
@@ -68,9 +70,11 @@ def inertial_measurement_unit(sensor_data, gyroscope_offset, Quaternion):
 if __name__ == '__main__':
     from Sensor_Initialize import sensor_initialize
     from Sensor_Read import sensor_read
+    from Gyrometer_Calibration import gyroscope_calibration
 
     sensor = sensor_initialize("mpu9250")
-
+    gyroscope_offset = gyroscope_calibration(sensor)
+    Quaternion, eInt = inertial_measurement_unit(sensor_read(sensor), gyroscope_offset, Quaternion={"QuaternionW": 1, "QuaternionX": 0, "QuaternionY": 0, "QuaternionZ": 0}, eInt={"x": 0, "y": 0, "z": 0})
     while True:
-        IMU = inertial_measurement_unit(sensor_read(sensor))
-        print(Quaternion)
+        Quaternion, eInt = inertial_measurement_unit(sensor_read(sensor), gyroscope_offset, Quaternion, eInt)
+        print(Quaternion, eInt)
