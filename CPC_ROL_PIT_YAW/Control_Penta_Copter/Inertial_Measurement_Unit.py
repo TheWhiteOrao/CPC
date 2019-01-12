@@ -1,6 +1,6 @@
 
 
-def inertial_measurement_unit(sensor_data, gyroscope_offset, delta_time, Quaternion={"QuaternionW": 1, "QuaternionX": 0, "QuaternionY": 0, "QuaternionZ": 0}, eInt={"x": 0, "y": 0, "z": 0}, Kp=2, Ki=0):
+def inertial_measurement_unit(sensor_data, gyroscope_offset, delta_time, Quaternion={"QuaternionW": 1, "QuaternionX": 0, "QuaternionY": 0, "QuaternionZ": 0}, eInt={"x": 0, "y": 0, "z": 0}, Kp=2, Ki=1):
 
     # Gyroscope offset
     sensor_data["gyro"]["gx"] -= gyroscope_offset["gx"]
