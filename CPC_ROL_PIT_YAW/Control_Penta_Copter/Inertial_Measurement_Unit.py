@@ -1,6 +1,6 @@
 
 
-def inertial_measurement_unit(sensor_data, gyroscope_offset, delta_time, Quaternion={"QuaternionW": 1, "QuaternionX": 0, "QuaternionY": 0, "QuaternionZ": 0}, Kp):
+def inertial_measurement_unit(sensor_data, gyroscope_offset, delta_time, Quaternion={"QuaternionW": 1, "QuaternionX": 0, "QuaternionY": 0, "QuaternionZ": 0}, Kp=2):
 
     print("ax: %-26s" % sensor_data["acce"]["ax"],
           "ay: %-26s" % sensor_data["acce"]["ay"],
