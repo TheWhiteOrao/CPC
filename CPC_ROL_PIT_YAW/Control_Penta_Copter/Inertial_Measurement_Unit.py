@@ -9,7 +9,15 @@ def inertial_measurement_unit(sensor_data, gyroscope_offset, delta_time, Quatern
         sensor_data["acce"]["az"] * sensor_data["acce"]["az"]
     ) ** -0.5
 
-    print(acceNorm)
+    sensor_data["acce"]["ax"] * acceNorm
+    sensor_data["acce"]["ay"] * acceNorm
+    sensor_data["acce"]["az"] * acceNorm
+
+    print(
+        sensor_data["acce"]["ax"] +
+        sensor_data["acce"]["ay"] +
+        sensor_data["acce"]["az"]
+    )
 
     # print("ax: %-26s" % sensor_data["acce"]["ax"],
     #       "ay: %-26s" % sensor_data["acce"]["ay"],
