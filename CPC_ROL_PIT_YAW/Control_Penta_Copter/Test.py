@@ -116,3 +116,11 @@
 # Quaternion["QuaternionX"] = Quaternion["QuaternionX"] * norm
 # Quaternion["QuaternionY"] = Quaternion["QuaternionY"] * norm
 # Quaternion["QuaternionZ"] = Quaternion["QuaternionZ"] * norm
+
+x = 5
+y = 6
+z = 7
+
+norm = 1 / (x**2 + y**2 + z**2)**0.5
+
+print((x * norm)**2 + (y * norm)**2 + (z * norm)**2)
