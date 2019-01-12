@@ -33,16 +33,17 @@ def inertial_measurement_unit(sensor_data, gyroscope_offset, Quaternion):
     # Apply feedback terms
     sensor_data["gyro"]["gx"] = sensor_data["gyro"]["gx"] + Kp * ex + Ki * eInt[0]
     sensor_data["gyro"]["gy"] = sensor_data["gyro"]["gy"] + Kp * ey + Ki * eInt[1]
-    gz = gz + Kp * ez + Ki * eInt[2]
+    sensor_data["gyro"]["gz"] = sensor_data["gyro"]["gz"] + Kp * ez + Ki * eInt[2]
 
     # Integrate rate of change of quaternion
     pa = Quaternion["QuaternionX"]
     pb = Quaternion["QuaternionY"]
     pc = Quaternion["QuaternionZ"]
-    Quaternion["QuaternionW"] = Quaternion["QuaternionW"] + (-Quaternion["QuaternionX"] * sensor_data["gyro"]["gx"] - Quaternion["QuaternionY"] * sensor_data["gyro"]["gy"] - Quaternion["QuaternionZ"] * gz) * (0.5 * SamplePeriod)
-    Quaternion["QuaternionX"] = pa + (Quaternion["QuaternionW"] * sensor_data["gyro"]["gx"] + pb * gz - pc * sensor_data["gyro"]["gy"]) * (0.5 * SamplePeriod)
-    Quaternion["QuaternionY"] = pb + (Quaternion["QuaternionW"] * sensor_data["gyro"]["gy"] - pa * gz + pc * sensor_data["gyro"]["gx"]) * (0.5 * SamplePeriod)
-    Quaternion["QuaternionZ"] = pc + (Quaternion["QuaternionW"] * gz + pa * sensor_data["gyro"]["gy"] - pb * sensor_data["gyro"]["gx"]) * (0.5 * SamplePeriod)
+    Quaternion["QuaternionW"] = Quaternion["QuaternionW"] + (-Quaternion["QuaternionX"] * sensor_data["gyro"]["gx"] - Quaternion["QuaternionY"] * sensor_data["gyro"]
+                                                             ["gy"] - Quaternion["QuaternionZ"] * sensor_data["gyro"]["gz"]) * (0.5 * SamplePeriod)
+    Quaternion["QuaternionX"] = pa + (Quaternion["QuaternionW"] * sensor_data["gyro"]["gx"] + pb * sensor_data["gyro"]["gz"] - pc * sensor_data["gyro"]["gy"]) * (0.5 * SamplePeriod)
+    Quaternion["QuaternionY"] = pb + (Quaternion["QuaternionW"] * sensor_data["gyro"]["gy"] - pa * sensor_data["gyro"]["gz"] + pc * sensor_data["gyro"]["gx"]) * (0.5 * SamplePeriod)
+    Quaternion["QuaternionZ"] = pc + (Quaternion["QuaternionW"] * sensor_data["gyro"]["gz"] + pa * sensor_data["gyro"]["gy"] - pb * sensor_data["gyro"]["gx"]) * (0.5 * SamplePeriod)
 
     # Normalise quaternion
     norm = (Quaternion["QuaternionW"] * Quaternion["QuaternionW"] + Quaternion["QuaternionX"] * Quaternion["QuaternionX"] + Quaternion["QuaternionY"] * Quaternion["QuaternionY"] + Quaternion["QuaternionZ"] * Quaternion["QuaternionZ"]) ** 0.5
