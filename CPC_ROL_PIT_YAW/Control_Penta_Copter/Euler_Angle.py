@@ -10,10 +10,10 @@ def euler_angle(Quaternion):
 
     # pitch(y - axis rotation)
     sinp = +2.0 * (Quaternion["QuaternionW"] * Quaternion["QuaternionY"] - Quaternion["QuaternionZ"] * Quaternion["QuaternionX"])
-    if (fabs(sinp) >= 1)
+    if fabs(sinp) >= 1:
         pitch = copysign(M_PI / 2, sinp)
         # use 90 degrees if out of range
-    else
+    else:
         pitch = asin(sinp)
 
     # yaw(z - axis rotation)
