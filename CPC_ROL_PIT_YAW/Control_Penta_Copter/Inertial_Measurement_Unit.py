@@ -3,14 +3,14 @@
 def inertial_measurement_unit(sensor_data, gyroscope_offset, delta_time, Quaternion={"QuaternionW": 1, "QuaternionX": 0, "QuaternionY": 0, "QuaternionZ": 0}, Kp=2):
 
     # Normalise accelerometer measurement
-    acceNorm = 1 / (
+    acceNorm = (
         sensor_data["acce"]["ax"] ** 2 +
         sensor_data["acce"]["ay"] ** 2 +
         sensor_data["acce"]["az"] ** 2) ** 0.5
 
-    sensor_data["acce"]["ax"] *= acceNorm
-    sensor_data["acce"]["ay"] *= acceNorm
-    sensor_data["acce"]["az"] *= acceNorm
+    sensor_data["acce"]["ax"] /= acceNorm
+    sensor_data["acce"]["ay"] /= acceNorm
+    sensor_data["acce"]["az"] /= acceNorm
 
     print(
         sensor_data["acce"]["ax"]**2 +
