@@ -12,17 +12,13 @@ def gyroscope_calibration(sensor_type, interval=100):
 
         sensor_data = sensor_read(sensor_type)
 
-        gyroscopeX = sensor_data["gyro"]["gx"]
-        gyroscopeY = sensor_data["gyro"]["gy"]
-        gyroscopeZ = sensor_data["gyro"]["gz"]
+        sensor_data["gyro"]["gx"] *= 180 / PI
+        sensor_data["gyro"]["gy"] *= 180 / PI
+        sensor_data["gyro"]["gz"] *= 180 / PI
 
-        gyroscopeX *= 180 / PI
-        gyroscopeY *= 180 / PI
-        gyroscopeZ *= 180 / PI
-
-        gyroscope_offset["gx"] += (-gyroscopeX * 0.0175) / interval
-        gyroscope_offset["gy"] += (-gyroscopeY * 0.0175) / interval
-        gyroscope_offset["gz"] += (-gyroscopeZ * 0.0175) / interval
+        gyroscope_offset["gx"] += (-sensor_data["gyro"]["gx"] * 0.0175) / interval
+        gyroscope_offset["gy"] += (-sensor_data["gyro"]["gy"] * 0.0175) / interval
+        gyroscope_offset["gz"] += (-sensor_data["gyro"]["gz"] * 0.0175) / interval
 
         micro_sleep(10000)
 
