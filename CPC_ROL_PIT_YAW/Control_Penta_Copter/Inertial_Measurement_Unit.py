@@ -73,3 +73,4 @@ if __name__ == '__main__':
 
     while True:
         IMU = inertial_measurement_unit(sensor_read(sensor))
+        print(Quaternion)
