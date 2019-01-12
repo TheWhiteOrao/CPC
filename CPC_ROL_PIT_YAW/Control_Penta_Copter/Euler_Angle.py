@@ -1,4 +1,4 @@
-from math import fabs, atan2, asin, copysign
+from math import fabs, atan2, asin, copysign, degrees
 
 
 def euler_angle(Quaternion):
@@ -21,4 +21,4 @@ def euler_angle(Quaternion):
     cosy_cosp = +1.0 - 2.0 * (Quaternion["QuaternionY"] * Quaternion["QuaternionY"] + Quaternion["QuaternionZ"] * Quaternion["QuaternionZ"])
     yaw = atan2(siny_cosp, cosy_cosp)
 
-    return roll, pitch, yaw
+    return degrees(roll), degrees(pitch), degrees(yaw)
