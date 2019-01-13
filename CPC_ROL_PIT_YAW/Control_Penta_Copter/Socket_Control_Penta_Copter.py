@@ -9,11 +9,11 @@ server_socket.listen(0)
 print("client connected")
 
 while True:
-    msg = client_socket.recv(1024)
-    msg = msg.decode()
-    print(msg)
+    # msg = client_socket.recv(1024)
+    # msg = msg.decode()
+    # print(msg)
 
-    ans = msg
+    ans = str({"4": 1})
     ans = ans.encode()
     client_socket.send(ans)
 
