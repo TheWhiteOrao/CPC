@@ -10,7 +10,6 @@ def socket_connect():
 
 def socket_read(client_socket):
     message = client_socket.recv(2048)
-    print(message)
     return message.decode()
 
 
