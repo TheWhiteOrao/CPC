@@ -148,7 +148,7 @@ if __name__ == '__main__':
     from Delta_Time import calculate_delta_time
     from Euler_Angle import euler_angle
 
-    sensor = sensor_initialize("mpu9250")
+    sensor = sensor_initialize("lsm9ds1")
 
     gyroscope_offset = gyroscope_calibration(sensor)
 
