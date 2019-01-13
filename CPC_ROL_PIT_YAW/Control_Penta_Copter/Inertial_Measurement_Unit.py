@@ -154,7 +154,6 @@ if __name__ == '__main__':
     from Gyrometer_Calibration import gyroscope_calibration
     from Delta_Time import calculate_delta_time
     from Euler_Angle import euler_angle
-    from math import acos, pi
 
     sensor = sensor_initialize("lsm9ds1")
 
@@ -169,10 +168,12 @@ if __name__ == '__main__':
         delta_time, Hz, current_delta_time = calculate_delta_time(current_delta_time, Hz)
 
         Quaternion = inertial_measurement_unit(sensor_read(sensor), gyroscope_offset, delta_time, Quaternion)
-        print("QuaternionR: %-26s" % ((acos(Quaternion["QuaternionR"]) * 2) * 90 / pi),
-              "QuaternionI: %-26s" % ((acos(Quaternion["QuaternionI"]) * 2) * 90 / pi),
-              "QuaternionJ: %-26s" % ((acos(Quaternion["QuaternionJ"]) * 2) * 90 / pi),
-              "QuaternionK: %-26s" % ((acos(Quaternion["QuaternionK"]) * 2) * 90 / pi))
+
+        euler_angle(Quaternion)
+        print("QuaternionR: %-26s" % Quaternion["QuaternionR"],
+              "QuaternionI: %-26s" % Quaternion["QuaternionI"],
+              "QuaternionJ: %-26s" % Quaternion["QuaternionJ"],
+              "QuaternionK: %-26s" % Quaternion["QuaternionK"])
 
 #  quat [-0.3832534449239102, -0.00516282644230581, 0.014133308871725835, 0.9235206504228362] RATE 599
 #
