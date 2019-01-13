@@ -22,13 +22,7 @@ if __name__ == '__main__':
     client_socket = socket_connect()
 
     while True:
-        print("hi")
         Quaternion = eval(socket_read(client_socket))
-
-        bpy.context.object.rotation_quaternion[0] = Quaternion["QuaternionR"]
-        bpy.context.object.rotation_quaternion[1] = Quaternion["QuaternionI"]
-        bpy.context.object.rotation_quaternion[2] = Quaternion["QuaternionJ"]
-        bpy.context.object.rotation_quaternion[3] = Quaternion["QuaternionK"]
 
         print("QuaternionR: %-26s" % Quaternion["QuaternionR"],
               "QuaternionI: %-26s" % Quaternion["QuaternionI"],
