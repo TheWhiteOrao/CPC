@@ -9,7 +9,7 @@ def euler_angle(Quaternion):
     roll = atan2(sinr_cosp, cosr_cosp)
 
     # pitch(y - axis rotation)
-    sinp = +2.0 * (Quaternion["QuaternionR"] * Quaternion["QuaternionJ"] - Quaternion["QuaternionK"] * Quaternion["QuaternionX"])
+    sinp = +2.0 * (Quaternion["QuaternionR"] * Quaternion["QuaternionJ"] - Quaternion["QuaternionK"] * Quaternion["QuaternionI"])
     if fabs(sinp) >= 1:
         pitch = copysign(M_PI / 2, sinp)
         # use 90 degrees if out of range
