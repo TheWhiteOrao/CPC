@@ -178,7 +178,6 @@ if __name__ == '__main__':
         client_socket.recv(1024)
 
         print("hu")
-        sleep(5)
 
         # print(euler_angle(Quaternion))
         # print("QuaternionR: %-26s" % Quaternion["QuaternionR"],

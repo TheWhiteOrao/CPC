@@ -30,9 +30,7 @@ if __name__ == '__main__':
         bpy.context.object.rotation_quaternion[2] = Quaternion["QuaternionJ"]
         bpy.context.object.rotation_quaternion[3] = Quaternion["QuaternionK"]
 
-        sleep(5)
-
-        # print("QuaternionR: %-26s" % Quaternion["QuaternionR"],
-        #     "QuaternionI: %-26s" % Quaternion["QuaternionI"],
-        #    "QuaternionJ: %-26s" % Quaternion["QuaternionJ"],
-        #   "QuaternionK: %-26s" % Quaternion["QuaternionK"])
+        print("QuaternionR: %-26s" % Quaternion["QuaternionR"],
+              "QuaternionI: %-26s" % Quaternion["QuaternionI"],
+              "QuaternionJ: %-26s" % Quaternion["QuaternionJ"],
+              "QuaternionK: %-26s" % Quaternion["QuaternionK"])
