@@ -34,15 +34,15 @@ def inertial_measurement_unit(sensor_data, gyroscope_offset, delta_time, Quatern
 
     # ------------------------------------------------------------------------------------------ #
     # --------------------------- Normalise magnetometer measurement --------------------------- #
-
-    magnNorm = (
-        sensor_data["magn"]["mx"] ** 2 +
-        sensor_data["magn"]["my"] ** 2 +
-        sensor_data["magn"]["mz"] ** 2) ** 0.5
-
-    sensor_data["magn"]["mx"] /= magnNorm
-    sensor_data["magn"]["my"] /= magnNorm
-    sensor_data["magn"]["mz"] /= magnNorm
+    #
+    # magnNorm = (
+    #     sensor_data["magn"]["mx"] ** 2 +
+    #     sensor_data["magn"]["my"] ** 2 +
+    #     sensor_data["magn"]["mz"] ** 2) ** 0.5
+    #
+    # sensor_data["magn"]["mx"] /= magnNorm
+    # sensor_data["magn"]["my"] /= magnNorm
+    # sensor_data["magn"]["mz"] /= magnNorm
 
     # print(round(
     #     sensor_data["magn"]["mx"]**2 +
@@ -59,11 +59,11 @@ def inertial_measurement_unit(sensor_data, gyroscope_offset, delta_time, Quatern
 
     # ------------------------------------------------------------------------------------------ #
     # --------------------- Reference direction of Earth's magnetic field  --------------------- #
-
-    hx = 2 * sensor_data["magn"]["mx"] * (0.5 - QuaternionJJ - QuaternionKK) + 2 * sensor_data["magn"]["my"] * (QuaternionIJ - QuaternionRK) + 2 * sensor_data["magn"]["mz"] * (QuaternionIK + QuaternionRJ)
-    hy = 2 * sensor_data["magn"]["mx"] * (QuaternionIJ + QuaternionRK) + 2 * sensor_data["magn"]["my"] * (0.5 - QuaternionII - QuaternionKK) + 2 * sensor_data["magn"]["mz"] * (QuaternionJK - QuaternionRI)
-    bx = ((hx * hx) + (hy * hy)) ** 0.5
-    bz = 2 * sensor_data["magn"]["mx"] * (QuaternionIK - QuaternionRJ) + 2 * sensor_data["magn"]["my"] * (QuaternionJK + QuaternionRI) + 2 * sensor_data["magn"]["mz"] * (0.5 - QuaternionII - QuaternionJJ)
+    #
+    # hx = 2 * sensor_data["magn"]["mx"] * (0.5 - QuaternionJJ - QuaternionKK) + 2 * sensor_data["magn"]["my"] * (QuaternionIJ - QuaternionRK) + 2 * sensor_data["magn"]["mz"] * (QuaternionIK + QuaternionRJ)
+    # hy = 2 * sensor_data["magn"]["mx"] * (QuaternionIJ + QuaternionRK) + 2 * sensor_data["magn"]["my"] * (0.5 - QuaternionII - QuaternionKK) + 2 * sensor_data["magn"]["mz"] * (QuaternionJK - QuaternionRI)
+    # bx = ((hx * hx) + (hy * hy)) ** 0.5
+    # bz = 2 * sensor_data["magn"]["mx"] * (QuaternionIK - QuaternionRJ) + 2 * sensor_data["magn"]["my"] * (QuaternionJK + QuaternionRI) + 2 * sensor_data["magn"]["mz"] * (0.5 - QuaternionII - QuaternionJJ)
 
     # ------------------------------------------------------------------------------------------ #
     # -------------------- Estimated direction of gravity and magnetic field ------------------- #
@@ -74,9 +74,9 @@ def inertial_measurement_unit(sensor_data, gyroscope_offset, delta_time, Quatern
     vz = QuaternionRR - QuaternionII - QuaternionJJ + QuaternionKK
 
     # ------------------------------------ Magnetic field -------------------------------------- #
-    wx = 2 * bx * (0.5 - QuaternionJJ - QuaternionKK) + 2 * bz * (QuaternionIK - QuaternionRJ)
-    wy = 2 * bx * (QuaternionIJ - QuaternionRK) + 2 * bz * (QuaternionRI + QuaternionJK)
-    wz = 2 * bx * (QuaternionRJ + QuaternionIK) + 2 * bz * (0.5 - QuaternionII - QuaternionJJ)
+    # wx = 2 * bx * (0.5 - QuaternionJJ - QuaternionKK) + 2 * bz * (QuaternionIK - QuaternionRJ)
+    # wy = 2 * bx * (QuaternionIJ - QuaternionRK) + 2 * bz * (QuaternionRI + QuaternionJK)
+    # wz = 2 * bx * (QuaternionRJ + QuaternionIK) + 2 * bz * (0.5 - QuaternionII - QuaternionJJ)
 
     # ------------------------------------------------------------------------------------------ #
     # -- Error is cross product between estimated direction and measured direction of gravity -- #
@@ -86,9 +86,9 @@ def inertial_measurement_unit(sensor_data, gyroscope_offset, delta_time, Quatern
     ey = (sensor_data["acce"]["az"] * vx - sensor_data["acce"]["ax"] * vz)
     ez = (sensor_data["acce"]["ax"] * vy - sensor_data["acce"]["ay"] * vx)
     # ------------------------------------ Magnetic field -------------------------------------- #
-    ex = (sensor_data["acce"]["ay"] * vz - sensor_data["acce"]["az"] * vy) + (sensor_data["magn"]["my"] * wz - sensor_data["magn"]["mz"] * wy)
-    ey = (sensor_data["acce"]["az"] * vx - sensor_data["acce"]["ax"] * vz) + (sensor_data["magn"]["mz"] * wx - sensor_data["magn"]["mx"] * wz)
-    ez = (sensor_data["acce"]["ax"] * vy - sensor_data["acce"]["ay"] * vx) + (sensor_data["magn"]["mx"] * wy - sensor_data["magn"]["my"] * wx)
+    # ex = (sensor_data["acce"]["ay"] * vz - sensor_data["acce"]["az"] * vy) + (sensor_data["magn"]["my"] * wz - sensor_data["magn"]["mz"] * wy)
+    # ey = (sensor_data["acce"]["az"] * vx - sensor_data["acce"]["ax"] * vz) + (sensor_data["magn"]["mz"] * wx - sensor_data["magn"]["mx"] * wz)
+    # ez = (sensor_data["acce"]["ax"] * vy - sensor_data["acce"]["ay"] * vx) + (sensor_data["magn"]["mx"] * wy - sensor_data["magn"]["my"] * wx)
 
     if Ki > 0:
 
@@ -168,7 +168,10 @@ if __name__ == '__main__':
         delta_time, Hz, current_delta_time = calculate_delta_time(current_delta_time, Hz)
 
         Quaternion = inertial_measurement_unit(sensor_read(sensor), gyroscope_offset, delta_time, Quaternion)
-        print(Quaternion)
+        print("QuaternionR: %-26s" % Quaternion["QuaternionR"],
+              "QuaternionI: %-26s" % Quaternion["QuaternionI"],
+              "QuaternionJ: %-26s" % Quaternion["QuaternionJ"],
+              "QuaternionK: %-26s" % Quaternion["QuaternionK"])
 
 #  quat [-0.3832534449239102, -0.00516282644230581, 0.014133308871725835, 0.9235206504228362] RATE 599
 #
