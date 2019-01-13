@@ -15,4 +15,7 @@ server_socket.listen(1)
 conn, addr = server_socket._accept()
 
 while True:
-    server_socket.send(bytes("hi", "utf8"))
+    try:
+        server_socket.send(bytes("hi", "utf8"))
+    except:
+        pass
