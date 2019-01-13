@@ -12,16 +12,18 @@ def socket_control():
 
     (client_socket, adress) = server_socket.accept()
 
-    return client_socket
+    return client_socket, server_socket
 
 
-lol = socket_control()
-while True:
+if __name__ == '__main__':
 
-    ans = str({"4": 1})
+    client_socket, server_socket = socket_control()
 
-    ans = ans.encode()
-    lol.send(ans)
+    while True:
+
+        ans = str({"4": 1})
+        ans = ans.encode()
+        client_socket.send(ans)
 
 server_socket.close()
 client_socket.close()
