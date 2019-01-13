@@ -14,15 +14,17 @@ def socket_read(client_socket):
 
 
 if __name__ == '__main__':
-
+    from time import sleep
     client_socket = socket_connect()
 
     while True:
-        Quaternion = eval(socket_read(client_socket))
+        Quaternion = (socket_read(client_socket)
+        print(Quaternion)
+        sleep(1)
 
-        print("QuaternionR: %-26s" % Quaternion["QuaternionR"],
-              "QuaternionI: %-26s" % Quaternion["QuaternionI"],
-              "QuaternionJ: %-26s" % Quaternion["QuaternionJ"],
-              "QuaternionK: %-26s" % Quaternion["QuaternionK"])
+        # print("QuaternionR: %-26s" % Quaternion["QuaternionR"],
+        #       "QuaternionI: %-26s" % Quaternion["QuaternionI"],
+        #       "QuaternionJ: %-26s" % Quaternion["QuaternionJ"],
+        #       "QuaternionK: %-26s" % Quaternion["QuaternionK"])
 
     client_socket.close()
