@@ -175,8 +175,7 @@ if __name__ == '__main__':
 
         ans = str(Quaternion).encode()
         client_socket.send(ans)
-        h = client_socket.recv(1024)
-        print(h)
+        client_socket.recv(1024)
 
         # print(euler_angle(Quaternion))
         # print("QuaternionR: %-26s" % Quaternion["QuaternionR"],
