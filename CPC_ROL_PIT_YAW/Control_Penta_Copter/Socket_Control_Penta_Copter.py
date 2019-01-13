@@ -2,7 +2,7 @@ from socket import *
 
 socket_control_penta_copter = socket(AF_INET, SOCK_STREAM)
 
-IP_server = ("192.168.43.243", 46598)
+IP_server = ("192.168.43.243", 5555)
 socket_control_penta_copter.connect(IP_server)
 
 H = str({"H": 1})
