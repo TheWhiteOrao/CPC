@@ -79,9 +79,9 @@ def inertial_measurement_unit(sensor_data, gyroscope_offset, delta_time, Quatern
     ey = (sensor_data["acce"]["az"] * vx - sensor_data["acce"]["ax"] * vz)
     ez = (sensor_data["acce"]["ax"] * vy - sensor_data["acce"]["ay"] * vx)
     # ------------------------------------ Magnetic field -------------------------------------- #
-    ex = (sensor_data["acce"]["ay"] * vz - sensor_data["acce"]["az"] * vy) + (my * wz - mz * wy)
-    ey = (sensor_data["acce"]["az"] * vx - sensor_data["acce"]["ax"] * vz) + (mz * wx - mx * wz)
-    ez = (sensor_data["acce"]["ax"] * vy - sensor_data["acce"]["ay"] * vx) + (mx * wy - my * wx)
+    ex = (sensor_data["acce"]["ay"] * vz - sensor_data["acce"]["az"] * vy) + (sensor_data["magn"]["my"] * wz - sensor_data["magn"]["mz"] * wy)
+    ey = (sensor_data["acce"]["az"] * vx - sensor_data["acce"]["ax"] * vz) + (sensor_data["magn"]["mz"] * wx - sensor_data["magn"]["mx"] * wz)
+    ez = (sensor_data["acce"]["ax"] * vy - sensor_data["acce"]["ay"] * vx) + (sensor_data["magn"]["mx"] * wy - sensor_data["magn"]["my"] * wx)
 
     if Ki > 0:
 
