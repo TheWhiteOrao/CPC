@@ -54,7 +54,7 @@ def inertial_measurement_unit(sensor_data, gyroscope_offset, delta_time, Quatern
     # --------------------- Reference direction of Earth's magnetic field  --------------------- #
 
     hx = 2 * sensor_data["magn"]["mx"] * (0.5 - QuaternionJJ - QuaternionKK) + 2 * sensor_data["magn"]["my"] * (QuaternionIJ - QuaternionRK) + 2 * sensor_data["magn"]["mz"] * (QuaternionIK + QuaternionRJ)
-    hy = 2 * sensor_data["magn"]["mx"] * (QuaternionIJ + QuaternionRK) + 2 * sensor_data["magn"]["my"] * (0.5f - QuaternionII - QuaternionKK) + 2 * sensor_data["magn"]["mz"] * (QuaternionJK - QuaternionRI)
+    hy = 2 * sensor_data["magn"]["mx"] * (QuaternionIJ + QuaternionRK) + 2 * sensor_data["magn"]["my"] * (0.5 - QuaternionII - QuaternionKK) + 2 * sensor_data["magn"]["mz"] * (QuaternionJK - QuaternionRI)
     bx = ((hx * hx) + (hy * hy)) ** 0.5
     bz = 2 * sensor_data["magn"]["mx"] * (QuaternionIK - QuaternionRJ) + 2 * sensor_data["magn"]["my"] * (QuaternionJK + QuaternionRI) + 2 * sensor_data["magn"]["mz"] * (0.5 - QuaternionII - QuaternionJJ)
 
