@@ -4,16 +4,16 @@ def inertial_measurement_unit(sensor_data, gyroscope_offset, delta_time, Quatern
 
     # -------------------- Auxiliary variables to avoid repeated arithmetic ------------------- #
 
-    QuaternionRR = R * R
-    QuaternionRI = R * I
-    QuaternionRJ = R * J
-    QuaternionRK = R * K
-    QuaternionII = I * I
-    QuaternionIJ = I * J
-    QuaternionIK = I * K
-    QuaternionJJ = J * J
-    QuaternionJK = J * K
-    QuaternionKK = K * K
+    QuaternionRR = Quaternion["QuaternionR"] * Quaternion["QuaternionR"]
+    QuaternionRI = Quaternion["QuaternionR"] * Quaternion["QuaternionI"]
+    QuaternionRJ = Quaternion["QuaternionR"] * Quaternion["QuaternionJ"]
+    QuaternionRK = Quaternion["QuaternionR"] * Quaternion["QuaternionK"]
+    QuaternionII = Quaternion["QuaternionI"] * Quaternion["QuaternionI"]
+    QuaternionIJ = Quaternion["QuaternionI"] * Quaternion["QuaternionJ"]
+    QuaternionIK = Quaternion["QuaternionI"] * Quaternion["QuaternionK"]
+    QuaternionJJ = Quaternion["QuaternionJ"] * Quaternion["QuaternionJ"]
+    QuaternionJK = Quaternion["QuaternionJ"] * Quaternion["QuaternionK"]
+    QuaternionKK = Quaternion["QuaternionK"] * Quaternion["QuaternionK"]
 
     # ------------------------------------------------------------------------------------------ #
     # -------------------------- Normalise accelerometer measurement --------------------------- #
