@@ -21,8 +21,7 @@ if __name__ == '__main__':
 
     while True:
 
-        ans = str({"4": 1})
-        ans = ans.encode()
+        ans = (str({"4": 1})).encode()
         client_socket.send(ans)
 
 server_socket.close()

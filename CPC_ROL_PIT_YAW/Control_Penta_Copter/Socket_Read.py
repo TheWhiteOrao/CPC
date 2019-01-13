@@ -1,7 +1,5 @@
 from socket import *
 
-# 192.168.43.34
-
 
 def socket_connect():
     client_socket = socket(AF_INET, SOCK_STREAM)
@@ -18,6 +16,7 @@ def socket_read(client_socket):
 if __name__ == '__main__':
 
     client_socket = socket_connect()
+
     while True:
         print(socket_read(client_socket))
 
