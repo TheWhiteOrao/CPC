@@ -62,8 +62,8 @@ def inertial_measurement_unit(sensor_data, gyroscope_offset, delta_time, Quatern
     # -------------------- Estimated direction of gravity and magnetic field ------------------- #
 
     # ---------------------------------- Gravity direction ------------------------------------- #
-    vx = 2f * (QuaternionIK - QuaternionRJ)
-    vy = 2f * (QuaternionRI + QuaternionJK)
+    vx = 2 * (QuaternionIK - QuaternionRJ)
+    vy = 2 * (QuaternionRI + QuaternionJK)
     vz = QuaternionRR - QuaternionII - QuaternionJJ + QuaternionKK
 
     # ------------------------------------ Magnetic field -------------------------------------- #
