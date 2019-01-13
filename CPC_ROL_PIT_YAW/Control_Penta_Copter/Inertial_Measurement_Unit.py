@@ -173,7 +173,7 @@ if __name__ == '__main__':
 
         Quaternion = inertial_measurement_unit(sensor_read(sensor), gyroscope_offset, delta_time, Quaternion)
 
-        ans = str(1).encode()
+        ans = str("hi").encode()
         client_socket.send(ans)
 
         # print(euler_angle(Quaternion))
