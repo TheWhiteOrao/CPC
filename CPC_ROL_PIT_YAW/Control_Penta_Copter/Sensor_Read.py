@@ -10,6 +10,7 @@ def sensor_read(sensor):
 
     sensor.read_acc()
     sensor.read_gyro()
+    sensor.read_mag()
     sensor.read_temp()
 
     sensor_output["acce"]["ax"] = sensor.accelerometer_data[0]
@@ -19,6 +20,10 @@ def sensor_read(sensor):
     sensor_output["gyro"]["gx"] = sensor.gyroscope_data[0]
     sensor_output["gyro"]["gy"] = sensor.gyroscope_data[1]
     sensor_output["gyro"]["gz"] = sensor.gyroscope_data[2]
+
+    sensor_output["magn"]["mx"] = sensor.magnetometer_data[0]
+    sensor_output["magn"]["my"] = sensor.magnetometer_data[1]
+    sensor_output["magn"]["mz"] = sensor.magnetometer_data[2]
 
     sensor_output["temp"] = sensor.temperature
 
