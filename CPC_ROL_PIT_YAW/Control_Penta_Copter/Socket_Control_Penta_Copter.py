@@ -14,6 +14,5 @@ except:
 server_socket.listen(1)
 conn, addr = server_socket._accept()
 
-while True:
 
-    conn.recv(10)
+print(addr, conn)
