@@ -142,20 +142,24 @@ def main_loope():
     if dtsumm > 0.05:
 
         # Console output
-        print("ROLL: %-26s" % round(converter(mpu_roll, temp_mpu_roll, -90, 90), 2),
-              "PITCH: %-26s" % round(converter(mpu_pitch, temp_mpu_pitch, -180, 180), 2),
-              "TEMP: %-26s" % round(tem_mpu, 2),
-              "PERIOD %-26s" % delta_time,
-              "quat %-26s" % mpu_quats,
-              "RATE %-26s \n" % int(1 / delta_time))
-
+        # print("ROLL: %-26s" % round(converter(mpu_roll, temp_mpu_roll, -90, 90), 2),
+        #       "PITCH: %-26s" % round(converter(mpu_pitch, temp_mpu_pitch, -180, 180), 2),
+        #       "TEMP: %-26s" % round(tem_mpu, 2),
+        #       "PERIOD %-26s" % delta_time,
+        #       "RATE %-26s \n" % int(1 / delta_time))
+        print(
+            "quatW %-26s" % mpu_quats[0],
+            "quatI %-26s" % mpu_quats[1],
+            "quatJ %-26s" % mpu_quats[2],
+            "quatK %-26s" % mpu_quats[3])
+        )
         # print("ROLL: %-26s" % round(converter(lsm_roll, temp_lsm_roll, -90, 90), 2),
         #       "PITCH: %-26s" % round(converter(lsm_pitch, temp_lsm_pitch, -180, 180), 2),
         #       "TEMP: %-26s" % round(tem_lsm, 2),
         #       "PERIOD %-26s" % delta_time,
         #       "RATE %-26s \n" % int(1 / delta_time))
 
-        dtsumm = 0
+        dtsumm=0
 
     led_loop("Black", "Cyan", 250)
 
