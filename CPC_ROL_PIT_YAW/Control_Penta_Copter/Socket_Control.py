@@ -24,5 +24,5 @@ if __name__ == '__main__':
         ans = (str({"4": 1})).encode()
         client_socket.send(ans)
 
-server_socket.close()
-client_socket.close()
+    server_socket.close()
+    client_socket.close()
