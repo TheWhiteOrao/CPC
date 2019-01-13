@@ -16,5 +16,5 @@ except:
 server_socket.listen(1)
 
 conn, addr = server_socket._accept()
-12356
+
 print(addr)
