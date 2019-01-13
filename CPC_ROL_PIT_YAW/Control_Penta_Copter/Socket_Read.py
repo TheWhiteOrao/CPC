@@ -18,6 +18,11 @@ if __name__ == '__main__':
     client_socket = socket_connect()
 
     while True:
-        print(socket_read(client_socket))
+        Quaternion = eval(socket_read(client_socket))
+
+        print("QuaternionR: %-26s" % Quaternion["QuaternionR"],
+              "QuaternionI: %-26s" % Quaternion["QuaternionI"],
+              "QuaternionJ: %-26s" % Quaternion["QuaternionJ"],
+              "QuaternionK: %-26s" % Quaternion["QuaternionK"])
 
     client_socket.close()
