@@ -14,6 +14,6 @@ except:
 server_socket.listen(1)
 conn, addr = server_socket._accept()
 
-# while True:
-#
-#     server_socket.send(bin("1"))
+while True:
+
+    server_socket.send(bin("1"))

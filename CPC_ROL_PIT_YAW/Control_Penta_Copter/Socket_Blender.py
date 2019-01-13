@@ -7,6 +7,7 @@ IP_server = ("192.168.43.34", 12356)
 socket_control_penta_copter.connect(IP_server)
 
 print("run")
+print(socket_control_penta_copter.recv(2048))
 # while True:
 #
 #     try:
