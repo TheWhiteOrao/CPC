@@ -21,9 +21,9 @@ if __name__ == '__main__':
 
     while True:
 
-        ans = (str({"4": 1})).encode(1
+        ans = (str({"4": 1})).encode()
         client_socket.send(ans)
-        h=client_socket.recv(1024).decode()
+        h = client_socket.recv(1024).decode()
         print(h)
 
     server_socket.close()
