@@ -1,18 +1,21 @@
 from socket import *
-# Blender = Server
-
-host = "192.168.43.34"
-port = 12356
 
 server_socket = socket(AF_INET, SOCK_STREAM)
 
-try:
-    server_socket.bind((host, port))
-except:
-    pass
+server_socket.bind(("127.0.0.1", 50010))
+server_socket.listen(0)
 
-server_socket.listen(1)
-conn, addr = server_socket._accept()
+(client_socket, adress) = server_socket.accept()
+print("client connected")
 
+while True:
+    msg = client_socket.recv(1024)
+    msg = msg.decode()
+    print(msg)
 
-print(addr, conn)
+    ans = msg
+    ans = ans.encode()
+    client_socket.send(ans)
+
+server_socket.close()
+client_socket.close()

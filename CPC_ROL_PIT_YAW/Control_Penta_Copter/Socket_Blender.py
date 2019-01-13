@@ -1,16 +1,17 @@
-
 from socket import *
 
-socket_control_penta_copter = socket(AF_INET, SOCK_STREAM)
+# 192.168.43.34
 
-IP_server = ("192.168.43.34", 12356)
-socket_control_penta_copter.connect(IP_server)
+client_socket = socket(AF_INET, SOCK_STREAM)
+client_socket.connect(("192.168.43.34", 50010))
 
-print("run")
-socket_control_penta_copter.send(bytes("g", "utf8"))
-# while True:
-#
-#     try:
-#         print(socket_control_penta_copter.recv(2048))
-#     except:
-#         pass
+while True:
+    msg = str(input())
+    msg = msg.encode()
+    client_socket.send(msg)
+
+    msg = client_socket.recv(1024)
+    msg = msg.decode()
+    print(msg)
+
+client_socket.close()
