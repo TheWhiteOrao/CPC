@@ -10,6 +10,7 @@ def socket_connect():
 
 def socket_read(client_socket):
     message = client_socket.recv(2048)
+    client_socket.send(("hi").encode())
     return message.decode()
 
 
