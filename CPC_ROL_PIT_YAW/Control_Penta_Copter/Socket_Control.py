@@ -7,7 +7,7 @@ def socket_control():
 
     server_socket = socket(AF_INET, SOCK_STREAM)
 
-    server_socket.bind(("192.168.43.34", 50010))
+    server_socket.bind(("192.168.43.34", 50011))
     server_socket.listen(0)
 
     (client_socket, adress) = server_socket.accept()
@@ -21,9 +21,9 @@ if __name__ == '__main__':
 
     while True:
 
-        ans = (str({"4": 1})).encode()
+        ans = (str({"4": 1})).encode(1
         client_socket.send(ans)
-        h = client_socket.recv(1024).decode()
+        h=client_socket.recv(1024).decode()
         print(h)
 
     server_socket.close()
