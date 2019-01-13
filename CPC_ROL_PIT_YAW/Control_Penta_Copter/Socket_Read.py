@@ -17,7 +17,7 @@ def socket_read(client_socket):
 
 if __name__ == '__main__':
 
-    client_socket = _connect()
+    client_socket = connect()
     while True:
         print(socket_read(client_socket))
 
