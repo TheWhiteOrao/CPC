@@ -51,6 +51,13 @@ def inertial_measurement_unit(sensor_data, gyroscope_offset, delta_time, Quatern
     # )
 
     # ------------------------------------------------------------------------------------------ #
+    # ------------------------------------ Gyroscope offset ------------------------------------ #
+
+    sensor_data["gyro"]["gx"] -= gyroscope_offset["gx"]
+    sensor_data["gyro"]["gy"] -= gyroscope_offset["gy"]
+    sensor_data["gyro"]["gz"] -= gyroscope_offset["gz"]
+
+    # ------------------------------------------------------------------------------------------ #
     # --------------------- Reference direction of Earth's magnetic field  --------------------- #
 
     hx = 2 * sensor_data["magn"]["mx"] * (0.5 - QuaternionJJ - QuaternionKK) + 2 * sensor_data["magn"]["my"] * (QuaternionIJ - QuaternionRK) + 2 * sensor_data["magn"]["mz"] * (QuaternionIK + QuaternionRJ)
@@ -162,3 +169,7 @@ if __name__ == '__main__':
 
         Quaternion = inertial_measurement_unit(sensor_read(sensor), gyroscope_offset, delta_time, Quaternion)
         print(Quaternion)
+
+ quat [-0.3832534449239102, -0.00516282644230581, 0.014133308871725835, 0.9235206504228362] RATE 599
+
+{'0.2914464432719522,  0.04652607218289297,  -0.004588636499230154,  0.9554440013556205}
