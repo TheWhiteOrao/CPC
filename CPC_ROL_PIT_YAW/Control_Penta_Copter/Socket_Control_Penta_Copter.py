@@ -15,7 +15,5 @@ server_socket.listen(1)
 conn, addr = server_socket._accept()
 
 while True:
-    try:
-        server_socket.send(bin("1"))
-    except:
-        pass
+
+    server_socket.send(bin("1"))
