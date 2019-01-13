@@ -169,10 +169,10 @@ if __name__ == '__main__':
         delta_time, Hz, current_delta_time = calculate_delta_time(current_delta_time, Hz)
 
         Quaternion = inertial_measurement_unit(sensor_read(sensor), gyroscope_offset, delta_time, Quaternion)
-        print("QuaternionR: %-26s" % acos(Quaternion["QuaternionR"]) * 2,
-              "QuaternionI: %-26s" % acos(Quaternion["QuaternionI"]) * 2,
-              "QuaternionJ: %-26s" % acos(Quaternion["QuaternionJ"]) * 2,
-              "QuaternionK: %-26s" % acos(Quaternion["QuaternionK"]) * 2)
+        print("QuaternionR: %-26s" % (acos(Quaternion["QuaternionR"]) * 2),
+              "QuaternionI: %-26s" % (acos(Quaternion["QuaternionI"]) * 2),
+              "QuaternionJ: %-26s" % (acos(Quaternion["QuaternionJ"]) * 2),
+              "QuaternionK: %-26s" % (acos(Quaternion["QuaternionK"]) * 2))
 
 #  quat [-0.3832534449239102, -0.00516282644230581, 0.014133308871725835, 0.9235206504228362] RATE 599
 #
