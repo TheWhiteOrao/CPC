@@ -6,7 +6,7 @@
 
 def sensor_read(sensor):
 
-    sensor_output = {"acce": {}, "gyro": {}, "temp": None}
+    sensor_output = {"acce": {}, "gyro": {}, "magn": {}, "temp": None}
 
     sensor.read_acc()
     sensor.read_gyro()
