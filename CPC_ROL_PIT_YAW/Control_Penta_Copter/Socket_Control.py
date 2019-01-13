@@ -23,7 +23,8 @@ if __name__ == '__main__':
 
         ans = (str({"4": 1})).encode()
         client_socket.send(ans)
-        client_socket.recv(1024)
+        h = client_socket.recv(1024)
+        print(h)
 
     server_socket.close()
     client_socket.close()
