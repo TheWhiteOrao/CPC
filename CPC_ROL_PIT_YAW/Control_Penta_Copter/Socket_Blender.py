@@ -9,6 +9,7 @@ socket_blender.bind(IP_server)
 socket_blender.listen(1)
 
 while True:
+    print("run")
     try:
         (socket_control_penta_copter, IP_client) = socket_blender.accept()
         msg = eval(socket_control_penta_copter.recv(1024))

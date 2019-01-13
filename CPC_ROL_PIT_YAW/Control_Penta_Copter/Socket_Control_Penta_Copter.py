@@ -7,4 +7,6 @@ socket_control_penta_copter.connect(IP_server)
 
 H = str({"H": 1})
 
-socket_control_penta_copter.send(H)
+while True:
+    print("run")
+    socket_control_penta_copter.send(H)
