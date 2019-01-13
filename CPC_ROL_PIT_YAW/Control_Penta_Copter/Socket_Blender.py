@@ -3,7 +3,7 @@ from socket import *
 
 
 # print(gethostbyname(gethostname()))
-host = ""
+host = "192.168.43.243"
 port = 5555
 
 server_socket = socket(AF_INET, SOCK_STREAM)
