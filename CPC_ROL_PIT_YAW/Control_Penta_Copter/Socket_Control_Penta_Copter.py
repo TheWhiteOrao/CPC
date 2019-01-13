@@ -18,3 +18,4 @@ while True:
     try:
         server_socket.send(bin("1"))
     except:
+        pass
