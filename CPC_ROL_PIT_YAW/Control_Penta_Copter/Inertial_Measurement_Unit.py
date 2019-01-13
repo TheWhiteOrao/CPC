@@ -155,6 +155,7 @@ if __name__ == '__main__':
     from Delta_Time import calculate_delta_time
     from Euler_Angle import euler_angle
     from Socket_Control import socket_control
+    from time import sleep
 
     sensor = sensor_initialize("lsm9ds1")
 
@@ -174,6 +175,7 @@ if __name__ == '__main__':
 
         ans = str(Quaternion).encode()
         client_socket.send(ans)
+        sleep(1)
 
         # print(euler_angle(Quaternion))
         # print("QuaternionR: %-26s" % Quaternion["QuaternionR"],
