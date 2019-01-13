@@ -9,6 +9,7 @@ def socket_connect():
 
 
 def socket_read(client_socket):
+    message = None
     message = (client_socket.recv(2048)).decode()
     return message
 
@@ -18,8 +19,9 @@ if __name__ == '__main__':
     client_socket = socket_connect()
 
     while True:
-        Quaternion = (socket_read(client_socket)
+        Quaternion = (socket_read(client_socket))
         print(Quaternion)
+
         sleep(1)
 
         # print("QuaternionR: %-26s" % Quaternion["QuaternionR"],
