@@ -19,7 +19,7 @@ if __name__ == '__main__':
 
     while True:
         Quaternion = (socket_read(client_socket))
-        # print(Quaternion)
+        print(Quaternion)
 
         # print("QuaternionR: %-26s" % Quaternion["QuaternionR"],
         #       "QuaternionI: %-26s" % Quaternion["QuaternionI"],
