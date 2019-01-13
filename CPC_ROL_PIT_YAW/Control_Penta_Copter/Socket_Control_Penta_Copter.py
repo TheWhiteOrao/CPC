@@ -9,4 +9,4 @@ H = str({"H": 1})
 
 while True:
     print("run")
-    socket_control_penta_copter.send(H)
+    socket_control_penta_copter.send(bytes(H, "utf8"))

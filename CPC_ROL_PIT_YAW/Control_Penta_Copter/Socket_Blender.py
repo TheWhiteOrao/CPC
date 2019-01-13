@@ -11,8 +11,8 @@ socket_blender.listen(1)
 while True:
     print("run")
     try:
-        (socket_control_penta_copter, IP_client) = socket_blender.accept()
-        msg = eval(socket_control_penta_copter.recv(1024))
+        (socket_control_penta_copter, IP_client) = socket_blender._accept()
+        msg = eval(str(socket_control_penta_copter.recv(1024)))
 
     except:
         pass
