@@ -169,11 +169,11 @@ if __name__ == '__main__':
 
         Quaternion = inertial_measurement_unit(sensor_read(sensor), gyroscope_offset, delta_time, Quaternion)
 
-        print(euler_angle(Quaternion))
-        # print("QuaternionR: %-26s" % Quaternion["QuaternionR"],
-        #       "QuaternionI: %-26s" % Quaternion["QuaternionI"],
-        #       "QuaternionJ: %-26s" % Quaternion["QuaternionJ"],
-        #       "QuaternionK: %-26s" % Quaternion["QuaternionK"])
+        # print(euler_angle(Quaternion))
+        print("QuaternionR: %-26s" % Quaternion["QuaternionR"],
+              "QuaternionI: %-26s" % Quaternion["QuaternionI"],
+              "QuaternionJ: %-26s" % Quaternion["QuaternionJ"],
+              "QuaternionK: %-26s" % Quaternion["QuaternionK"])
 
 #  quat [-0.3832534449239102, -0.00516282644230581, 0.014133308871725835, 0.9235206504228362] RATE 599
 #
