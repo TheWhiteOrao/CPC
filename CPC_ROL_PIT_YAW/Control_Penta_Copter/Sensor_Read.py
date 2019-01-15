@@ -2,7 +2,7 @@
 
 # Sensor read, reads the sensors parameters and returns them as a tuple: [0] = accelerometer data, [1] = gyroscope data, [3] = temperature of the sensor.
 # Sensors that can be used are mup9250 and lsm9ds1.
-# output: {"acce": {"ax": i, "ay": i, "az": i}, "gyro": {"gx": i, "gy": i, "gz": i}}
+# output: {"acce": {"ax": i, "ay": i, "az": i}, "gyro": {"gx": i, "gy": i, "gz": i}, "magn": {"mx": i, "my": i, "mz": i}, "temp": None}
 
 def sensor_read(sensor):
 
