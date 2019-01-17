@@ -175,7 +175,7 @@ if __name__ == '__main__':
     from Sensor_Read import sensor_read
     from Delta_Time import calculate_delta_time
 
-    sensor = sensor_initialize("lsm9ds1")
+    sensor = sensor_initialize("mpu9250")
 
     delta_time, Hz, current_delta_time = calculate_delta_time()
 
