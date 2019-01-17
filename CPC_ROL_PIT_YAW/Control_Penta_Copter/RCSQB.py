@@ -175,6 +175,6 @@ if __name__ == '__main__':
 
     sensor = sensor_initialize("mpu9250")
 
-    for i in range(40):
+    for i in range(400):
         p = RCSQB_AG(sensor_read(sensor))
         print(p)
