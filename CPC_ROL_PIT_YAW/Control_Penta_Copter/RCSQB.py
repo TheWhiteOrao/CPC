@@ -39,7 +39,7 @@
 
 # ---------------------------------------- System constants ---------------------------------------- #
 
-deltat = 0.001                                                                                       # sampling period in seconds (shown as 1 ms)
+# deltat = 0.001                                                                                       # sampling period in seconds (shown as 1 ms)
 gyroMeasError = 3.14159265358979 * (5.0 / 180.0)                                                     # gyroscope measurement error in rad/s (shown as 5 deg/s)
 beta = ((3.0 / 4.0) ** 0.5) * gyroMeasError                                                          # compute beta
 
@@ -52,11 +52,11 @@ QuatDirc = {"QuatW": 1.0, "QuatX": 0.0, "QuatY": 0.0, "QuatZ": 0.0}             
 # -------------------------------------------------------------------------------------------------- #
 
 
-def RCSQB_AG(sensor_output):
+def RCSQB_AG(sensor_output, deltat):
 
     # ------------------------------- Global variables in RCSQB_AG --------------------------------- #
 
-    global deltat
+    # global deltat
     global gyroMeasError
     global beta
     global QuatDirc
@@ -175,6 +175,11 @@ if __name__ == '__main__':
 
     sensor = sensor_initialize("mpu9250")
 
+    delta_time, Hz, current_delta_time = calculate_delta_time()
+
     while True:
-        p = RCSQB_AG(sensor_read(sensor))
+
+        delta_time, Hz, current_delta_time = calculate_delta_time(current_delta_time, Hz)
+
+        p = RCSQB_AG(sensor_read(sensor), delta_time)
         print(p)
