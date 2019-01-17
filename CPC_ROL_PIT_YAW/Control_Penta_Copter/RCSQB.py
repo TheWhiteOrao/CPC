@@ -170,6 +170,7 @@ def RCSQB_AG(sensor_output, deltat):
 
 
 if __name__ == '__main__':
+    from time import sleep
     from Sensor_Initialize import sensor_initialize
     from Sensor_Read import sensor_read
     from Delta_Time import calculate_delta_time
@@ -184,3 +185,4 @@ if __name__ == '__main__':
 
         p = RCSQB_AG(sensor_read(sensor), delta_time)
         print(p, Hz)
+        sleep(0.001)
