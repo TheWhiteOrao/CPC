@@ -39,7 +39,7 @@
 
 # ---------------------------------------- System constants ---------------------------------------- #
 
-deltat = 0.001                                                                                       # sampling period in seconds (shown as 1 ms)
+deltat = 0.1                                                                                       # sampling period in seconds (shown as 1 ms)
 gyroMeasError = 3.14159265358979 * (5.0 / 180.0)                                                     # gyroscope measurement error in rad/s (shown as 5 deg/s)
 beta = ((3.0 / 4.0) ** 0.5) * gyroMeasError                                                          # compute beta
 
