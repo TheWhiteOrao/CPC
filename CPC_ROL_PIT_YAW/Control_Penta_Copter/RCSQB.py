@@ -121,49 +121,60 @@ def RCSQB_AG(sensor_output):
 
     # ------------------------ Compute the gradient(matrix multiplication) ------------------------- #
 
-    SEqHatDot_1 = J_14or21 * f_2 - J_11or24 * f_1
-    SEqHatDot_2 = J_12or23 * f_1 + J_13or22 * f_2 - J_32 * f_3
-    SEqHatDot_3 = J_12or23 * f_2 - J_33 * f_3 - J_13or22 * f_1
-    SEqHatDot_4 = J_14or21 * f_1 + J_11or24 * f_2
+    QuatW_HatDot = J_14or21 * f_2 - J_11or24 * f_1
+    QuatX_HatDot = J_12or23 * f_1 + J_13or22 * f_2 - J_32 * f_3
+    QuatY_HatDot = J_12or23 * f_2 - J_33 * f_3 - J_13or22 * f_1
+    QuatZ_HatDot = J_14or21 * f_1 + J_11or24 * f_2
 
     # ---------------------------------------------------------------------------------------------- #
 
     # Normalise the gradient
 
-    norm = (SEqHatDot_1 * SEqHatDot_1 + SEqHatDot_2 * SEqHatDot_2 + SEqHatDot_3 * SEqHatDot_3 + SEqHatDot_4 * SEqHatDot_4) ** 0.5
-    SEqHatDot_1 /= norm
-    SEqHatDot_2 /= norm
-    SEqHatDot_3 /= norm
-    SEqHatDot_4 /= norm
+    gradNorm = (QuatW_HatDot * QuatW_HatDot + QuatX_HatDot * QuatX_HatDot + QuatY_HatDot * QuatY_HatDot + QuatZ_HatDot * QuatZ_HatDot) ** 0.5
+    QuatW_HatDot /= gradNorm
+    QuatX_HatDot /= gradNorm
+    QuatY_HatDot /= gradNorm
+    QuatZ_HatDot /= gradNorm
 
     # ---------------------------------------------------------------------------------------------- #
 
     # Compute the quaternion derrivative measured by gyroscopes
 
-    SEqDot_omega_1 = -half_QuatX * w_x - half_QuatY * w_y - half_QuatZ * w_z
-    SEqDot_omega_2 = half_QuatW * w_x + half_QuatY * w_z - half_QuatZ * w_y
-    SEqDot_omega_3 = half_QuatW * w_y - half_QuatX * w_z + half_QuatZ * w_x
-    SEqDot_omega_4 = half_QuatW * w_z + half_QuatX * w_y - half_QuatY * w_x
+    SEqDot_omega_1 = -half_QuatX * gyroX - half_QuatY * gyroY - half_QuatZ * gyroZ
+    SEqDot_omega_2 = half_QuatW * gyroX + half_QuatY * gyroZ - half_QuatZ * gyroY
+    SEqDot_omega_3 = half_QuatW * gyroY - half_QuatX * gyroZ + half_QuatZ * gyroX
+    SEqDot_omega_4 = half_QuatW * gyroZ + half_QuatX * gyroY - half_QuatY * gyroX
 
     # ---------------------------------------------------------------------------------------------- #
 
     # Compute then integrate the estimated quaternion derrivative
 
-    QuatDirc["QuatW"] += (SEqDot_omega_1 - (beta * SEqHatDot_1)) * deltat
-    QuatDirc["QuatX"] += (SEqDot_omega_2 - (beta * SEqHatDot_2)) * deltat
-    QuatDirc["QuatY"] += (SEqDot_omega_3 - (beta * SEqHatDot_3)) * deltat
-    QuatDirc["QuatZ"] += (SEqDot_omega_4 - (beta * SEqHatDot_4)) * deltat
+    QuatDirc["QuatW"] += (SEqDot_omega_1 - (beta * QuatW_HatDot)) * deltat
+    QuatDirc["QuatX"] += (SEqDot_omega_2 - (beta * QuatX_HatDot)) * deltat
+    QuatDirc["QuatY"] += (SEqDot_omega_3 - (beta * QuatY_HatDot)) * deltat
+    QuatDirc["QuatZ"] += (SEqDot_omega_4 - (beta * QuatZ_HatDot)) * deltat
 
     # ---------------------------------------------------------------------------------------------- #
 
     # Normalise quaternion
 
-    norm = (QuatDirc["QuatW"] * QuatDirc["QuatW"] + QuatDirc["QuatX"] * QuatDirc["QuatX"] + QuatDirc["QuatY"] * QuatDirc["QuatY"] + QuatDirc["QuatZ"] * QuatDirc["QuatZ"]) ** 0.5
-    QuatDirc["QuatW"] /= norm
-    QuatDirc["QuatX"] /= norm
-    QuatDirc["QuatY"] /= norm
-    QuatDirc["QuatZ"] /= norm
+    quatNorm = (QuatDirc["QuatW"] * QuatDirc["QuatW"] + QuatDirc["QuatX"] * QuatDirc["QuatX"] + QuatDirc["QuatY"] * QuatDirc["QuatY"] + QuatDirc["QuatZ"] * QuatDirc["QuatZ"]) ** 0.5
+    QuatDirc["QuatW"] /= quatNorm
+    QuatDirc["QuatX"] /= quatNorm
+    QuatDirc["QuatY"] /= quatNorm
+    QuatDirc["QuatZ"] /= quatNorm
 
     # ---------------------------------------------------------------------------------------------- #
 
     return QuatDirc
+
+
+if __name__ == '__main__':
+    from Sensor_Initialize import sensor_initialize
+    from Sensor_Read import sensor_read
+
+    sensor = sensor_initialize("mpu9250")
+
+    for i in range(40):
+        p = RCSQB_AG(sensor_read(sensor))
+        print(p)
