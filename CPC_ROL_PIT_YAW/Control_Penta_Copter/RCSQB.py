@@ -183,4 +183,4 @@ if __name__ == '__main__':
         delta_time, Hz, current_delta_time = calculate_delta_time(current_delta_time, Hz)
 
         p = RCSQB_AG(sensor_read(sensor), delta_time)
-        print(p)
+        print(p, Hz)
