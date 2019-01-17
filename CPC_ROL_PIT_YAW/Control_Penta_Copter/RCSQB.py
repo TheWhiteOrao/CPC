@@ -172,6 +172,7 @@ def RCSQB_AG(sensor_output, deltat):
 if __name__ == '__main__':
     from Sensor_Initialize import sensor_initialize
     from Sensor_Read import sensor_read
+    from Delta_Time import calculate_delta_time
 
     sensor = sensor_initialize("mpu9250")
 
