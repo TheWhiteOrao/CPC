@@ -1,14 +1,11 @@
-from time import time
+from time import perf_counter_ns
 
 
 def calculate_delta_time(previous_delta_time=0, Hz=0):
 
-    current_delta_time = time()
+    current_delta_time = perf_counter_ns()
 
-    try:
-        Hz = 1000000000 / (current_delta_time - previous_delta_time)
-    except:
-        pass
+    Hz = 1000000000 / (current_delta_time - previous_delta_time)
 
     delta_time = (current_delta_time - previous_delta_time) / 1000000000
 
@@ -20,3 +17,4 @@ if __name__ == '__main__':
 
     for i in range(10000000):
         delta_time, Hz, current_delta_time = calculate_delta_time(current_delta_time, Hz)
+        print(delta_time, Hz, current_delta_time)

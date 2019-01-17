@@ -228,7 +228,10 @@
 #     Quaternion[3] = q4 * norm
 # }
 
-from datetime import *
+from time import perf_counter_ns
 
-for i in range(1000000):
-    print(datetime())
+g = perf_counter_ns()
+for i in range(10000):
+    h = perf_counter_ns()
+    print(1000000000 / (h - g))
+    g = h
