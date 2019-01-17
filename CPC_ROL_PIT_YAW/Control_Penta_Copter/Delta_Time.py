@@ -1,9 +1,9 @@
-from time import time_ns
+from time import time
 
 
 def calculate_delta_time(previous_delta_time=0, Hz=0):
 
-    current_delta_time = time_ns()
+    current_delta_time = time()
 
     try:
         Hz = 1000000000 / (current_delta_time - previous_delta_time)
@@ -18,5 +18,5 @@ def calculate_delta_time(previous_delta_time=0, Hz=0):
 if __name__ == '__main__':
     delta_time, Hz, current_delta_time = calculate_delta_time()
 
-    for i in range(10000):
+    for i in range(10000000):
         delta_time, Hz, current_delta_time = calculate_delta_time(current_delta_time, Hz)
