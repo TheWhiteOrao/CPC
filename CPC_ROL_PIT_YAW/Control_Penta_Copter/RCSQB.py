@@ -74,12 +74,6 @@ def RCSQB_AG(sensor_output, deltat):
     gyroZ = sensor_output["gyro"]["gz"]
 
     # ---------------------------------------------------------------------------------------------- #
-    # # Local system variables
-    # float norm                                                                  # vector norm
-    # float SEqDot_omega_1, SEqDot_omega_2, SEqDot_omega_3, SEqDot_omega_4        # quaternion derrivative from gyroscopes elements
-    # float f_1, f_2, f_3                                                         # objective function elements
-    # float J_11or24, J_12or23, J_13or22, J_14or21, J_32, J_33                    # objective function Jacobian elements
-    # float SEqHatDot_1, SEqHatDot_2, SEqHatDot_3, SEqHatDot_4                    # estimated direction of the gyroscope error
 
     # --------------------- Axulirary variables to avoid reapeated calcualtions --------------------- #
 
@@ -167,6 +161,32 @@ def RCSQB_AG(sensor_output, deltat):
     # ---------------------------------------------------------------------------------------------- #
 
     return QuatDirc
+
+
+def RCSQB_AGM(sensor_output, deltat):
+
+    # ------------------------------- Global variables in RCSQB_AG --------------------------------- #
+
+    # global deltat
+    global gyroMeasError
+    global beta
+    global QuatDirc
+
+    # ---------------------------------------------------------------------------------------------- #
+
+    # ------------------------- Binds sensor outputs to multiple variables ------------------------- #
+
+    acceX = sensor_output["acce"]["ax"]
+    acceY = sensor_output["acce"]["ay"]
+    acceZ = sensor_output["acce"]["az"]
+
+    gyroX = sensor_output["gyro"]["gx"]
+    gyroY = sensor_output["gyro"]["gy"]
+    gyroZ = sensor_output["gyro"]["gz"]
+
+    magnX = sensor_output["magn"]["mx"]
+    magnY = sensor_output["magn"]["my"]
+    magnZ = sensor_output["magn"]["mz"]
 
 
 if __name__ == '__main__':
