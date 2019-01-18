@@ -386,7 +386,7 @@ if __name__ == '__main__':
         delta_time, Hz, current_delta_time = calculate_delta_time(current_delta_time, Hz)
 
         p, h_x, h_y, h_z = RCSQB_AGM(sensor_read(sensor), delta_time)
-        print(p, h_x, h_y, h_z, Hz)
+        # print(p, h_x, h_y, h_z, Hz)
         print("QuatW: %-15s" % round(p["QuatW"], 3),
               "QuatX: %-15s" % round(p["QuatX"], 3),
               "QuatY: %-15s" % round(p["QuatY"], 3),
