@@ -356,7 +356,7 @@ def RCSQB_AGM(sensor_output, deltat):
     QuatXQuatZ = QuatDirc["QuatX"] * QuatDirc["QuatZ"]
 
     h_x = twoMagnX * (0.5 - QuatDirc["QuatY"] * QuatDirc["QuatY"] - QuatDirc["QuatZ"] * QuatDirc["QuatZ"]) + twoMagnY * (QuatXQuatY - QuatWQuatZ) + twoMagnZ * (QuatXQuatZ + QuatWQuatY)
-    h_y = twoMagnX * (QuatXQuatY + QuatWQuatZ) + twoMagnY * (0.5f - QuatDirc["QuatX"] * QuatDirc["QuatX"] - QuatDirc["QuatZ"] * QuatDirc["QuatZ"]) + twoMagnZ * (QuatYQuatZ - QuatWQuatX)
+    h_y = twoMagnX * (QuatXQuatY + QuatWQuatZ) + twoMagnY * (0.5 - QuatDirc["QuatX"] * QuatDirc["QuatX"] - QuatDirc["QuatZ"] * QuatDirc["QuatZ"]) + twoMagnZ * (QuatYQuatZ - QuatWQuatX)
     h_z = twoMagnX * (QuatXQuatZ - QuatWQuatY) + twoMagnY * (QuatYQuatZ + QuatWQuatX) + twoMagnZ * (0.5 - QuatDirc["QuatX"] * QuatDirc["QuatX"] - QuatDirc["QuatY"] * QuatDirc["QuatY"])
 
     # ---------------------------------------------------------------------------------------------- #
