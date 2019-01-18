@@ -387,12 +387,12 @@ if __name__ == '__main__':
 
         p, h_x, h_y, h_z = RCSQB_AGM(sensor_read(sensor), delta_time)
         print(p, h_x, h_y, h_z, Hz)
-        print("QuatW: %-26s" % p["QuatW"],
-              "QuatX: %-26s" % p["QuatX"],
-              "QuatY: %-26s" % p["QuatY"],
-              "QuatZ: %-26s" % p["QuatZ"],
-              "h_x: %-26s" % h_x,
-              "h_y: %-26s" % h_y,
-              "h_z: %-26s" % h_z,
-              "Hz: %-26s" % Hz,
+        print("QuatW: %-15s" % round(p["QuatW"], 3),
+              "QuatX: %-15s" % round(p["QuatX"], 3),
+              "QuatY: %-15s" % round(p["QuatY"], 3),
+              "QuatZ: %-15s" % round(p["QuatZ"], 3),
+              "h_x: %-15s" % round(h_x, 3),
+              "h_y: %-15s" % round(h_y, 3),
+              "h_z: %-15s" % round(h_z, 3),
+              "Hz: %-15s" % round(Hz, 3),
               )
