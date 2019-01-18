@@ -368,7 +368,7 @@ def RCSQB_AGM(sensor_output, deltat):
 
     # ---------------------------------------------------------------------------------------------- #
 
-    return QuatDirc
+    return QuatDirc, h_x, h_y, h_z
 
 
 if __name__ == '__main__':
@@ -385,5 +385,5 @@ if __name__ == '__main__':
 
         delta_time, Hz, current_delta_time = calculate_delta_time(current_delta_time, Hz)
 
-        p = RCSQB_AGM(sensor_read(sensor), delta_time)
-        print(p, Hz)
+        p, h_x, h_y, h_z = RCSQB_AGM(sensor_read(sensor), delta_time)
+        print(p, h_x, h_y, h_z, Hz)
