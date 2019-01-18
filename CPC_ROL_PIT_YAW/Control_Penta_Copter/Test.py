@@ -228,10 +228,23 @@
 #     Quaternion[3] = q4 * norm
 # }
 
-from time import perf_counter_ns
+# from time import perf_counter_ns
+#
+# g = perf_counter_ns()
+# for i in range(10000):
+#     h = perf_counter_ns()
+#     print(1000000000 / (h - g))
+#     g = h
 
-g = perf_counter_ns()
-for i in range(10000):
-    h = perf_counter_ns()
-    print(1000000000 / (h - g))
-    g = h
+x, y, z = 0, 1, 2
+
+
+def g():
+    global x, y, z
+    x += 3
+    y += 2
+    z += 1
+    return x, y, z
+
+
+print(g())
