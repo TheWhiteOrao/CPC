@@ -230,7 +230,7 @@ def RCSQB_AGM(sensor_output, deltat):
 
     twoMagnX = 2.0 * magnX
     twoMagnY = 2.0 * magnY
-    twoMagnZ = 2.0 * magnZ$
+    twoMagnZ = 2.0 * magnZ
 
     # ---------------------------------------------------------------------------------------------- #
 
