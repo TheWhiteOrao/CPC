@@ -391,8 +391,8 @@ if __name__ == '__main__':
               "QuatX: %-26s" % p["QuatX"],
               "QuatY: %-26s" % p["QuatY"],
               "QuatZ: %-26s" % p["QuatZ"],
-              "h_x: %-26s" % p["h_x"],
-              "h_y: %-26s" % p["h_y"],
-              "h_z: %-26s" % p["h_z"],
-              "Hz: %-26s" % p["Hz"],
+              "h_x: %-26s" % h_x,
+              "h_y: %-26s" % h_y,
+              "h_z: %-26s" % h_z,
+              "Hz: %-26s" % Hz,
               )
