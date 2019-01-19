@@ -53,19 +53,19 @@ def RCSQB_AGM(sensor_output, deltat, gyroCaliOffset):
     global PI, GR, QuatDirc, twoKi, twoKp
 
     # Accelerometer measurements
-    acceX = sensor_output["acce"]["x"]
-    acceY = sensor_output["acce"]["y"]
-    acceZ = sensor_output["acce"]["z"]
+    acceX = sensor_output["acce"]["ax"]
+    acceY = sensor_output["acce"]["ay"]
+    acceZ = sensor_output["acce"]["az"]
 
     # Gyroscope measurements in rad/s
-    gyroX = sensor_output["gyro"]["x"]
-    gyroY = sensor_output["gyro"]["y"]
-    gyroZ = sensor_output["gyro"]["z"]
+    gyroX = sensor_output["gyro"]["gx"]
+    gyroY = sensor_output["gyro"]["gy"]
+    gyroZ = sensor_output["gyro"]["gz"]
 
     # Magnetometer measurements
-    magnX = sensor_output["magn"]["x"]
-    magnY = sensor_output["magn"]["y"]
-    magnZ = sensor_output["magn"]["z"]
+    magnX = sensor_output["magn"]["mx"]
+    magnY = sensor_output["magn"]["my"]
+    magnZ = sensor_output["magn"]["mz"]
 
     # Set quaternion to local variables
     QuatW = QuatDirc["QuatW"]
@@ -182,14 +182,14 @@ def RCSQB_AG(sensor_output, deltat):
     global PI, GR, QuatDirc
 
     # Accelerometer measurements
-    acceX = sensor_output["acce"]["x"]
-    acceY = sensor_output["acce"]["y"]
-    acceZ = sensor_output["acce"]["z"]
+    acceX = sensor_output["acce"]["ax"]
+    acceY = sensor_output["acce"]["ay"]
+    acceZ = sensor_output["acce"]["az"]
 
     # Gyroscope measurements in rad/s
-    gyroX = sensor_output["gyro"]["x"]
-    gyroY = sensor_output["gyro"]["y"]
-    gyroZ = sensor_output["gyro"]["z"]
+    gyroX = sensor_output["gyro"]["gx"]
+    gyroY = sensor_output["gyro"]["gy"]
+    gyroZ = sensor_output["gyro"]["gz"]
 
     # Set quaternion to local variables
     QuatW = QuatDirc["QuatW"]
