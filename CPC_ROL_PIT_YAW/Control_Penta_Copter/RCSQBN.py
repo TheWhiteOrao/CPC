@@ -37,7 +37,7 @@
 
 # ------------------------------------ Global system variables ------------------------------------- #
 
-QuatDirc = {"QuatW": 1.0, "QuatX": 0.0, "QuatY": 0.0, "QuatZ": 0.0}                                  # estimated orientation quaternion elements with initial conditions
+QuatDirc = {"QuatW": 0.0, "QuatX": 0.0, "QuatY": 0.0, "QuatZ": 1.0}                                  # estimated orientation quaternion elements with initial conditions
 
 PI = 3.14159
 GR = 9.80665
