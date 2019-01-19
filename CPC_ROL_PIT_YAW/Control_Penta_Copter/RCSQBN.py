@@ -295,7 +295,7 @@ if __name__ == '__main__':
     from Delta_Time import calculate_delta_time
     from Gyrometer_Calibration import gyroscope_calibration
 
-    sensor = sensor_initialize("mpu9250")
+    sensor = sensor_initialize("lsm9ds1")
 
     gyroOffset = gyroscope_calibration(sensor, 1000)
 
