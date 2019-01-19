@@ -139,9 +139,9 @@ def RCSQB_AGM(sensor_output, deltat, gyroCaliOffset):
         else:
 
             # prevent integral windup
-            integralFBx = 0.0f
-            integralFBy = 0.0f
-            integralFBz = 0.0f
+            integralFBx = 0.0
+            integralFBy = 0.0
+            integralFBz = 0.0
 
         # Apply proportional feedback
         gyroX += twoKp * halfex
