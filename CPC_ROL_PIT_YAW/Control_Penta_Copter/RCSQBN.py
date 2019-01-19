@@ -26,15 +26,6 @@
 #                                                                                                    #
 # -------------------------------------------------------------------------------------------------- #
 
-# ------------------- Output format of the function sensor_read("sensor_name") --------------------- #
-#                               {                                                                    #
-#                               "acce": {"acceX": x, "acceY": y, "acceZ": z},                                 #
-#                               "gyro": {"gyroX": x, "gyroY": y, "gyroZ": z},                                 #
-#                               "magn": {"magnX": x, "magnY": y, "magnZ": z},                                 #
-#                               "temp": C°                                                           #
-#                               }                                                                    #
-# -------------------------------------------------------------------------------------------------- #
-
 # ------------------------------------ Global system variables ------------------------------------- #
 
 QuatDirc = {"QuatW": 0.0, "QuatX": 0.0, "QuatY": 0.0, "QuatZ": 1.0}                                  # estimated orientation quaternion elements with initial conditions
